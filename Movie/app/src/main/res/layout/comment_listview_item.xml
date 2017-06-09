@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:text="Name"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_alignTop="@+id/comment_listview_icon"
+        android:layout_toRightOf="@+id/comment_listview_icon"
+        android:layout_toEndOf="@+id/comment_listview_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:id="@+id/comment_listview_name"
+        android:textSize="14sp"
+        android:gravity="center" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:id="@+id/comment_listview_icon"
+        android:layout_marginTop="24dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="8.0"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginRight="37dp"
+        android:layout_marginEnd="37dp"
+        android:id="@+id/comment_listview_score"
+        android:layout_alignTop="@+id/comment_listview_name"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="center"
+        android:textColor="@android:color/holo_orange_dark" />
+
+    <TextView
+        android:text="CommentsCommentsCommentsCommentsCommentsCommentsCommentsCommentsCommentsComments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/comment_listview_name"
+        android:layout_alignLeft="@+id/comment_listview_name"
+        android:layout_alignStart="@+id/comment_listview_name"
+        android:id="@+id/comment_listview_content"
+        android:layout_alignRight="@+id/comment_listview_score"
+        android:layout_alignEnd="@+id/comment_listview_score" />
+</RelativeLayout>
