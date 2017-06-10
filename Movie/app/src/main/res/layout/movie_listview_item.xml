@@ -76,4 +76,15 @@
         android:id="@+id/movie_listview_buy"
         android:focusable="false"/>
 
+    <TextView
+        android:text="3D"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/movie_listview_name"
+        android:layout_toRightOf="@+id/movie_listview_name"
+        android:layout_toEndOf="@+id/movie_listview_name"
+        android:id="@+id/movie_listview_tag23D"
+        android:layout_marginLeft="10dp"
+        android:textColor="@android:color/holo_blue_bright" />
+
 </RelativeLayout>

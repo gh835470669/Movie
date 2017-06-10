@@ -1,31 +1,57 @@
 package com.example.movie;
 
 import android.content.Intent;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.Pair;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    private Button registerButton;
-    private Button loginButton;
-    private EditText username;
-    private EditText password;
+    private ViewPager vpPager;
+    private ArrayList<Fragment> fragments;
+    private FragmentManager fragmentManager;
 
-    private ArrayList<String[]> userdatas;
+    private class MyPagerAdapter extends FragmentPagerAdapter {
+        private ArrayList<Fragment> fragments;
 
-    private void getUserdatas() {
-        userdatas = new ArrayList<>();
-        userdatas.add(new String[] {"abc", "abc"});
-        //get datas from database
+        public MyPagerAdapter(FragmentManager fragmentManager, ArrayList<Fragment> fragments) {
+            super(fragmentManager);
+            this.fragments = fragments;
+        }
+
+        // Returns total number of pages
+        @Override
+        public int getCount() {
+            return fragments.size();
+        }
+
+        // Returns the fragment to display for that page
+        @Override
+        public Fragment getItem(int position) {
+            return fragments.get(position);
+        }
+
+        // Returns the page title for the top indicator
+        @Override
+        public CharSequence getPageTitle(int position) {
+            switch (position) {
+                case 0:
+                    return "Movie";
+                case 1:
+                    return "Theatre";
+                case 2:
+                    return "User";
+                default:
+                    return null;
+            }
+        }
+
     }
 
     @Override
@@ -33,50 +59,33 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getUserdatas();
+        vpPager = (ViewPager) findViewById(R.id.vpPager);
+        fragmentManager = getSupportFragmentManager();
+        fragments = new ArrayList<>();
+        fragments.add(MovieFragment.newInstance());
+        fragments.add(MovieFragment.newInstance());
+        fragments.add(UserFragment.newInstance());
+        vpPager.setAdapter(new MyPagerAdapter(fragmentManager, fragments));
 
-        registerButton = (Button)findViewById(R.id.LogIn_registerButton);
-        username = (EditText)findViewById(R.id.LogIn_username);
-        password = (EditText)findViewById(R.id.LogIn_password);
+        // Attach the page change listener inside the activity
+        vpPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-        registerButton.setOnClickListener(new View.OnClickListener() {
+            // This method will be invoked when a new page becomes selected.
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("userdatas", userdatas);
-                intent.putExtras(bundle);
-                startActivity(intent);
+            public void onPageSelected(int position) {
             }
-        });
 
-        loginButton = (Button)findViewById(R.id.LogIn_loginButton);
-        loginButton.setOnClickListener(new View.OnClickListener() {
+            // This method will be invoked when the current page is scrolled
             @Override
-            public void onClick(View v) {
-                if (username.getText().toString().isEmpty()) {
-                    Toast.makeText(MainActivity.this, "用户名不能为空", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                // Code goes here
+            }
 
-                if (password.getText().toString().isEmpty()) {
-                    Toast.makeText(MainActivity.this, "密码不能为空", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                for (int i = 0; i < userdatas.size(); i++) {
-                    if (username.getText().toString().equals(userdatas.get(i)[0])) {
-                        if (password.getText().toString().equals(userdatas.get(i)[1])) {
-                            Intent intent = new Intent(MainActivity.this, MovieActivity.class);
-                            startActivity(intent);
-                            return;
-                        } else {
-                            Toast.makeText(MainActivity.this, "密码错误", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                    }
-                }
-                Toast.makeText(MainActivity.this, "用户名错误", Toast.LENGTH_SHORT).show();
+            // Called when the scroll state changes:
+            // SCROLL_STATE_IDLE, SCROLL_STATE_DRAGGING, SCROLL_STATE_SETTLING
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                // Code goes here
             }
         });
     }
@@ -84,15 +93,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        Log.d("d", "onResume: MainAct");
 
-        Bundle b = getIntent().getExtras();
-        if (b != null) {
-            ArrayList<String[]> users = (ArrayList<String[]>)b.getSerializable("userdatas");
-            if (users != null) {
-                userdatas = users;
-            } else {
-                Log.d("d", "onResume: userdatas are null");
-            }
+        Intent intent = getIntent();
+        if (intent == null) return;
+        if (intent.getStringExtra("act") == null) return;
+        if (intent.getStringExtra("act").equals("login")) {
+            vpPager.setCurrentItem(2);
+        } else if (intent.getStringExtra("act").equals("alter")) {
+            vpPager.setCurrentItem(2);
         }
     }
 }

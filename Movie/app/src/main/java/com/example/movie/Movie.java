@@ -3,6 +3,8 @@ package com.example.movie;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+
 /**
  * Created by 黄健军 on 2017/6/7.
  */
@@ -13,6 +15,8 @@ public class Movie implements Parcelable {
     private String introduction;
     private float score;
     private int id;
+    private String tagOf23D;
+    private ArrayList<String> tags;
 
     public Movie() {
 
@@ -24,6 +28,9 @@ public class Movie implements Parcelable {
         introduction = in.readString();
         score = in.readFloat();
         id = in.readInt();
+        tagOf23D = in.readString();
+        tags = new ArrayList<>();
+        in.readStringList(tags);
     }
 
     public static final Creator<Movie> CREATOR = new Creator<Movie>() {
@@ -78,6 +85,22 @@ public class Movie implements Parcelable {
         this.id = id;
     }
 
+    public String getTagOf23D() {
+        return tagOf23D;
+    }
+
+    public void setTagOf23D(String tagOf23D) {
+        this.tagOf23D = tagOf23D;
+    }
+
+    public ArrayList<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(ArrayList<String> tags) {
+        this.tags = tags;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -90,5 +113,7 @@ public class Movie implements Parcelable {
         dest.writeString(introduction);
         dest.writeFloat(score);
         dest.writeInt(id);
+        dest.writeString(tagOf23D);
+        dest.writeStringList(tags);
     }
 }

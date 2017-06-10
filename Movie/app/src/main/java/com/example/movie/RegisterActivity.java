@@ -3,16 +3,12 @@ package com.example.movie;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity {
     private Button regiserButton;
@@ -34,11 +30,11 @@ public class RegisterActivity extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         userdatas = (ArrayList<String[]>)getIntent().getSerializableExtra("userdatas");
 
-        username = (EditText)findViewById(R.id.register_username);
-        password = (EditText)findViewById(R.id.register_password);
-        confirmPass = (EditText)findViewById(R.id.register_confirmPassword);
+        username = (EditText)findViewById(R.id.alter_username);
+        password = (EditText)findViewById(R.id.alter_password);
+        confirmPass = (EditText)findViewById(R.id.alter_confirmPassword);
 
-        regiserButton = (Button)findViewById(R.id.register_registerButton);
+        regiserButton = (Button)findViewById(R.id.alter_confirmButton);
         regiserButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,10 +67,11 @@ public class RegisterActivity extends AppCompatActivity {
 
                 addUser(new String[]{name, pass});
 
-                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("userdatas", userdatas);
                 intent.putExtras(bundle);
+                intent.putExtra("act", "register");
                 startActivity(intent);
             }
         });

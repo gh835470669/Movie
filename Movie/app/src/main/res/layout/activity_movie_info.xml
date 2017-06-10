@@ -84,15 +84,34 @@
             android:layout_alignLeft="@+id/movieInfo_textView"
             android:layout_alignStart="@+id/movieInfo_textView" />
 
-        <Button
-            android:text="想看"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/movieInfo_collect"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:minHeight="13dp"
-            android:minWidth="100dip" />
+            android:layout_centerHorizontal="true">
+
+            <Button
+                android:text="想看"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/movieInfo_collect"
+                android:minHeight="13dp"
+                android:minWidth="100dip"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:text="看过"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/movieInfo_haveWatched"
+                android:layout_marginLeft="10dp"
+                android:minHeight="13dp"
+                android:minWidth="100dip"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
     </RelativeLayout>
 
     <TextView

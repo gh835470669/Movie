@@ -16,9 +16,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".UserActivity" />
-        <activity android:name=".MovieActivity" />
-        <activity android:name=".MovieInfoActivity"></activity>
+        <activity android:name=".MovieInfoActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".AlterUserActivity" />
+        <activity android:name=".MovieSearchActivity" />
+        <activity android:name=".WantToWatchActivity" />
+        <activity android:name=".HaveWatchedActivity"></activity>
     </application>
 
 </manifest>

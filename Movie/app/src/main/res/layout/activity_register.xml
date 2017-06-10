@@ -16,10 +16,10 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/register_password"
+        android:id="@+id/alter_password"
         android:layout_alignBottom="@+id/textView"
-        android:layout_alignLeft="@+id/register_username"
-        android:layout_alignStart="@+id/register_username"
+        android:layout_alignLeft="@+id/alter_username"
+        android:layout_alignStart="@+id/alter_username"
         android:password="true" />
 
     <EditText
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/register_username"
+        android:id="@+id/alter_username"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_alignBottom="@+id/textView4"
@@ -74,21 +74,21 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/register_confirmPassword"
+        android:id="@+id/alter_confirmPassword"
         android:layout_alignBottom="@+id/textView5"
-        android:layout_alignLeft="@+id/register_password"
-        android:layout_alignStart="@+id/register_password"
+        android:layout_alignLeft="@+id/alter_password"
+        android:layout_alignStart="@+id/alter_password"
         android:password="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="注册"
-        android:id="@+id/register_registerButton"
+        android:id="@+id/alter_confirmButton"
         android:textSize="18sp"
         android:background="@drawable/button_background"
         android:textColor="#ffffff"
         android:layout_marginTop="46dp"
-        android:layout_below="@+id/register_confirmPassword"
+        android:layout_below="@+id/alter_confirmPassword"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

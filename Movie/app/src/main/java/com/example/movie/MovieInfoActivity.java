@@ -10,13 +10,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Calendar;
+import java.util.Date;
 
 public class MovieInfoActivity extends AppCompatActivity {
     private Movie m_movie;
@@ -25,6 +24,7 @@ public class MovieInfoActivity extends AppCompatActivity {
     private ImageView icon;
     private TextView onDate;
     private TextView introduction;
+    private TextView tags;
     private ListView lv;
 
     private ArrayList<Comment> comments;
@@ -33,6 +33,14 @@ public class MovieInfoActivity extends AppCompatActivity {
         name.setText(m_movie.getName());
         score.setText(String.valueOf(m_movie.getScore()));
         introduction.setText(m_movie.getIntroduction());
+        String _tags = new String();
+        ArrayList<String> strings = m_movie.getTags();
+        for (int i = 0; i < strings.size(); i++) {
+            _tags += strings.get(i);
+            _tags += " ";
+        }
+        _tags += m_movie.getTagOf23D();
+        tags.setText(_tags);
     }
 
     private void setComments() {
@@ -45,12 +53,22 @@ public class MovieInfoActivity extends AppCompatActivity {
         comment.setCommenter("路人A");
         comment.setScore(8.0f);
         comment.setContent("不得了不得了不得了不得了不得了不得了不得了");
+        Date date = new Date();
+        date.setYear(2017);
+        date.setMonth(1);
+        date.setDate(1);
+        comment.setDate(date);
         comments.add(comment);
 
         comment = new Comment();
         comment.setCommenter("路人B");
         comment.setScore(9.0f);
         comment.setContent("不得了不得了不得了不得了不得了不得了不得了不得了不得了不得了不得了不得了不得了不得了");
+        date = new Date();
+        date.setYear(2017);
+        date.setMonth(1);
+        date.setDate(2);
+        comment.setDate(date);
         comments.add(comment);
 
     }
@@ -60,6 +78,7 @@ public class MovieInfoActivity extends AppCompatActivity {
         private String avatar;
         private String content;
         private float score;
+        private Date date;
 
         public String getCommenter() {
             return commenter;
@@ -91,6 +110,14 @@ public class MovieInfoActivity extends AppCompatActivity {
 
         public void setScore(float score) {
             this.score = score;
+        }
+
+        public Date getDate() {
+            return date;
+        }
+
+        public void setDate(Date date) {
+            this.date = date;
         }
     }
 
@@ -137,6 +164,7 @@ public class MovieInfoActivity extends AppCompatActivity {
                 viewHolder.icon = (ImageView) convertView.findViewById(R.id.comment_listview_icon);
                 viewHolder.score = (TextView)convertView.findViewById(R.id.comment_listview_score);
                 viewHolder.content = (TextView)convertView.findViewById(R.id.comment_listview_content);
+                viewHolder.date = (TextView)convertView.findViewById(R.id.comment_listview_date);
                 convertView.setTag(viewHolder);
 
             } else {
@@ -148,6 +176,9 @@ public class MovieInfoActivity extends AppCompatActivity {
             viewHolder.name.setText(comment.getCommenter());
             viewHolder.score.setText(String.valueOf(comment.getScore()));
             viewHolder.content.setText(comment.getContent());
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            String t=format.format(comment.getDate());
+            viewHolder.date.setText(t);
             //viewHolder.icon
 
             return convertView;
@@ -158,6 +189,7 @@ public class MovieInfoActivity extends AppCompatActivity {
             public TextView name;
             public TextView score;
             public TextView content;
+            public TextView date;
         }
     }
 
@@ -171,6 +203,7 @@ public class MovieInfoActivity extends AppCompatActivity {
         icon = (ImageView)findViewById(R.id.movieInfo_icon);
         onDate = (TextView)findViewById(R.id.movieInfo_onDate);
         introduction = (TextView)findViewById(R.id.movieInfo_intro);
+        tags = (TextView)findViewById(R.id.movieInfo_tags);
 
         Bundle b = getIntent().getExtras();
         this.m_movie = b.getParcelable("movie");

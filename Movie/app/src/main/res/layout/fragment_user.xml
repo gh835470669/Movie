@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_user"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.movie.UserActivity">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:background="@color/red"
         android:layout_height="80dp"
-        android:id="@+id/relativeLayout">
+        android:id="@+id/user_userInfo"
+        android:clickable="true">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@mipmap/ic_launcher"
+            app:srcCompat="@drawable/user"
             android:layout_marginLeft="30dp"
             android:layout_marginStart="30dp"
             android:id="@+id/user_icon"
@@ -26,17 +23,27 @@
             android:layout_alignParentStart="true" />
 
         <TextView
-            android:text="Nickname"
+            android:text="Username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
             android:layout_marginStart="25dp"
-            android:id="@+id/user_nickname"
+            android:id="@+id/user_username"
             android:textColor="@android:color/white"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/user_icon"
             android:layout_toEndOf="@+id/user_icon"
             android:clickable="true"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/backicon"
+            android:layout_marginRight="15dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp" />
 
     </RelativeLayout>
 
@@ -45,45 +52,75 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@+id/relativeLayout"
+        android:layout_below="@+id/user_userInfo"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
-        <TextView
-            android:text="想看"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/textView7"
             android:layout_weight="1"
-            android:gravity="center"
-            android:clickable="true"/>
+            android:clickable="true"
+            android:id="@+id/user_wantToWatch">
 
-        <TextView
-            android:text="看过"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/textView8"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:clickable="true"/>
 
-        <TextView
-            android:text="影评"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/textView9"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:clickable="true"/>
+            <TextView
+                android:text="想看"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView7"
+                android:gravity="center"
+                android:clickable="true"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
 
-        <TextView
-            android:text="话题"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/favorite"
+                android:id="@+id/imageView3"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/textView7"
+                android:layout_toStartOf="@+id/textView7" />
+
+        </RelativeLayout>
+
+
+
+        <View
+            android:id="@+id/line0"
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:background="#1E000000"
+            android:layout_gravity="center_vertical"/>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/textView10"
             android:layout_weight="1"
-            android:gravity="center"
-            android:clickable="true"/>
+            android:id="@+id/user_haveWatched"
+            android:clickable="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/recent"
+                android:id="@+id/imageView4"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/textView8"
+                android:layout_toStartOf="@+id/textView8"/>
+
+            <TextView
+                android:text="看过"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView8"
+                android:gravity="center"
+                android:clickable="true"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+
     </LinearLayout>
 
     <View
@@ -104,10 +141,10 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/backicon"
             android:layout_margin="10dp"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            app:srcCompat="@drawable/backicon" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -263,5 +300,17 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#1E000000" />
+
+    <Button
+        android:text="退出登陆"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line6"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/user_logoff"
+        android:minWidth="300dip"
+        android:background="@color/red"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="20dp"/>
 
 </RelativeLayout>
