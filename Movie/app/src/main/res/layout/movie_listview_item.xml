@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:id="@+id/movie_listview_icon"
+        android:layout_marginLeft="27dp"
+        android:layout_marginStart="27dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="MoiveName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/movie_listview_name"
+        android:layout_alignTop="@+id/movie_listview_icon"
+        android:layout_toRightOf="@+id/movie_listview_icon"
+        android:layout_toEndOf="@+id/movie_listview_icon"
+        android:layout_marginLeft="38dp"
+        android:layout_marginStart="38dp"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:text="观众"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/movie_listview_name"
+        android:layout_alignLeft="@+id/movie_listview_name"
+        android:layout_alignStart="@+id/movie_listview_name"
+        android:id="@+id/movie_listview_textView"
+        android:layout_alignBottom="@+id/movie_listview_score"
+        android:gravity="bottom"
+        android:layout_marginRight="5dp"/>
+
+    <TextView
+        android:text="8.0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/movie_listview_name"
+        android:layout_toRightOf="@+id/movie_listview_textView"
+        android:layout_toEndOf="@+id/movie_listview_textView"
+        android:id="@+id/movie_listview_score"
+        android:textColor="@android:color/holo_orange_dark"
+        android:gravity="bottom"
+        android:textSize="18sp" />
+
+    <TextView
+        android:text="简介简介简介"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/movie_listview_textView"
+        android:layout_alignLeft="@+id/movie_listview_textView"
+        android:layout_alignStart="@+id/movie_listview_textView"
+        android:id="@+id/movie_listview_intro"
+        android:layout_alignBottom="@+id/movie_listview_icon"
+        android:layout_toLeftOf="@+id/movie_listview_buy"
+        android:layout_toStartOf="@+id/movie_listview_buy"
+         />
+
+    <Button
+        android:text="购票"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginEnd="30dp"
+        android:id="@+id/movie_listview_buy"
+        android:focusable="false"/>
+
+    <TextView
+        android:text="3D"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/movie_listview_name"
+        android:layout_toRightOf="@+id/movie_listview_name"
+        android:layout_toEndOf="@+id/movie_listview_name"
+        android:id="@+id/movie_listview_tag23D"
+        android:layout_marginLeft="10dp"
+        android:textColor="@android:color/holo_blue_bright" />
+
+</RelativeLayout>

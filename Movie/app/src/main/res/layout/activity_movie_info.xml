@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_movie_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.movie.MovieInfoActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout7"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@android:color/holo_red_light"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            app:srcCompat="@mipmap/ic_launcher"
+            android:layout_marginLeft="39dp"
+            android:layout_marginStart="39dp"
+            android:id="@+id/movieInfo_icon"
+            android:layout_height="100dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="31dp"
+            android:layout_width="80dp" />
+
+        <TextView
+            android:text="MovieName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginStart="25dp"
+            android:id="@+id/movieInfo_name"
+            android:layout_alignTop="@+id/movieInfo_icon"
+            android:layout_toRightOf="@+id/movieInfo_icon"
+            android:layout_toEndOf="@+id/movieInfo_icon"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp" />
+
+        <TextView
+            android:text="8.0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/movieInfo_score"
+            android:layout_below="@+id/movieInfo_name"
+            android:layout_toRightOf="@+id/movieInfo_textView"
+            android:layout_toEndOf="@+id/movieInfo_textView"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="18sp"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:text="观众评分"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/movieInfo_textView"
+            android:textColor="@android:color/background_light"
+            android:layout_alignBottom="@+id/movieInfo_score"
+            android:layout_alignLeft="@+id/movieInfo_name"
+            android:layout_alignStart="@+id/movieInfo_name" />
+
+        <TextView
+            android:text="上映时间"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/movieInfo_onDate"
+            android:textColor="@android:color/background_light"
+            android:layout_alignBottom="@+id/movieInfo_icon"
+            android:layout_alignLeft="@+id/movieInfo_tags"
+            android:layout_alignStart="@+id/movieInfo_tags" />
+
+        <TextView
+            android:text="动作 冒险 奇幻"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/movieInfo_tags"
+            android:textColor="@android:color/background_light"
+            android:layout_centerVertical="true"
+            android:layout_alignLeft="@+id/movieInfo_textView"
+            android:layout_alignStart="@+id/movieInfo_textView" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true">
+
+            <Button
+                android:text="想看"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/movieInfo_collect"
+                android:minHeight="13dp"
+                android:minWidth="100dip"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:text="看过"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/movieInfo_haveWatched"
+                android:layout_marginLeft="10dp"
+                android:minHeight="13dp"
+                android:minWidth="100dip"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:text="电影介绍"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:id="@+id/movieInfo_intro"
+        android:layout_below="@+id/relativeLayout7"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="@android:color/black"
+        android:padding="10dp" />
+
+    <View
+        android:id="@+id/line4"
+        android:layout_below="@+id/movieInfo_intro"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#1E000000" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/line4"
+        android:id="@+id/movieInfo_comments_listview"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>
