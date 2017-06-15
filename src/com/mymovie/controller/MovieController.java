@@ -47,7 +47,7 @@ public class MovieController {
     
     @ResponseBody
     @RequestMapping("like")
-    public Map<String, Object> update(
+    public Map<String, Object> updateLike(
     		@RequestParam(value="m_name") String m_name,
             @RequestParam(value="m_id") String m_id,
             @RequestParam(value="m_data") String m_data,
@@ -56,16 +56,36 @@ public class MovieController {
             HttpServletRequest request,
             HttpServletResponse response) {
     	Map<String, Object> map = new HashMap<String, Object>();
-    	if (StringUtils.equals(like, "1")) {
-    		
+    	int n = movieService.updateLike(m_id, m_name, m_data, u_id, like);
+    	if (n > 0) {
+    		map.put("state", "success");
     	} else {
-    		
+    		map.put("state", "fail");
     	}
     	
 		return map;
     }
     
-    
+    @ResponseBody
+    @RequestMapping("haveSeen")
+    public Map<String, Object> updateHaveSeen(
+    		@RequestParam(value="m_name") String m_name,
+            @RequestParam(value="m_id") String m_id,
+            @RequestParam(value="m_data") String m_data,
+            @RequestParam(value="u_id") String u_id,
+            @RequestParam(value="haveSeen") String haveSeen,
+            HttpServletRequest request,
+            HttpServletResponse response) {
+    	Map<String, Object> map = new HashMap<String, Object>();
+    	int n = movieService.updateLike(m_id, m_name, m_data, u_id, haveSeen);
+    	if (n > 0) {
+    		map.put("state", "success");
+    	} else {
+    		map.put("state", "fail");
+    	}
+    	
+		return map;
+    }
     
     
 }
