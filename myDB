@@ -1,0 +1,83 @@
+package com.example.zhangwei.movieapp;
+
+/**
+ * Created by zhangwei on 2017/6/15.
+ */
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.List;
+
+public class myDB extends SQLiteOpenHelper {
+    public myDB(Context context, String name, SQLiteDatabase.CursorFactory factory,
+              int version) {
+        super(context, name, factory, version);
+    }
+    @Override
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        String movieTable = "CREATE TABLE if not exists " +
+                "movies(id INTEGER, movieId TEXT PRIMARY KEY, movieName TEXT, imgPath TEXT, userRating TEXT, releaseDate TEXT, dir TEXT, star TEXT, type TEXT)";
+        sqLiteDatabase.execSQL(movieTable);
+    }
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int j) {
+
+    }
+    public void loadMovies(List<movieItem> list, SQLiteDatabase read_db) {
+        //SQLiteDatabase read_db = getReadableDatabase();
+        final Cursor cursor = read_db.rawQuery("select * from movies", null);
+        final int idIndex = cursor.getColumnIndex("movieId");
+        final int nameIndex = cursor.getColumnIndex("movieName");
+        final int imgIndex = cursor.getColumnIndex("imgPath");
+        final int ratingIndex = cursor.getColumnIndex("userRating");
+        final int dateIndex  = cursor.getColumnIndex("releaseDate");
+        final int dirIndex = cursor.getColumnIndex("dir");
+        final int starIndex = cursor.getColumnIndex("star");
+        final int typeIndex = cursor.getColumnIndex("type");
+        for (cursor.moveToLast(); !(cursor.isBeforeFirst()); cursor.moveToPrevious()) {
+            movieItem movieitem = new movieItem(cursor.getString(idIndex), cursor.getString(nameIndex), cursor.getString(imgIndex),
+                    cursor.getString(ratingIndex), cursor.getString(dateIndex), cursor.getString(dirIndex), cursor.getString(starIndex), cursor.getString(typeIndex));
+            list.add(movieitem);
+        }
+    }
+
+    public void addMovie(String movieId1, String movieName1, String imgPath1, String userRating1, String releaseDate1, String dir1, String star1, String type1, SQLiteDatabase write_db) {
+        //SQLiteDatabase write_db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("movieId",movieId1 );
+        values.put("movieName", movieName1);
+        values.put("imgPath", imgPath1);
+        values.put("userRating", userRating1);
+        values.put("releaseDate", releaseDate1);
+        values.put("dir", dir1);
+        values.put("star", star1);
+        values.put("type", type1);
+        write_db.insert("movies", null , values);
+        write_db.close();
+    }
+/*
+    public void delete_data(String date) {
+        SQLiteDatabase write_db = getWritableDatabase();
+        String user_name = "";
+        String data = "";
+        String[] arg = new String[]{data};
+        write_db.delete("data", "date=?", arg);
+        write_db.close();
+    }
+
+    public void update_data() {
+        SQLiteDatabase write_db = getWritableDatabase();
+        ContentValues values =new ContentValues();
+        values.put("input_text", "");
+        values.put("img_path", "");
+        String date="";
+        write_db.update("data",values,"date=?", new String[] {date});
+        write_db.close();
+    }
+    */
+
+}
