@@ -1,0 +1,150 @@
+package com.example.zhangwei.movieapp;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
+
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
+    private static final String PATH = "http://m.maoyan.com/movie/list.json?type=hot&offset=0&limit=1000";
+    private TextView tv;
+    private List<movieItem> movielist = new ArrayList<>();
+    private myDB db = new myDB(MainActivity.this, "my.db", null, 1);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        tv = (TextView) findViewById(R.id.tv);
+        init();
+    }
+
+    public void init() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    HttpURLConnection conn = (HttpURLConnection) new URL(PATH).openConnection();
+                    conn.setRequestProperty("Accept-Charset", "utf-8");
+                    conn.setRequestProperty("contentType", "utf-8");
+                    conn.setRequestMethod("GET");
+                    conn.setConnectTimeout(5000);
+                    int code = conn.getResponseCode();
+                    if (code == 200) {
+                        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+                        StringBuffer buffer = new StringBuffer();
+                        String line = "";
+                        while ((line = in.readLine()) != null) {
+                            buffer.append(line);
+                        }
+                        String str = buffer.toString();
+                        parseJson(str);
+                        db.loadMovies(movielist, db.getReadableDatabase());
+                    } else {
+                        Message msg = new Message();
+                        msg.obj = code;
+
+                        handler.sendMessage(msg);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+    public void parseJson(String fullStr) {
+        String str = fullStr;
+        int idIndex, nameIndex, imgIndex, ratingIndex, dateIndex, dirIndex, starIndex, typeIndex;
+        String id = "", name="", img="", rating="", date="", dir="", star="", type="";
+        int sum = 0;
+        while (true) {
+            int index = 0;
+            id = ""; name=""; img=""; rating=""; date=""; dir=""; star=""; type="";
+            imgIndex = str.indexOf("\"img\"", index);
+            if (imgIndex == -1) {
+                Log.d("imgindex", "noFound");
+                break;
+            }
+            imgIndex += 7;
+            for (int i = imgIndex; str.charAt(i) != '\"'; i++) {
+                img += str.charAt(i);
+            }
+            ratingIndex = str.indexOf("\"sc\"", index);
+            ratingIndex += 5;
+            for (int i = ratingIndex; str.charAt(i) != ','; i++) {
+                rating += str.charAt(i);
+            }
+            dateIndex = str.indexOf("\"rt\"");
+            dateIndex += 6;
+            for (int i = dateIndex; str.charAt(i) != '\"'; i++) {
+                date += str.charAt(i);
+            }
+            dirIndex = str.indexOf("\"dir\"");
+            dirIndex += 6;
+            for (int i = dirIndex; str.charAt(i) != '\"'; i++) {
+                dir += str.charAt(i);
+            }
+            starIndex = str.indexOf("\"star\"");
+            starIndex += 7;
+            for (int i = starIndex; str.charAt(i) != '\"'; i++) {
+                star += str.charAt(i);
+            }
+            typeIndex = str.indexOf("\"cat\"");
+            typeIndex += 6;
+            for (int i = typeIndex; str.charAt(i) != '\"'; i++) {
+                type += str.charAt(i);
+            }
+            nameIndex = str.indexOf("\"nm\"");
+            nameIndex += 6;
+            for (int i = nameIndex; str.charAt(i) != '\"'; i++) {
+                name += str.charAt(i);
+            }
+            idIndex = str.indexOf("\"id\"");
+            idIndex += 5;
+            for (int i = idIndex; str.charAt(i) != '}'; i++) {
+                id += str.charAt(i);
+            }
+            index = idIndex;
+            sum++;
+            db.addMovie(id, name, img, rating, date, dir, star, type, db.getWritableDatabase());
+            str = str.substring(index);
+            Log.d("sum", ""+sum);
+        }
+    }
+
+    public void click(View v){
+        try {
+            Message msg = new Message();
+            String result = "";
+            result = "";
+            for(movieItem item : movielist) {
+                result = result + item.getMovieId() + " " + item.getMovieName() + " " + item.getImgPath()  + " "
+                        + item.getUserRating() + " " + item.getReleaseDate()  + " " + item.getDir() + " "  + item.getStar() + " "  + item.getType() + "\n";
+            }
+            msg.obj = result;
+            handler.sendMessage(msg);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            tv.setText(msg.obj+"");
+        }
+    };
+}
+
