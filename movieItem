@@ -1,0 +1,69 @@
+package com.example.zhangwei.movieapp;
+
+/**
+ * Created by zhangwei on 2017/6/15.
+ */
+
+public class movieItem {
+    public movieItem() {
+        super();
+    }
+
+    public movieItem(String movieId1, String movieName1, String imgPath1, String userRating1, String releaseDate1, String dir1, String star1, String type1) {
+        movieId = movieId1;
+        movieName = movieName1;
+        imgPath = imgPath1;
+        userRating = userRating1;
+        releaseDate = releaseDate1;
+        dir = dir1;
+        star = star1;
+        type = type1;
+    }
+    private  String movieId;//电影id
+    private  String movieName; //电影名称
+    private  String imgPath; //图片路径
+    private  String  userRating; //用户评分
+    private  String  releaseDate; //上映日期
+    private  String  dir; //导演
+    private  String  star; //演员
+    private  String  type; //类型
+    public String getMovieId() {
+        return movieId;
+    }
+    public String getMovieName() {
+        return  movieName;
+    }
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public String getUserRating() {
+        return  userRating;
+    }
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+    public String getDir() {
+        return dir;
+    }
+
+    public String getStar() {
+        return star;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setMovie(String movieId1, String movieName1, String imgPath1, String userRating1, String releaseDate1, String dir1, String star1, String type1) {
+        movieId = movieId1;
+        movieName = movieName1;
+        imgPath = imgPath1;
+        userRating = userRating1;
+        releaseDate = releaseDate1;
+        dir = dir1;
+        star = star1;
+        type = type1;
+    }
+}
