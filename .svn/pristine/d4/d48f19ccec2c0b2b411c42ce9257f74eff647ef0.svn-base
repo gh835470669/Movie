@@ -1,0 +1,161 @@
+package com.luwei.hackvr.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.luwei.hackvr.pojo.Article;
+import com.luwei.hackvr.pojo.ArticlesJson;
+import com.luwei.hackvr.pojo.Kuaixun;
+import com.luwei.hackvr.pojo.KuaixunJson;
+import com.luwei.hackvr.service.ArticleService;
+import com.luwei.hackvr.service.KuaixunService;
+import com.luwei.hackvr.service.ToutiaoService;
+
+@Controller
+public class JsonController {
+    
+    @Autowired
+    private ArticleService articleService;
+    
+    @Autowired
+    private KuaixunService kuaixunService;
+    
+    @Autowired
+    private ToutiaoService toutiaoService;
+    
+    @ResponseBody
+    @RequestMapping("article")
+    public ArticlesJson article(
+            @RequestParam(value="index") Integer index,
+            @RequestParam(value="num") Integer num,
+            HttpServletRequest request, Model model,
+            HttpServletResponse response) throws Exception{
+        response.setCharacterEncoding("UTF-8"); //设置编码格式
+        response.setContentType("text/html");   //设置数据格式
+        
+        List<Article> articles = articleService.getLateArticles(index, num);
+        ArticlesJson articlesJson = new ArticlesJson();
+        if (articles == null) {
+            articlesJson.setIsEnd("true");
+            articlesJson.setArticles(null);
+        } else {
+            articlesJson.setIsEnd("false");
+            articlesJson.setArticles(articles);
+        }
+        
+        return articlesJson;
+    }
+    
+    @ResponseBody
+    @RequestMapping("type")
+    public ArticlesJson type(
+            @RequestParam(value="index") Integer index,
+            @RequestParam(value="num") Integer num,
+            @RequestParam(value="type") Byte type,
+            HttpServletRequest request, Model model,
+            HttpServletResponse response) throws Exception{
+        response.setCharacterEncoding("UTF-8"); //设置编码格式
+        response.setContentType("text/html");   //设置数据格式
+        
+        List<Article> articles = articleService.getLateArticles(index, num, type);
+        ArticlesJson articlesJson = new ArticlesJson();
+        if (articles == null) {
+            articlesJson.setIsEnd("true");
+            articlesJson.setArticles(null);
+        } else {
+            articlesJson.setIsEnd("false");
+            articlesJson.setArticles(articles);
+        }
+        
+        return articlesJson;
+    }
+
+    @ResponseBody
+    @RequestMapping("kuaixun")
+    public KuaixunJson kuaixun(
+            @RequestParam(value="index") Integer index,
+            @RequestParam(value="num") Integer num,
+            HttpServletRequest request, Model model,
+            HttpServletResponse response) throws Exception{
+        response.setCharacterEncoding("UTF-8"); //设置编码格式
+        response.setContentType("text/html");   //设置数据格式
+        
+        List<List<Kuaixun>> kuaixuns = kuaixunService.getDayKuaixunsByNum(index, num);
+        KuaixunJson kuaixunJson = new KuaixunJson();
+        if (kuaixuns == null) {
+            kuaixunJson.setIsEnd("true");
+            kuaixunJson.setArticles(null);
+        } else {
+            kuaixunJson.setIsEnd("false");
+            kuaixunJson.setArticles(kuaixuns);
+        }
+        
+        return kuaixunJson;
+    }
+
+    @ResponseBody
+    @RequestMapping("update")
+    public String update(
+            @RequestParam(value="id") Integer id,
+            @RequestParam(value="type") Integer type,
+            HttpServletRequest request, Model model,
+            HttpServletResponse response) throws Exception{
+        response.setCharacterEncoding("UTF-8"); //设置编码格式
+        response.setContentType("text/html");   //设置数据格式
+        
+        int res = toutiaoService.setToutiao(id, type);
+        
+        if (res == 0) {
+            return "flase";
+        } else {
+            return "true";
+        }
+    }
+    
+    @ResponseBody
+    @RequestMapping("push")
+    public String push(
+            @RequestParam(value="id") Integer id,
+            HttpServletRequest request, Model model,
+            HttpServletResponse response) throws Exception{
+        response.setCharacterEncoding("UTF-8"); //设置编码格式
+        response.setContentType("text/html");   //设置数据格式
+        
+//        int res = article_poolService.pushArticleById(id);
+        int res = 0;
+        
+        if (res == 0) {
+            return "flase";
+        } else {
+            return "true";
+        }
+    }
+    
+
+    @ResponseBody
+    @RequestMapping("offline")
+    public String offline(
+            @RequestParam(value="id") Integer id,
+            HttpServletRequest request, Model model,
+            HttpServletResponse response) throws Exception{
+        response.setCharacterEncoding("UTF-8"); //设置编码格式
+        response.setContentType("text/html");   //设置数据格式
+//        TODO 检查头条
+        int res = articleService.offLineArticleById(id);
+        
+        if (res == 0) {
+            return "flase";
+        } else {
+            return "true";
+        }
+    }
+}

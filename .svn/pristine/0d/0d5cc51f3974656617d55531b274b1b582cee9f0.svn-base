@@ -1,0 +1,28 @@
+package com.luwei.hackvr.pojo;
+
+import java.io.Serializable;
+import java.util.List;
+
+public class KuaixunJson implements Serializable {
+    private String isEnd;
+
+    private List<List<Kuaixun>> kuaixuns;
+
+    private static final long serialVersionUID = 1L;
+
+    public String getIsEnd() {
+        return isEnd;
+    }
+
+    public void setIsEnd(String isEnd) {
+        this.isEnd = isEnd;
+    }
+
+    public List<List<Kuaixun>> getKuaixuns() {
+        return kuaixuns;
+    }
+
+    public void setArticles(List<List<Kuaixun>> kuaixuns) {
+        this.kuaixuns = kuaixuns;
+    }
+}

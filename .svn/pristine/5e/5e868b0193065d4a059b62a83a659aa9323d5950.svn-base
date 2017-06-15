@@ -1,0 +1,106 @@
+.z_home-hot {
+    overflow: hidden;
+
+    height: 620px;
+}
+
+.z_home-hot1 {
+    display: block;
+    overflow: hidden;
+
+    position: relative;
+
+    height: 390px;
+}
+
+.z_img1 {
+    display: inline;
+
+    margin-top: 20px;
+    width: 1100px;
+    height: 370px;
+}
+
+.z_img2 {
+    display: inline;
+
+    margin-top: 20px;
+    width: 538px;
+    height: 183px;
+}
+
+.z_home-hot1-intro-bg {
+    position: absolute;
+    top: 342px;
+
+    width: 1100px;
+    height: 48px;
+
+    background-color: #000;
+
+    opacity: 0.3;
+}
+
+.z_home-hot1-intro {
+    position: absolute;
+    top: 342px;
+    right: 25px;
+    left: 25px;
+
+    width: 1050px;
+    height: 48px;
+
+    line-height: 48px;
+    vertical-align: center;
+}
+
+div.z_home-hot1-intro span {
+    overflow: hidden;
+
+    
+    font-size: 16px;
+
+    color: #fff;
+}
+
+.z_home-hot2-son {
+    overflow: hidden;
+
+    position: relative;
+    
+    width: 538px;
+    height: 203px;
+}
+
+.z_home-hot2-intro-bg {
+    position: absolute;
+    top: 173px;
+
+    width: 538px;
+    height: 30px;
+
+    background-color: #000;
+
+    opacity: 0.3;
+}
+
+.z_home-hot2-intro {
+    position: absolute;
+    top: 173px;
+    right: 15px;
+    left: 15px;
+
+    width: 538px;
+    height: 30px;
+
+    line-height: 30px;
+    vertical-align: center;
+}
+
+div.z_home-hot2-son span {
+    overflow: hidden;
+    
+    font-size: 12px;
+
+    color: #fff;
+}

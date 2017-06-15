@@ -1,0 +1,127 @@
+/*add by Nicholas 7/20/2016*/
+
+/*资讯页轮播图下的四个文章快照*/
+.w_snapshoot {
+    margin: 30px 0;
+}
+
+.w_snapshoot li {
+    margin-left: 20px;
+    width: 260px;
+
+    font-size: 14px;
+}
+
+.w_snapshoot li:first-child {
+    margin-left: 0;
+}
+
+/*资讯页轮播图下的四个文章图片*/
+.w_snapshoot-img {
+    display: block;
+
+    width: 100%;
+    height: 178px;
+}
+
+.w_snapshoot-detail {
+    margin-top: 6px;
+    width: 100%;
+    height: 20px;
+}
+
+/*资讯页轮播图下的四个文章中的标签*/
+.w_snapshoot-detail .w_tag {
+    margin-right: 6px;
+}
+
+.w_snapshoot-detail a:last-child {
+    display: inline-block;
+
+    width: 210px;
+}
+
+/*快讯*/
+.w_flash {
+    margin-bottom: 30px;
+
+    color: #666;
+}
+
+.w_flash .w_h3 a {
+    font-size: 12px;
+
+    color: #999;
+}
+
+/*快讯的时间列表*/
+.w_flash-time {
+    margin-right: 12px;
+
+    font-size: 14px;
+}
+
+.w_flash-time li {
+    margin-bottom: 38px; /*modified by Nicholas 7/26/2016*/
+}
+
+.w_flash-time p {
+    margin-bottom: 4px;
+
+    text-align: right;
+}
+
+/*快讯中的列表图片*/
+.w_flash-list {
+    margin-top: 14px;
+    width: 8px;
+    height: 366px;
+
+    background-image: url("../images/list.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+/*快讯的具体内容*/
+.w_flash-detail {
+    margin-left: 10px;
+    margin-right: 8px;
+}
+
+.w_flash-detail li {
+    margin-bottom: 20px;
+}
+
+.w_flash-detail li:nth-child(5) {
+    margin-bottom: 0;
+}
+
+.w_flash-detail a {
+    display: block;
+    width: 196px;
+
+    font-size: 14px;
+    line-height: 20px;
+
+    color: #666;
+}
+
+/*快讯，重置多行省略的参数*/
+.w_flash-detail .w_multi-ellipsis {
+    height: 58px;
+}
+
+.w_flash-detail .w_multi-ellipsis:before {
+    height: 58px;
+}
+
+.w_flash-detail .w_multi-ellipsis:after {
+    top: -16px;
+}
+
+.w_flash-detail p {
+    width: 196px;
+
+    font-size: 14px;
+    line-height: 20px;
+}

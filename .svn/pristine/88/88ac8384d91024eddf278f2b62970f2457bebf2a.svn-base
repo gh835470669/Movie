@@ -1,0 +1,71 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="javax.servlet.http.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <base href="<%=path%>/"/>
+    <meta charset="UTF-8">
+    <title>文章管理</title>
+    <link rel="stylesheet" type="text/css" href="./styles/public.css">
+    <link rel="stylesheet" type="text/css" href="./styles/backstage.css">
+</head>
+
+<body>
+	<!-- 文章管理 -->
+	<div class="z_backstage-content z_fl z_hide-content"
+		id="zDeleteContent">
+		<div class="z_backstage-content-title">
+			<h5>文章管理 > 删除文章</h5>
+		</div>
+		<c:if test="${not empty articleSet }">
+			<c:forEach var="articles" items="${articleSet }">
+				<ul>
+					<c:forEach var="article" items="${articles }" begin="0" end="0"
+						step="1">
+						<div class="z_backstage-list-title">
+							<span class="z_backstage-date1 z_fl"> <fmt:formatDate
+									value="${article.createTime }" type="both"
+									pattern="yyyy年MM月dd日" />
+							</span> <span class="z_backstage-line z_fl"></span>
+						</div>
+					</c:forEach>
+					<c:forEach var="article" items="${articles }">
+						<li class="z_backstage-list-p"><img
+							class="z_backstage-list-img z_fl" src="${article.preimage }">
+							<div class="z_backstage-list-intro z_fl">
+								<a href="./load/article.do?articleId=${article.articleId }"
+									target="_blank">${article.title }</a>
+								<p class="z_backstage-intro-detail">${article.preinfo }</p>
+								<div class="z_backstage-type">
+									<p class="z_fl">
+										<c:if test="${1 == article.type }">时讯</c:if>
+										<c:if test="${2 == article.type }">观察</c:if>
+										<c:if test="${3 == article.type }">游戏</c:if>
+										<c:if test="${4 == article.type }">影视</c:if>
+									</p>
+									<span> <fmt:formatDate value="${article.createTime }"
+											type="both" pattern="MM月dd日 HH:mm" />
+									</span>
+								</div>
+							</div>
+							<div class="z_backstage-checkbox z_fl">
+								<input class="z_checkbox" type="checkbox"> <span
+									class="z_backstage-list-flag z_hide-content">已删除</span>
+							</div></li>
+					</c:forEach>
+				</ul>
+			</c:forEach>
+		</c:if>
+	</div>
+	<script type="text/javascript" src="./scripts/z_backstage.js"></script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+package com.luwei.hackvr.controller;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.luwei.hackvr.pojo.Article;
+import com.luwei.hackvr.pojo.User;
+import com.luwei.hackvr.service.ArticleService;
+import com.luwei.hackvr.service.ToutiaoService;
+import com.luwei.hackvr.service.UserService;
+import com.luwei.hackvr.utils.ConstantUtils;
+
+@Controller
+@RequestMapping(value = "back")
+public class BackController {
+
+	private static Logger logger = Logger.getLogger(BackController.class);
+
+	private static final String key = "dadan";
+	@Autowired
+	private ArticleService articleService;
+	@Autowired
+	private ToutiaoService toutiaoService;
+	@Autowired
+	private UserService userService;
+
+	// superman_luwei_passwd
+	@RequestMapping(value = "login")
+	public String login(
+			@RequestParam(value = "username", required = false) String username,
+			@RequestParam(value = "password", required = false) String password,
+			HttpServletRequest request, Model model) {
+		try {
+			if (username == null || password == null) {
+				return "jsp/login";
+			}
+			User user = userService.login(username, password + key);
+			if (user != null) { // 登录成功，记录session
+				HttpSession session = request.getSession();
+				session.setAttribute(ConstantUtils.USER_INFO, user);
+				model.addAttribute("userInfo", user);
+				return "redirect:/back/edit.do";
+			} else {
+				model.addAttribute("errorMessage", "帐号密码错误");
+				return "jsp/login";
+			}
+		} catch (Exception e) {
+			logger.error("登录异常", e);
+			model.addAttribute("errorMessage", "登录异常");
+			return "jsp/login";
+		}
+	}
+
+	@RequestMapping(value = "edit")
+	public String edit(HttpServletRequest request, Model model) {
+		try {
+			HttpSession session = request.getSession();
+			User userInfo = (User) session.getAttribute("userInfo");
+			if (userInfo != null) {
+				List<List<Article>> articleSet = articleService
+						.getDayArticlesByNum(0, 10);
+				// List<List<Article_pool>> article_poolSet =
+				// article_poolService.getDayArticle_poolsByNum(0, 10);
+				// 由于头条编辑的页面有所改变，这里的代码只是为了可以显示目前的页面，后续需要改动
+				Article toutiaoA = articleService.getArticles().get(0);
+				Article toutiaoB = articleService.getArticles().get(1);
+				Article toutiaoC = articleService.getArticles().get(2);
+				Map<String, Object> shixunToutiao = articleService
+						.getShixunToutiaoArticle();
+				Map<String, Object> guanchaToutiao = articleService
+						.getGuanchaToutiaoArticle();
+				Map<String, Object> yingshiToutiao = articleService
+						.getYingshiToutiaoArticle();
+				Map<String, Object> youxiToutiao = articleService
+						.getYouxiToutiaoArticle();
+
+				if (toutiaoA != null && toutiaoB != null && toutiaoC != null
+						&& shixunToutiao != null && guanchaToutiao != null
+						&& yingshiToutiao != null && youxiToutiao != null) {
+					request.setAttribute("articleSet", articleSet);
+					request.setAttribute("article_poolSet", articleSet);
+					// request.setAttribute("article_poolSet", article_poolSet);
+					request.setAttribute("toutiaoA", toutiaoA);
+					request.setAttribute("toutiaoB", toutiaoB);
+					request.setAttribute("toutiaoC", toutiaoC);
+					request.setAttribute("shixunToutiao", shixunToutiao);
+					request.setAttribute("guanchaToutiao", guanchaToutiao);
+					request.setAttribute("yingshiToutiao", yingshiToutiao);
+					request.setAttribute("youxiToutiao", youxiToutiao);
+					return "jsp/backstage";
+				} else {
+					model.addAttribute("errorMessage", "数据加载异常");
+					return "jsp/backstage";
+				}
+			} else {
+				model.addAttribute("errorMessage", "用户状态异常");
+				return "jsp/login";
+			}
+
+		} catch (Exception e) {
+			logger.error("编辑异常", e);
+			model.addAttribute("errorMessage", "编辑异常");
+			return "jsp/login";
+		}
+	}
+
+	// 跳转到发布文章的页面
+	@RequestMapping(value = "toPush")
+	public String toPush(HttpServletRequest request, Model model) {
+		try {
+			HttpSession session = request.getSession();
+			User userInfo = (User) session.getAttribute("userInfo");
+			if (userInfo == null) {
+				model.addAttribute("errorMessage", "用户状态异常");
+				return "jsp/login";
+			}
+
+			// 获取未发布的文章，从距离现在第0天开始总共5天未发布的文章
+			List<List<Article>> articleSet = articleService.getDayArticlesByNum(
+					0, 10);
+
+			if (articleSet.isEmpty()) {
+				request.setAttribute("articleSet", articleSet);
+				request.setAttribute("article_poolSet", articleSet);
+				// request.setAttribute("article_poolSet", article_poolSet)
+				return "jsp/toutiaoManage/order_toutiao";
+			} else {
+				model.addAttribute("errorMessage", "数据加载异常");
+				return "jsp/backstage";
+			}
+
+		} catch (Exception e) {
+			logger.error("跳转到发布文章异常", e);
+			model.addAttribute("errorMessage", "编辑异常");
+			return "jsp/login";
+		}
+	}
+
+}

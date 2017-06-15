@@ -1,0 +1,155 @@
+.z_home {
+    overflow: hidden;
+
+    height: 86px;
+
+    background-color: #313131;
+}
+
+.z_home-header {
+    display: block;
+    overflow: hidden;
+
+    position: relative;
+
+    height: 86px;
+}
+
+.z_home-logo {
+    margin-top: 26px;
+    margin-right: 36px;
+    width: 115px;
+    height: 32px;
+}
+
+/*add by Nicholas 7/22/2016*/
+.z_home-logo a {
+    display: block;
+
+    height: 100%;
+
+    background-image: url("../images/logo.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.z_home-menu {
+    width: 612px;
+}
+
+ul.z_home-menu li {
+    width: 153px;
+    height: 86px;
+
+    line-height: 86px;
+    text-align: center;
+}
+
+ul.z_home-menu li:hover {
+    background-color: #1b1b1b;
+}
+
+ul.z_home-menu li.home-ico {
+    background-color: #1b1b1b;
+}
+
+ul.z_home-menu li a {
+    display: block;
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+
+    color: #fff;
+}
+
+.z_search-icon {
+    width: 30px;
+    height: 30px;
+    z-index: 99;
+
+    line-height: 86px;
+    vertical-align: center;
+}
+
+div.z_search-icon i:hover {
+    cursor: pointer;
+}
+
+.z_search {
+    position: absolute;
+
+    display: none;
+    /*隐藏时*/
+    top: 28px;
+    left: 1063px;
+    
+    /*显示时*/
+    /*top: 28px;
+    left: 333px;*/
+    width: 760px;
+    height: 30px;
+}
+
+.z_search-input {
+    position: absolute;
+
+    margin: 0px;
+    border: 0px;
+    border-radius: 20px;
+    padding-right: 28px;
+    padding-left: 28px;
+    width: 704px;
+    height: 30px;
+
+    font-size: 15px;
+
+    color: #fff;
+    background-color: #1b1b1b;
+    /*background-color: #fff;*/
+    outline: none;
+}
+
+.z_search-left-ico {
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    z-index: 99;
+}
+
+i.z_search-left-ico:hover {
+    cursor: pointer;
+}
+
+.z_search-right-ico {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    z-index: 99;
+}
+
+i.z_search-right-ico {
+    cursor: pointer;
+}
+
+.z_icon-color-w {
+    color: #fff;
+    font-size: 14px;
+}
+
+.z_icon-color-g {
+    color: #7d7d7d;
+    font-size: 14px;
+}
+
+::-webkit-input-placeholder {
+    color: #7d7d7d;
+}
+
+::-moz-placeholder {
+    color: #7d7d7d;
+}
+
+:-moz-placeholder {
+    color: #7d7d7d;
+}

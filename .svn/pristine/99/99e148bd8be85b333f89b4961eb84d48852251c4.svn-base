@@ -1,0 +1,1095 @@
+var youxiMap = {
+		"漫游体验": "roaming",
+		"角色扮演": "role",
+		"冒险解谜": "adventure",
+		"第一人称射击": "shooting",
+		"休闲益智": "puzzle",
+		"飞行射击": "flight",
+		"即时战略": "strategy",
+		"恐怖游戏": "horror",
+		"动作游戏": "action",
+		"格斗游戏": "fighting",
+		"赛车竞速": "racing",
+		"其他": "typeothers"
+};
+
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _footer_pc2 = __webpack_require__(1);
+
+	var _footer_pc3 = _interopRequireDefault(_footer_pc2);
+
+	var _home_game_pc2 = __webpack_require__(5);
+
+	var _home_game_pc3 = _interopRequireDefault(_home_game_pc2);
+
+	var _header_pc2 = __webpack_require__(7);
+
+	var _header_pc3 = _interopRequireDefault(_header_pc2);
+
+	var _home_hot_pc2 = __webpack_require__(10);
+
+	var _home_hot_pc3 = _interopRequireDefault(_home_hot_pc2);
+
+	var _home_news_pc2 = __webpack_require__(12);
+
+	var _home_news_pc3 = _interopRequireDefault(_home_news_pc2);
+
+	var _home_vr_pc2 = __webpack_require__(14);
+
+	var _home_vr_pc3 = _interopRequireDefault(_home_vr_pc2);
+
+	var _public_pc2 = __webpack_require__(16);
+
+	var _public_pc3 = _interopRequireDefault(_public_pc2);
+
+	var _game_pc2 = __webpack_require__(18);
+
+	var _game_pc3 = _interopRequireDefault(_game_pc2);
+
+	var _game_download_pc2 = __webpack_require__(20);
+
+	var _game_download_pc3 = _interopRequireDefault(_game_download_pc2);
+
+	var _game_class_pc2 = __webpack_require__(22);
+
+	var _game_class_pc3 = _interopRequireDefault(_game_class_pc2);
+
+	var _header_pc4 = __webpack_require__(24);
+
+	var _header_pc5 = _interopRequireDefault(_header_pc4);
+
+	var _home_news_pc4 = __webpack_require__(25);
+
+	var _home_news_pc5 = _interopRequireDefault(_home_news_pc4);
+
+	var _home_vr_pc4 = __webpack_require__(26);
+
+	var _home_vr_pc5 = _interopRequireDefault(_home_vr_pc4);
+
+	var _game_cycle_pc = __webpack_require__(27);
+
+	var _game_cycle_pc2 = _interopRequireDefault(_game_cycle_pc);
+
+	var _game_intro_pc = __webpack_require__(28);
+
+	var _game_intro_pc2 = _interopRequireDefault(_game_intro_pc);
+
+	var _game_class_in_pc = __webpack_require__(29);
+
+	var _game_class_in_pc2 = _interopRequireDefault(_game_class_in_pc);
+
+	var _game_in_page_pc = __webpack_require__(30);
+
+	var _game_in_page_pc2 = _interopRequireDefault(_game_in_page_pc);
+
+	var _game_select_page_pc = __webpack_require__(31);
+
+	var _gameclass_select_page_pc = __webpack_require__(32);
+
+	var _gameclass_select_page_pc2 = _interopRequireDefault(_gameclass_select_page_pc);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	(0, _home_vr_pc5.default)();
+	(0, _header_pc5.default)();
+	(0, _home_news_pc5.default)();
+	(0, _game_cycle_pc2.default)();
+	(0, _game_intro_pc2.default)();
+	(0, _game_class_in_pc2.default)();
+	(0, _game_in_page_pc2.default)();
+	(0, _game_select_page_pc.gameSelectPage)();
+	(0, _gameclass_select_page_pc2.default)();
+
+/***/ },
+/* 1 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 6 */,
+/* 7 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 8 */,
+/* 9 */,
+/* 10 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 11 */,
+/* 12 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 13 */,
+/* 14 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 15 */,
+/* 16 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 17 */,
+/* 18 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 19 */,
+/* 20 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 21 */,
+/* 22 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 23 */,
+/* 24 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var menuId = ["homePage", "infoPage", "gamePage", "videoPage"];
+	var bool = false;
+	var se = false;
+
+	var showInput = function showInput() {
+	    bool = true;
+	    se = false;
+
+	    var speed = 1;
+	    var target = document.getElementById('search1');
+	    target.style.display = "none";
+
+	    for (var i = 0; i < 4; i++) {
+	        target = document.getElementById(menuId[i]);
+	        target.style.display = "none";
+	    }
+
+	    target = document.getElementById('search2');
+	    target.style.display = "block";
+	    document.getElementById("input").focus();
+	    var timer = setInterval(function () {
+	        if (target.offsetLeft - speed <= 333) {
+	            target.style.left = "333px";
+	            speed = 1;
+	            clearInterval(timer);
+	        } else {
+	            target.style.left = target.offsetLeft - speed + "px";
+	            speed += 2;
+	        }
+	    }, 20);
+	};
+
+	var cancelSearch = function cancelSearch() {
+	    if (bool) {
+	        bool = false;
+	        var target = document.getElementById('search1');
+	        target.style.display = "block";
+
+	        for (var i = 0; i < 4; i++) {
+	            target = document.getElementById(menuId[i]);
+	            target.style.display = "inline";
+	        }
+
+	        target = document.getElementById('search2');
+	        target.style.display = "none";
+	        target.style.left = "1063px";
+	    }
+	};
+
+	var search = function search() {
+	    se = true;
+	    cancelSearch();
+	    window.open("#");
+	};
+
+	var delay = function delay() {
+	    if (!se) {
+	        se = false;
+	        cancelSearch();
+	    }
+	};
+
+	var searchAmination = function searchAmination() {
+	    var zTemp = document.getElementById("search1");
+	    if (zTemp) {
+	        document.getElementById("search1").onclick = showInput;
+	    } else {
+	        return;
+	    }
+
+	    zTemp = document.getElementById("goSearch");
+	    if (zTemp) {
+	        document.getElementById("goSearch").onclick = showInput;
+	    } else {
+	        return;
+	    }
+
+	    zTemp = document.getElementById("cancSearch");
+	    if (zTemp) {
+	        document.getElementById("cancSearch").onclick = showInput;
+	    } else {
+	        return;
+	    }
+
+	    zTemp = document.getElementById("input");
+	    if (typeof zTemp !== 'undefined') {
+	        document.getElementById("input").onblur = function () {
+	            setTimeout(delay, 200);
+	        };
+	    }
+	};
+
+	exports.default = searchAmination;
+
+/***/ },
+/* 25 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var homeNewsAmination = function homeNewsAmination() {
+	    var osIcon = ["z_pcIcon", "z_androidIcon", "z_iOSIcon"];
+	    var osGame = ["z_pcGame", "z_androidGame", "z_iOSGame"];
+	    var turn = 0;
+	    var now = 0;
+
+	    var zTemp = document.getElementById("z_pcIcon");
+	    if (zTemp) {
+	        document.getElementById("z_pcIcon").onclick = showContent("z_pcIcon");
+	    } else {
+	        return;
+	    }
+
+	    zTemp = document.getElementById("z_androidIcon");
+	    if (zTemp) {
+	        document.getElementById("z_androidIcon").onclick = showContent("z_androidIcon");
+	    } else {
+	        return;
+	    }
+
+	    zTemp = document.getElementById("z_iOSIcon");
+	    if (zTemp) {
+	        document.getElementById("z_iOSIcon").onclick = showContent('z_iOSIcon');
+	    } else {
+	        return;
+	    }
+
+	    function showContent(targetId) {
+	        return function () {
+	            for (var i = 0; i < 3; i++) {
+	                if (osIcon[i] == targetId) {
+	                    turn = i;
+	                    break;
+	                }
+	            }
+
+	            if (turn != now) {
+	                var turnIcon = document.getElementById(osIcon[turn]);
+	                var nowIcon = document.getElementById(osIcon[now]);
+	                turnIcon.style.borderBottom = "3px solid #1e6fff";
+	                nowIcon.style.borderBottom = "0px";
+
+	                var turnGame = document.getElementById(osGame[turn]);
+	                var nowGame = document.getElementById(osGame[now]);
+	                turnGame.style.opacity = "1";
+	                turnGame.style.display = "block";
+	                nowGame.style.opacity = "0";
+	                nowGame.style.display = "none";
+
+	                now = turn;
+	            }
+	        };
+	    }
+	};
+
+	exports.default = homeNewsAmination;
+
+/***/ },
+/* 26 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var videoPlayAmination = function videoPlayAmination() {
+	    var videos = document.getElementsByClassName("z_home-video-img");
+	    if (videos.length == 0) return;
+	    var playIcon = document.getElementsByClassName('z_video-play');
+	    if (playIcon.length == 0) return;
+	    for (var i = 0; i < videos.length; i++) {
+	        (function (i) {
+	            videos[i].onmouseover = function () {
+	                showPlayIcon(i);
+	            };
+	            videos[i].onmouseout = function () {
+	                disaPlayIcon(i);
+	            };
+	        })(i);
+
+	        (function (i) {
+	            playIcon[i].onmouseover = function () {
+	                showPlayIcon(i);
+	            };
+	        })(i);
+	    }
+
+	    function showPlayIcon(id) {
+	        playIcon[id].style.display = 'block';
+	    }
+
+	    function disaPlayIcon(id) {
+	        playIcon[id].style.display = 'none';
+	    }
+	};
+
+	exports.default = videoPlayAmination;
+
+/***/ },
+/* 27 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var gameCycleAmination = function gameCycleAmination() {
+	    var zImg = document.getElementsByClassName('z_game-header-img');
+	    if (zImg.length != 3) return;
+
+	    var zTitle = document.getElementsByClassName('z_game-header-content-father');
+	    if (zTitle.length != 3) return;
+
+	    var zIcon = document.getElementsByClassName('z_game-cycle');
+	    if (zIcon.length != 3) return;
+
+	    var now = 2;
+	    var turn = 2;
+	    var timer;
+
+	    window.onload = nextGame;
+
+	    function nextGame() {
+	        turn++;
+	        if (turn >= 3) {
+	            turn = 0;
+	        }
+
+	        zIcon[now].style.backgroundColor = '#fff';
+	        zIcon[now].style.borderColor = '#fff';
+	        zIcon[turn].style.backgroundColor = '#3893ff';
+	        zIcon[turn].style.borderColor = '#3893ff';
+	        zImg[now].style.display = 'none';
+	        zTitle[now].style.display = 'none';
+	        zImg[turn].style.display = 'block';
+	        // zImg[turn].style.opacity = '0';
+	        zTitle[turn].style.display = 'block';
+	        // zTitle[turn].style.opacity = '0';
+
+	        var opa = 0;
+	        var timer1 = setInterval(function () {
+	            if (opa >= 1) {
+	                // zImg[now].style.opacity = '0';
+	                // zTitle[now].style.opacity = '0';
+	                zImg[turn].style.opacity = '1';
+	                zTitle[turn].style.opacity = '1';
+	                clearInterval(timer1);
+	            } else {
+	                // zImg[now].style.opacity = (1 - opa) + '';
+	                // zTitle[now].style.opacity = (1 - opa) + '';
+	                zImg[turn].style.opacity = opa + '';
+	                zTitle[turn].style.opacity = opa + '';
+	            }
+	            opa = opa + 0.1;
+	        }, 70);
+
+	        // zImg[now].style.display = 'none';
+	        // zTitle[now].style.display = 'none';
+
+	        now = turn;
+
+	        timer = setTimeout(function () {
+	            nextGame();
+	        }, 4000);
+	    };
+
+	    for (var i = 0; i < zIcon.length; i++) {
+	        (function (i) {
+	            zIcon[i].onclick = showThis(i);
+	        })(i);
+	    }
+
+	    function showThis(id) {
+	        return function () {
+	            turn = id;
+	            if (turn == now) return;
+
+	            clearTimeout(timer);
+
+	            zIcon[now].style.backgroundColor = '#fff';
+	            zIcon[now].style.borderColor = '#fff';
+	            zIcon[turn].style.backgroundColor = '#3893ff';
+	            zIcon[turn].style.borderColor = '#3893ff';
+	            zImg[now].style.display = 'none';
+	            zTitle[now].style.display = 'none';
+	            zImg[turn].style.display = 'block';
+	            zTitle[turn].style.display = 'block';
+
+	            now = turn;
+	            timer = setTimeout(function () {
+	                nextGame();
+	            }, 4000);
+	        };
+	    }
+	};
+
+	exports.default = gameCycleAmination;
+
+/***/ },
+/* 28 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var gameIntroAmination = function gameIntroAmination() {
+	    var menuContent = ['zGameAndroid', 'zGameIOS', 'zGamePC'];
+	    var andContent = document.getElementById('zGameAndroid');
+	    if (!andContent) return;
+	    var iosContent = document.getElementById('zGameIOS');
+	    if (!iosContent) return;
+	    var pcContent = document.getElementById('zGameIOS');
+	    if (!pcContent) return;
+
+	    var menuIcon = document.getElementsByClassName('z_game-Hike-intro-menu');
+	    if (menuIcon.length != 3) return;
+
+	    var now = 2;
+	    var turn = 2;
+
+	    for (var i = 0; i < menuIcon.length; i++) {
+	        (function (i) {
+	            menuIcon[i].onclick = showContent(i);
+	        })(i);
+	    }
+
+	    function showContent(i) {
+	        return function () {
+	            turn = i;
+	            if (now == turn) return;
+
+	            menuIcon[now].style.color = '#666';
+	            menuIcon[now].style.backgroundColor = '#fff';
+	            menuIcon[turn].style.color = '#fff';
+	            if (turn == 0) {
+	                menuIcon[turn].style.backgroundColor = '#66cc33';
+	            } else if (turn == 1) {
+	                menuIcon[turn].style.backgroundColor = '#313131';
+	            } else {
+	                menuIcon[turn].style.backgroundColor = '#3893ff';
+	            }
+
+	            document.getElementById(menuContent[now]).style.display = 'none';
+	            document.getElementById(menuContent[turn]).style.display = 'block';
+
+	            now = turn;
+	        };
+	    }
+	};
+
+	exports.default = gameIntroAmination;
+
+/***/ },
+/* 29 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var gameClassInAmination = function gameClassInAmination() {
+	    var zTemp = document.getElementsByClassName('z_game_class-father');
+	    if (zTemp.length != 1) return;
+	    var type = zTemp[0];
+
+	    zTemp = document.getElementsByClassName('z_game_class-father1');
+	    if (zTemp.length != 1) return;
+	    var system = zTemp[0];
+
+	    zTemp = document.getElementsByClassName('z_game_class-father2');
+	    if (zTemp.length != 1) return;
+	    var device = zTemp[0];
+
+	    var all = document.getElementsByClassName('z_game_class-header-all');
+	    if (all.length != 3) return;
+
+	    var typeInt = parseInt(type.getAttribute('sort'));
+	    var systemInt = parseInt(system.getAttribute('sort'));
+	    var deviceInt = parseInt(device.getAttribute('sort'));
+
+	    var gameType = document.getElementsByClassName('z_game_class-class-list');
+	    var systemType = document.getElementsByClassName('z_game_class-platform-list');
+	    var deviceType = document.getElementsByClassName('z_game_class-present-list');
+
+	    if (typeInt == 0) {
+	        all[0].style.color = '#fff';
+	        all[0].style.backgroundColor = '#3893ff';
+	        all[0].style.borderColor = '#3893ff';
+	    } else {
+	        typeInt--;
+	        gameType[typeInt].style.color = '#fff';
+	        gameType[typeInt].style.backgroundColor = '#3893ff';
+	    }
+
+	    if (systemInt == 0) {
+	        all[1].style.color = '#fff';
+	        all[1].style.backgroundColor = '#3893ff';
+	        all[1].style.borderColor = '#3893ff';
+	    } else {
+	        systemInt--;
+	        systemType[systemInt].style.color = '#fff';
+	        systemType[systemInt].style.backgroundColor = '#3893ff';
+	    }
+
+	    if (deviceInt == 0) {
+	        all[2].style.color = '#fff';
+	        all[2].style.backgroundColor = '#3893ff';
+	        all[2].style.borderColor = '#3893ff';
+	    } else {
+	        deviceInt--;
+	        deviceType[deviceInt].style.color = '#fff';
+	        deviceType[deviceInt].style.backgroundColor = '#3893ff';
+	    }
+	};
+
+	exports.default = gameClassInAmination;
+
+/***/ },
+/* 30 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var gameInPageAmination = function gameInPageAmination() {
+	    var father = document.getElementsByClassName('z_game-page-father');
+	    if (father.length != 1) return;
+
+	    var select = document.getElementsByClassName('z_game-page-num');
+	    if (select.length != 1) return;
+
+	    var isGame = false;
+	    // 判断是否是game页面
+	    var test = document.getElementsByClassName('z_game-header-img');
+	    if (test.length != 0) {
+	        isGame = true;
+	    }
+
+	    var pageAmo = isGame ? 12 : 16;
+	    var pageChild = select[0].getElementsByTagName('option');
+	    var nowPageNum = pageChild.length;
+	    var pageNum = Math.ceil(parseInt(father[0].getAttribute('amount')) / pageAmo); // 需要判断是否是game页
+
+	    if (nowPageNum > pageNum) {
+	        while (nowPageNum > pageNum) {
+	            select[0].removeChild(pageChild[nowPageNum - 1]);
+	            nowPageNum--;
+	        }
+	    } else if (nowPageNum < pageNum) {
+	        while (nowPageNum < pageNum) {
+	            nowPageNum++;
+	            var child = document.createElement('option');
+	            child.innerText = '第 ' + nowPageNum + ' 页';
+	            select[0].appendChild(child);
+	        }
+	    }
+	};
+
+	exports.default = gameInPageAmination;
+
+/***/ },
+/* 31 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var gameSelectPage = function gameSelectPage() {
+	    var father = document.getElementById('zGameFather');
+	    if (!father) return;
+
+	    var zTemp = document.getElementsByClassName('z_game-page-num');
+	    if (zTemp.length != 1) return;
+	    var select = zTemp[0];
+
+	    var pageNum = 1; // 当前页码
+	    var index = 0; // 当前页的游戏条目的下标
+
+	    var operation = document.getElementsByClassName('z_game-page-list-son');
+	    if (operation.length != 4) return;
+	    var firstPage = operation[0];
+	    var prePage = operation[1];
+	    var nextPage = operation[2];
+	    var lastPage = operation[3];
+
+	    var pageChild = select.getElementsByTagName('option');
+	    select.onchange = function () {
+	        for (var i = 0; i < pageChild.length; i++) {
+	            if (pageChild[i].innerText == select.value) {
+	                pageNum = i + 1;
+	                break;
+	            }
+	        }
+	        index = 12 * (pageNum - 1);
+	        sendRequest(index);
+	    };
+
+	    firstPage.onclick = function () {
+	        if (pageNum == 1) return;
+	        index = 0;
+	        pageNum = 1;
+	        sendRequest(index);
+	        // pageChild[0].selected = true;
+	    };
+
+	    prePage.onclick = function () {
+	        if (pageNum <= 1) return;
+	        pageNum--;
+	        index = 12 * (pageNum - 1);
+	        sendRequest(index);
+	        // pageChild[pageNum - 1].selected = true;
+	    };
+
+	    nextPage.onclick = function () {
+	        if (pageNum >= pageChild.length) return;
+	        pageNum++;
+	        index = 12 * (pageNum - 1);
+	        sendRequest(index);
+	        // pageChild[pageNum - 1].selected = true;
+	    };
+
+	    lastPage.onclick = function () {
+	        if (pageNum == pageChild.length) return;
+	        pageNum = pageChild.length;
+	        index = 12 * (pageNum - 1);
+	        sendRequest(index);
+	    };
+
+	    function sendRequest(index) {
+	        var request = new XMLHttpRequest();
+
+	        request.open('Get', 'http://'+location.host+'/json/gamepc.do?index=' + index + '&num=12', true);
+	        request.onreadystatechange = function () {
+	            if (request.readyState == 4 && request.status == 200) {
+	                var response = eval('(' + request.responseText + ')');
+	                // alert(temp.dataList[0].gameId);
+//	                var url = '';
+	                var htmlStr = '';
+	                for (var i = 0; i < response.dataList.length; i++) {
+	                    htmlStr += '<li class="z_fl z_game-game-list"><a href="' + 'game/' + youxiMap[response.dataList[i].type]+ '/' + response.dataList[i].gameId + '.html' + '"><img class="z_game-game-list-img" src="' + response.dataList[i].preimage + '" alt=" ' + response.dataList[i].title + ' "></a><p class="z_game-game-list-title"><a href="' + 'game/' + youxiMap[response.dataList[i].type]+ '/' + response.dataList[i].gameId + '.html' + '" target="_blank">' + response.dataList[i].title + '</a></p><div class="z_game-game-list-intro"><span>' + response.dataList[i].preinfo + '</span></div><div class="z_game-game-list-footer"><span class="z_fl z_game-game-list-time">' + format(response.dataList[i].createTime, 'yyyy年MM月dd日', 'en') + '</span><span class="z_fr z_game-game-count">' + response.dataList[i].downloadNum + '</span><i class="z_fr iconfont z_game-game-count-icon">&#xe60d;</i></div></li>';
+	                }
+	                father.innerHTML = htmlStr;
+	                pageChild[pageNum - 1].selected = true;
+	            }
+	        };
+	        request.send(null);
+	        // 只有页面操作，所以不必更新页面格（已经在上面的函数更新了）
+	    }
+	};
+
+	var format = function format(time, _format, lang) {
+	    var t = new Date(time);
+	    var tf = function tf(i) {
+	        return (i < 10 ? '0' : '') + i;
+	    };
+
+	    if (lang === 'en') {
+	        return _format.replace(/yyyy|MM|dd|HH|mm|ss/g, function (a) {
+	            switch (a) {
+	                case 'yyyy':
+	                    return tf(t.getFullYear());
+	                    break;
+	                case 'MM':
+	                    return tf(t.getMonth() + 1);
+	                    break;
+	                case 'mm':
+	                    return tf(t.getMinutes());
+	                    break;
+	                case 'dd':
+	                    return tf(t.getDate());
+	                    break;
+	                case 'HH':
+	                    return tf(t.getHours());
+	                    break;
+	                case 'ss':
+	                    return tf(t.getSeconds());
+	                    break;
+	            }
+	        });
+	    } else {
+	        return _format.replace(/年|月|日|时|分|秒/g, function (a) {
+	            switch (a) {
+	                case '年':
+	                    return tf(t.getFullYear()) + '年';
+	                    break;
+	                case '月':
+	                    return tf(t.getMonth() + 1) + '月';
+	                    break;
+	                case '分':
+	                    return tf(t.getMinutes());
+	                    break;
+	                case '日':
+	                    return tf(t.getDate()) + '日';
+	                    break;
+	                case '时':
+	                    return tf(t.getHours());
+	                    break;
+	                case '秒':
+	                    return tf(t.getSeconds());
+	                    break;
+	            }
+	        });
+	    }
+	};
+
+	exports.gameSelectPage = gameSelectPage;
+		exports.format = format;
+
+/***/ },
+/* 32 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _game_in_page_pc = __webpack_require__(30);
+
+	var _game_in_page_pc2 = _interopRequireDefault(_game_in_page_pc);
+
+	var _game_select_page_pc = __webpack_require__(31);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var gameClassSelectPage = function gameClassSelectPage() {
+	    var father = document.getElementById('zGameClassFather');
+	    if (!father) return;
+	    var zTemp = document.getElementsByClassName('z_game-page-num');
+	    if (zTemp.length != 1) return;
+	    var select = zTemp[0];
+	    zTemp = document.getElementsByClassName('z_game_class-father');
+	    if (zTemp.length != 1) return;
+	    var type = zTemp[0];
+	    zTemp = document.getElementsByClassName('z_game_class-father1');
+	    if (zTemp.length != 1) return;
+	    var system = zTemp[0];
+	    zTemp = document.getElementsByClassName('z_game_class-father2');
+	    if (zTemp.length != 1) return;
+	    var device = zTemp[0];
+
+	    // 获取顶部的按键元素
+	    var all = document.getElementsByClassName('z_game_class-header-all');
+	    if (all.length != 3) return;
+	    var gameType = document.getElementsByClassName('z_game_class-class-list');
+	    var systemType = document.getElementsByClassName('z_game_class-platform-list');
+	    var deviceType = document.getElementsByClassName('z_game_class-present-list');
+
+	    var nowType = parseInt(type.getAttribute('sort')) - 1; // 当前游戏类型
+	    var nowSystem = parseInt(system.getAttribute('sort')) - 1; // 当前系统类型
+	    var nowDevice = parseInt(device.getAttribute('sort')) - 1; // 当前设备类型
+	    var pageNum = 1; // 当前页码
+	    var index = 0; // 当前页的游戏条目的下标
+
+	    // 获取分页的按键元素
+	    var operation = document.getElementsByClassName('z_game-page-list-son');
+	    if (operation.length != 4) return;
+	    var firstPage = operation[0];
+	    var prePage = operation[1];
+	    var nextPage = operation[2];
+	    var lastPage = operation[3];
+
+	    var pageOperation = false;
+
+	    // 为分页的下拉选择按键绑定事件
+	    var pageChild = select.getElementsByTagName('option');
+	    select.onchange = function () {
+	        for (var i = 0; i < pageChild.length; i++) {
+	            if (pageChild[i].innerText == select.value) {
+	                pageNum = i + 1;
+	                break;
+	            }
+	        }
+	        index = 16 * (pageNum - 1);
+	        pageOperation = true;
+	        sendRequest(index, nowType, nowSystem, nowDevice);
+	    };
+
+	    // 首页点击事件
+	    firstPage.onclick = function () {
+	        if (pageNum == 1) return;
+	        index = 0;
+	        // pageChild[0].selected = true;
+	        pageNum = 1;
+	        pageOperation = true;
+	        sendRequest(index, nowType, nowSystem, nowDevice);
+	    };
+	    // 前一页点击事件
+	    prePage.onclick = function () {
+	        if (pageNum <= 1) return;
+	        pageNum--;
+	        // pageChild[pageNum - 1].selected = true;
+	        index = 16 * (pageNum - 1);
+	        pageOperation = true;
+	        sendRequest(index, nowType, nowSystem, nowDevice);
+	    };
+	    // 下一页点击事件
+	    nextPage.onclick = function () {
+	        if (pageNum >= pageChild.length) return;
+	        pageNum++;
+	        // pageChild[pageNum - 1].selected = true;
+	        index = 16 * (pageNum - 1);
+	        pageOperation = true;
+	        sendRequest(index, nowType, nowSystem, nowDevice);
+	    };
+	    // 末页点击事件
+	    lastPage.onclick = function () {
+	        if (pageNum == pageChild.length) return;
+	        pageNum = pageChild.length;
+	        index = 16 * (pageNum - 1);
+	        pageOperation = true;
+	        sendRequest(index, nowType, nowSystem, nowDevice);
+	    };
+
+	    for (var i = 0; i < gameType.length; i++) {
+	        (function (i) {
+	            gameType[i].onclick = function () {
+	                if (i == nowType) return;
+	                if (nowType != -1) {
+	                    gameType[nowType].style.color = '#666';
+	                    gameType[nowType].style.backgroundColor = '#f7f7f7';
+	                } else {
+	                    all[0].style.color = '#666';
+	                    all[0].style.backgroundColor = '#fff';
+	                    all[0].style.borderColor = '#e5e5e5';
+	                }
+	                gameType[i].style.color = '#fff';
+	                gameType[i].style.backgroundColor = '#3893ff';
+	                nowType = i;
+	                sendRequest(index, nowType, nowSystem, nowDevice);
+	            };
+	        })(i);
+	    }
+
+	    for (var i = 0; i < systemType.length; i++) {
+	        (function (i) {
+	            systemType[i].onclick = function () {
+	                if (i == nowSystem) return;
+	                if (nowSystem != -1) {
+	                    systemType[nowSystem].style.color = '#666';
+	                    systemType[nowSystem].style.backgroundColor = '#f7f7f7';
+	                } else {
+	                    all[1].style.color = '#666';
+	                    all[1].style.backgroundColor = '#fff';
+	                    all[1].style.borderColor = '#e5e5e5';
+	                }
+	                systemType[i].style.color = '#fff';
+	                systemType[i].style.backgroundColor = '#3893ff';
+	                nowSystem = i;
+	                sendRequest(index, nowType, nowSystem, nowDevice);
+	            };
+	        })(i);
+	    }
+
+	    for (var i = 0; i < deviceType.length; i++) {
+	        (function (i) {
+	            deviceType[i].onclick = function () {
+	                if (i == nowDevice) return;
+	                if (nowDevice != -1) {
+	                    deviceType[nowDevice].style.color = '#666';
+	                    deviceType[nowDevice].style.backgroundColor = '#f7f7f7';
+	                } else {
+	                    all[2].style.color = '#666';
+	                    all[2].style.backgroundColor = '#fff';
+	                    all[2].style.borderColor = '#e5e5e5';
+	                }
+	                deviceType[i].style.color = '#fff';
+	                deviceType[i].style.backgroundColor = '#3893ff';
+	                nowDevice = i;
+	                sendRequest(index, nowType, nowSystem, nowDevice);
+	            };
+	        })(i);
+	    }
+
+	    all[0].onclick = function () {
+	        gameType[nowType].style.color = '#666';
+	        gameType[nowType].style.backgroundColor = '#f7f7f7';
+	        nowType = -1;
+	        all[0].style.color = '#fff';
+	        all[0].style.backgroundColor = '#3893ff';
+	        sendRequest(index, nowType, nowSystem, nowDevice);
+	    };
+
+	    all[1].onclick = function () {
+	        systemType[nowSystem].style.color = '#666';
+	        systemType[nowSystem].style.backgroundColor = '#f7f7f7';
+	        nowSystem = -1;
+	        all[1].style.color = '#fff';
+	        all[1].style.backgroundColor = '#3893ff';
+	        sendRequest(index, nowType, nowSystem, nowDevice);
+	    };
+
+	    all[2].onclick = function () {
+	        deviceType[nowDevice].style.color = '#666';
+	        deviceType[nowDevice].style.backgroundColor = '#f7f7f7';
+	        nowDevice = -1;
+	        all[2].style.color = '#fff';
+	        all[2].style.backgroundColor = '#3893ff';
+	        sendRequest(index, nowType, nowSystem, nowDevice);
+	    };
+
+	    function sendRequest(index_, type_, system_, device_) {
+	        // gameInPageAmination();
+	        // 记住判断是否是页面操作，是则在请求成功时更新页面并把标志变量设为false，不是则在请求数据时吧index改为0
+	        var request = new XMLHttpRequest();
+
+	        if (pageOperation) {
+	            // 是翻页操作
+	            request.open('Get', 'http://'+location.host+'/json/gameclasspc.do?index=' + index_ + '&num=16&type=' + (type_ + 1) + '&system=' + (system_ + 1) + '&device=' + (device_ + 1) + '', true);
+	        } else {
+	            // 是选择类型操作
+	            request.open('Get', 'http://'+location.host+'/json/gameclasspc.do?index=' + 0 + '&num=16&type=' + (type_ + 1) + '&system=' + (system_ + 1) + '&device=' + (device_ + 1) + '', true);
+	        }
+
+	        request.onreadystatechange = function () {
+	            if (request.readyState == 4 && request.status == 200) {
+	                var response = eval('(' + request.responseText + ')');
+//	                var url = '';
+	                var htmlStr = '';
+
+	                for (var i = 0; i < response.dataList.length; i++) {
+	                    htmlStr += '<li class="z_fl z_game_class-game-list"><a href="' + 'game/' + youxiMap[response.dataList[i].type]+ '/' + response.dataList[i].gameId + '.html' + '"><img class="z_game-game-list-img" src="' + response.dataList[i].preimage + '" alt=" ' + response.dataList[i].title + ' "></a><p class="z_game-game-list-title"><a href="' + 'game/' + youxiMap[response.dataList[i].type]+ '/' + response.dataList[i].gameId + '.html' + '" target="_blank">' + response.dataList[i].title + '</a></p><div class="z_game-game-list-intro"><span>' + response.dataList[i].preinfo + '</span></div><div class="z_game-game-list-footer"><span class="z_fl z_game-game-list-time">' + (0, _game_select_page_pc.format)(response.dataList[i].createTime, 'yyyy年MM月dd日', 'en') + '</span><span class="z_fr z_game-game-count">' + response.dataList[i].downloadNum + '</span><i class="z_fr iconfont z_game-game-count-icon">&#xe60d;</i></div></li>';
+	                }
+	                father.innerHTML = htmlStr;
+
+	                // alert(pageOperation);
+	                if (pageOperation == false) {
+	                    // 选择类型操作
+	                    var pageUpdateFather = document.getElementsByClassName('z_game-page-father')[0];
+	                    pageUpdateFather.setAttribute('amount', response.amount);
+	                    (0, _game_in_page_pc2.default)();
+	                    // pageNum = 1;
+	                    if (response.amount > 0) {
+	                        pageNum = 1;
+	                        pageChild[0].selected = true;
+	                    }
+	                } else {
+	                    pageOperation = false;
+	                    pageChild[pageNum - 1].selected = true;
+	                }
+	            }
+	        };
+	        request.send();
+	    }
+	};
+
+	exports.default = gameClassSelectPage;
+
+/***/ }
+/******/ ]);
+//# sourceMappingURL=bundle_pc.js.map

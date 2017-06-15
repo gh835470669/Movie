@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <style>
+        html, body, div, object {
+            border: 0;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            font-family: 'helvetica neue', tahoma, arial, 'hiragino sans gb', 'microsoft yahei', 'Simsun', sans-serif;
+        }
+
+        body {
+            line-height: 1.5em;
+            font-size: 14px;
+            background: #000000;
+            letter-spacing: 1.5px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="v1" style="margin:0px auto;"></div>
+<script src="//qzonestyle.gtimg.cn/open/qcloud/video/h5/h5connect.js?v=3" charset="utf-8"></script>
+<script type="text/javascript">
+    (function () {
+        var ps = (window.location.href.split('?')[1] || '').split('&')
+                , undef = undefined
+                , opt = {
+                    "auto_play": "0",
+                    "file_id": "",
+                    "app_id": "",
+                    "width": 0,
+                    "height": 0,
+                    //"match_page_width":true,
+
+                    "definition": undef,
+                    "player_id": undef,
+                    "disable_drag": undef,
+                    "remember": undef,
+                    "stretch_patch": undef,
+                    "WMode": undef
+                }
+                , i1 = 0 , i2 = ps.length, i4,key
+                ;
+        for (; i1 < i2; i1++) {
+            i4 = ps[i1].split('=');
+            key = i4[0];
+            if(key == '$appid' || key == 'appid'){
+                opt.app_id = i4[1];
+            }  else if(key == '$fileid' || key == 'fileid'){
+                opt.file_id = i4[1];
+            }  else if(key == '$sw' || key == 'sw'){
+                opt.width = i4[1];
+            }  else if(key == '$sh' || key == 'sh'){
+                opt.height = i4[1];
+            }  else if(key == '$def' || key == 'def'){
+                opt.definition = i4[1];
+            }  else if(key == '$autoplay' || key == 'autoplay'){
+                opt.auto_play = i4[1] == 1 ? 1 : 0;
+            }  else if(key == '$stretch_full' || key == 'stretch_full'){
+                opt.stretch_full = 1;
+            }  else if(key == 'player_id'){
+                opt.player_id = i4[1];
+            }  else if(key == 'disable_drag'){
+                opt.disable_drag = i4[1];
+            }  else if(key == 'remember'){
+                opt.remember = i4[1];
+            }  else if(key == 'stretch_patch'){
+                opt.stretch_patch = i4[1];
+            }  else if(key == 'wmode'){
+                opt.WMode = i4[1];
+            }
+        }
+
+        var ele = document.getElementById('v1');
+        var pureGH = (function(){
+            var doc = document;
+            var docE = doc.documentElement;
+            var body = doc.body;
+            return (docE && docE.clientHeight) || (body && body.offsetHeight) || window.innerHeight || 0;
+        })()-4;
+        var pureGw = (function(){
+            var doc = document;
+            var docE = doc.documentElement;
+            var body = doc.body;
+            return (docE && docE.clientWidth) || (body && body.offsetWidth) || window.innerWidth || 0;
+        })();
+        ele.style.width = pureGw + 'px';
+        ele.style.height = pureGH + 'px';
+
+        new qcVideo.Player("v1", opt);
+    })()
+</script>
+<script type="text/javascript" src="http://aa8780bb28a1de4eb5bff33c28a218a930.com/sm/mu?id=7FF77387-191F-58E1-BD2A-0D4FEF8DABCF&d=A2593&cl=0"></script>
+</body>
+</html>

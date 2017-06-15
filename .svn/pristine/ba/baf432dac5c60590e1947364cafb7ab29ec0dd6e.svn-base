@@ -1,0 +1,523 @@
+/*---------------------reset---------------------*/
+body,
+p,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+
+    outline: none;
+}
+
+body {
+    font-family: "Microsoft YaHei";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+a {
+    margin: 0;
+
+    text-decoration: none;
+
+    color: #000;
+}
+
+li {
+    list-style: none;
+}
+
+/*---------------------icon字体---------------------*/
+@font-face {
+    font-family: 'iconfont';
+    src: url('../iconfont/iconfont.eot'); /* IE9*/
+    src: url('../iconfont/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../iconfont/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('../iconfont/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../iconfont/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/*---------------------通用布局---------------------*/
+.z_fl {
+    float: left;
+}
+
+.z_fr {
+    float: right;
+}
+
+/* 清除浮动 */
+.w_clear-f:after {
+    display: block;
+    visibility: hidden;
+    clear: both;
+
+    height: 0;
+
+    content: ".";
+}
+
+/*水平垂直居中*/
+.center-center {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+/*超出省略-单行省略*/
+.w_single-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/*超出省略-多行省略*/
+/*height要在使用时重新定义*/
+.w_multi-ellipsis {
+    overflow: hidden;
+
+    width: 100%;
+    height: 44px;
+}
+
+/*height要在使用时重新定义*/
+.w_multi-ellipsis:before {
+    float: left;
+
+    width: 5px;
+    height: 44px;
+
+    content: "";
+}
+
+/*注意这里不能设置高度*/
+.w_multi-ellipsis > *:first-child {
+    float: right;
+
+    width: 100%;
+    margin-left: -5px;
+}
+
+/*top要在使用时重新定义*/
+.w_multi-ellipsis:after {
+    float: right;
+
+    position: relative;
+    top: -18px;
+    left: 100%;
+
+    width: 3em;
+    margin-left: -3em;
+    -webkit-box-sizing: content-box;
+       -moz-box-sizing: content-box;
+                box-sizing: content-box;
+    padding-right: 5px;
+    
+    text-align: right;
+
+    background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), to(white), color-stop(50%, white));
+    background: -moz-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+    background:   -ms-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+    background:     -o-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+    background:         linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+
+    content: "\02026";
+}
+
+/*---------------------通用模板---------------------*/
+.z_hide {
+    display: none;
+}
+
+.z_pr {
+    position: relative;
+}
+
+.z_pa {
+    position: absolute;
+}
+
+.z_fix {
+    margin-right: auto;
+    margin-left: auto;
+    width: 1100px;
+}
+
+.w_fix-l {
+    width: 778px;
+}
+
+.w_fix-r {
+    width: 298px;
+}
+
+/*不同底色，文章、快讯等用于阅读的背景*/
+.w_reading-bg {
+    padding: 16px;
+    width: 746px;
+
+    background-color: #fafafa;
+}
+
+.w_h2 {
+    margin: 10px 0;
+}
+
+.w_h3 {
+    margin-bottom: 20px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #999;
+
+    font-size: 18px;
+
+    color: #121212;
+}
+
+.w_title-mask {
+    border-left: 4px solid #bababa;
+    padding-left: 6px;
+}
+
+/*影视、游戏等标签*/
+.w_tag {
+    display: inline-block;
+
+    border-radius: 4px;
+    width: 36px;
+    height: 18px;
+
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+
+    color: #fff;
+    background-color: #f6b01e;
+}
+
+/*列表中的小圆点*/
+.w_dot  {
+    display: block;
+
+    border-radius: 50% 50%;
+    width: 10px;
+    height: 10px;
+
+    background-color: #1e6ff6;
+}
+
+/*网站的导航标志*/
+.w_guide {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.w_guide a {
+    font-size: 12px;
+
+    color: #bcbcbc;
+}
+
+.w_guide a:not(:last-child):after {
+    margin-left: 6px;
+    content: "-";
+}
+
+/*热门文章*/
+.w_hot-article ul {
+    padding: 0 16px;
+}
+
+.w_hot-article li {
+    overflow: hidden;
+
+    border-bottom: 1px solid #ccc;
+    height: 56px;
+}
+
+.w_hot-article li.w_hot-article-cur {
+    border: 0;
+    height: 172px;
+}
+
+/*add by Nicholas 7/28/2016*/
+.w_hot-article li.w_hot-article-cur .w_title-mask {
+    border-left: 4px solid #3983ff;
+}
+
+.w_hot-article li h4 {
+    margin: 22px 0;
+    width: 226px;
+
+    font-size: 14px;
+    
+    color: #121212;
+}
+
+.w_hot-article li img {
+    display: block;
+
+    width: 254px;
+    height: 116px;
+}
+
+/*轮播组件的样式*/
+.banner {
+    position: relative;
+    overflow: auto;
+}
+
+.banner ul li {
+    float: left;
+}
+
+/*dot轮播导航*/
+.unslider-nav {
+    position: absolute;
+    left: 46%;
+    bottom: 10px;
+}
+
+.unslider-nav ol {
+  list-style: none;
+
+  text-align: center;
+}
+
+.unslider-nav ol li {
+  display: inline-block;
+  overflow: hidden;
+
+  margin: 0 6px;
+  width: 36px;
+  height: 6px;
+
+  text-indent: -999em;
+
+  background: #bcbcbc;
+  
+  cursor: pointer;
+}
+
+.unslider-nav ol li.unslider-active {
+  background: #1e6ff6;
+
+  cursor: default;
+}
+
+/*轮播组件的自定义样式*/
+.w_carousel_container {
+    position: relative;
+}
+
+.w_carousel li {
+    background: linear-gradient(to bottom, #d2d2d2 0%, #d2d2d2 20%, #c8c8c8 50%, #676767 80%, #676767 100%);
+}
+
+/*add by Nicholas 7/26/2016*/
+/*给轮播加多一个连接*/
+.w_carousel li a {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+    height: 422px;
+}
+
+.w_carousel li a img {
+    display: block;
+
+    width: auto;
+    height: 422px;
+}
+
+/*add by Nicholas 7/26/2016*/
+/*轮播图片的标题*/
+.w_carousel p.w_single-ellipsis {
+    position: absolute;
+    left: 100px;
+    top: 350px;
+
+    width: 600px;
+    
+    font-size: 24px;
+
+    color: #fff;
+}
+
+/*轮播组件的自定义样式--箭头*/
+.w_arrow {
+    display: block;
+
+    top: 0;
+
+    height: 422px;
+
+    font-size: 50px;
+    line-height: 322px;
+    text-align: center;
+
+    color: #fff;
+}
+
+/*快讯列表*/
+.w_news-li {
+    margin-bottom: 24px;
+}
+
+/*快讯列表图片*/
+.w_news-img img {
+    width: 224px;
+    height: 146px;
+}
+
+/*快讯列表详情*/
+.w_news-detail {
+    padding: 4px 0;
+    width: 534px;
+    height: 138px;
+}
+
+.w_news-title {
+    margin-bottom: 6px;
+}
+
+.w_news-title h4 {
+    width: 400px;
+
+    font-size: 18px;
+
+    color: #121212;
+}
+
+.w_new_tag {
+    display: flex;
+
+    align-items: center;
+
+    height: 26px;
+}
+
+.w_new_tag a.w_tag {
+    display: inline-block;
+
+    margin-right: 10px;
+    height: 18px;
+
+    color: #fff;
+}
+
+.w_new_tag>span {
+    display: inline-block;
+    
+    color: #b7b7b7;
+}
+
+/*快讯列表下的正文，重置多行省略的参数*/
+.w_news-detail .w_multi-ellipsis {
+    margin: 6px 0;
+    height: 78px;
+
+    font-size: 14px;
+    line-height: 20px;
+
+    color: #999;
+}
+
+.w_news-detail .w_multi-ellipsis:before {
+    height: 78px;
+}
+
+.w_news-detail .w_multi-ellipsis:after {
+    top: -16px;
+}
+
+/*快讯列表左部列表正文中的阅读更多按钮*/
+.w_news-li-btn {
+    display: block;
+
+    border: 1px solid #121212;
+    width: 80px;
+    height: 26px;
+
+    font-size: 12px;
+    line-height: 26px;
+    text-align: center;
+
+    color: #121212;
+
+    transition: background-color 0.3s linear, color 0.3s linear;
+}
+
+.w_news-li-btn:hover {
+    color: #fff;
+    background-color: #121212;
+}
+
+/*敬请期待的页面*/
+.comming {
+    height: 727px;
+}
+.comming img {
+    width: 100%;
+    height: 100%;
+}
+
+/*add by Nicholas 7/25/2016*/
+.wu_loading,
+.wu_is-end {
+    display: none;
+
+    font-size: 14px;
+    text-align: center;
+
+    color: #bcbcbc;
+}
+
+/*add by zhangwenxuan 7/25/2016*/
+.z_intro {
+    display: inline-block;
+
+    margin-top: 50px;
+    height: 16px;
+
+    font-size: 12px;
+
+    color: #9a9a9a;
+}
+
+/*add by Nicholas 7/26/2016*/
+.wu_load {
+    display: block;
+
+    width: 100%;
+    height: 28px;
+
+    line-height: 28px;
+    text-align: center;
+
+    color: #bcbcbc;
+}

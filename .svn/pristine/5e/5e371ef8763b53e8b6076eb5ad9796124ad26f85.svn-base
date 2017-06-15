@@ -1,0 +1,33 @@
+package com.luwei.hackvr.mapper;
+
+import com.luwei.hackvr.pojo.Mapper;
+import com.luwei.hackvr.pojo.MapperExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
+
+public interface MapperMapper {
+    int countByExample(MapperExample example);
+
+    int deleteByExample(MapperExample example);
+
+    int deleteByPrimaryKey(Integer mapperId);
+
+    int insert(Mapper record);
+
+    int insertSelective(Mapper record);
+
+    List<Mapper> selectByExampleWithRowbounds(MapperExample example, RowBounds rowBounds);
+
+    List<Mapper> selectByExample(MapperExample example);
+
+    Mapper selectByPrimaryKey(Integer mapperId);
+
+    int updateByExampleSelective(@Param("record") Mapper record, @Param("example") MapperExample example);
+
+    int updateByExample(@Param("record") Mapper record, @Param("example") MapperExample example);
+
+    int updateByPrimaryKeySelective(Mapper record);
+
+    int updateByPrimaryKey(Mapper record);
+}

@@ -1,0 +1,71 @@
+.z_home-VR {
+    overflow: hidden;
+
+    margin-top: 20px;
+    height: 527px;
+}
+
+.z_home-VR-body {
+    overflow: hidden;
+
+    height: 482px;
+}
+
+.z_home-VR-list {
+    padding-top: 15px;
+    padding-right: 7.5px; 
+    padding-left: 7.5px; 
+    width: 260px;
+    height: 226px; 
+}
+
+.z_home-video-img {
+    width: 260px;
+    height: 186px;
+}
+
+.z_home-vr-film-name {
+    display: block;
+    overflow: hidden;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+    width: 200px;
+    height: 21px;
+
+    line-height: 20px;
+    text-align: center;
+}
+
+.z_video-play {
+    top: 73px;
+    left: 110px;
+
+    width: 40px;
+    height: 40px;
+}
+
+.z_video-play-bg {
+    top : 83px;
+    left: 117px;
+
+    width: 50px;
+    height: 50px;
+
+    background-color: #000;
+    opacity: 0.5;
+}
+
+.z_video-play-icon {
+    top: 93px;
+    left: 129px;
+
+    width: 25px;
+    height: 30px;
+
+    opacity: 0.9;
+}
+
+
+

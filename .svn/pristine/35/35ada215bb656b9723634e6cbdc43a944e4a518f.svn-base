@@ -1,0 +1,20 @@
+package com.luwei.hackvr.utils;
+
+public class ConstantUtils {
+
+	public final static String USER_INFO = "userInfo"; //session保存会员信息标识
+
+//	记录资讯类型与数据库的对应
+	public final static String[] zixunType = new String[]{"shixun", "shixun", "guancha", "youxi", "yingshi"};
+//	记录视频类型与数据库的对应
+	public final static String[] shipinType = new String[]{
+            "tiyan", "yule", "yule", "yule", "yule", 
+            "yule", "shenghuo", "shenghuo", "shenghuo", "shenghuo", 
+            "shenghuo", "keji", "keji", "keji", "shishang", 
+            "fengguang", "fengguang", "fengguang", "shehui", "shehui", 
+            "yule", "yule", "yule", "yule", "yule", 
+            "yule", "yule", "shehui", "keji", "keji", 
+            "yule", "yule", "shenghuo", "keji", "fengguang", 
+            "shishang", "tiyan", "shehui", "shenghuo", "shenghuo", 
+            "tiyan", "tiyan", "tiyan"};
+}

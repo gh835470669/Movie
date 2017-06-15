@@ -1,0 +1,289 @@
+.z_video-hot {
+    border-bottom: 2px solid #e5e5e5;
+    height: 730px;
+}
+
+.z_video-hot-body-father {
+    height: 730px;
+}
+
+.z_video-hot-b {
+    overflow: hidden;
+
+    width: 100%;
+    height: 555px;
+}
+
+.z_video-hot-menu {
+    overflow: hidden;
+
+    margin-right: auto;
+    margin-left: auto;
+    width: 420px;
+    height: 175px;
+
+    line-height: 175px;
+}
+
+.z_video-hot-menu-list {
+    margin: 60px 15px 0 15px;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    width: 175px;
+    height: 50px;
+
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.z_video-hot-menu-list:hover {
+    cursor: pointer;
+
+    color: #fff;
+    background-color: #3893ff;
+}
+
+.z_video-hot-menu-first {
+    color: #fff;
+    background-color: #3893ff;
+}
+
+.z_video-hot-menu-second {
+    color: #dcdcdc;
+}
+
+.z_video-hot-body {
+    width: 9999px;
+    height: 534px;
+}
+
+.z_video-hot-list {
+    margin-right: 31px;
+    width: 346px;
+    height: 534px;
+}
+
+.z_video-hot-list-son {
+    width: 346px;
+    height: 205px;
+}
+
+.z_video-hot-video-img {
+    width: 346px;
+    height: 205px;
+}
+
+.z_video-hot-video-bg {
+    bottom: 0px;
+
+    width: 60px;
+    height: 26px;
+
+    background-color: #000;
+
+    opacity: 0.5;
+}
+
+.z_video-hot-video-time {
+    bottom: 0px;
+
+    width: 60px;
+    height: 26px;
+
+    font-size: 12px;
+    text-align: center;
+    line-height: 26px;
+
+    color: #fff;
+}
+
+.z_video-hot-play-bg {
+    top: 75px;
+    left: 148px;
+
+    width: 50px;
+    height: 50px;
+
+    background-color: #000;
+
+    opacity: 0.5;
+}
+
+.z_video-hot-play-icon {
+    top: 85px;
+    left: 161px;
+
+    width: 25px;
+    height: 30px;
+
+    opacity: 0.9;
+}
+
+.z_video-hot-video-title {
+    overflow: hidden;
+    margin-bottom: 32px;
+    width: 346px;
+    height: 30px;
+
+    line-height: 30px;
+}
+
+.z_video-class-body {
+    border-bottom: 2px solid #dcdcdc;
+    height: 370px;
+}
+
+.z_video-class-title {
+    margin-top: 35px;
+    margin-bottom: 35px;
+    padding-left: 480px;
+    height: 30px;
+
+    line-height: 30px;
+    text-align: center;
+}
+
+.z_video-class-title span {
+    font-size: 20px;
+    color: #000;
+}
+
+.z_video-class-title-line {
+    margin: 15px 10px 0 10px;
+    border-bottom: 1px solid #000;
+    width: 30px;
+}
+
+.z_video-class-content {
+    overflow: hidden;
+
+    padding-top: 20px;
+    width: 1100px;
+    height: 200px;
+}
+
+.z_video-class-content-list {
+    margin-right: 7px;
+    margin-left: 8px;
+    width: 260px;
+    height: 100%;
+}
+
+.z_video-class-content-list-son {
+    width: 260px;
+    height: 146px;
+}
+
+.z_video-class-video-img {
+    width: 260px;
+    height: 146px;
+}
+
+.z_video-class-video-bg {
+    bottom: 0px;
+    left: 0px;
+
+    width: 56px;
+    height: 22px;
+
+    background-color: #000;
+
+    opacity: 0.5;
+}
+
+.z_video-class-video-time {
+    bottom: 0px;
+    left: 0px;
+
+    width: 56px;
+    height: 22px;
+
+    line-height: 22px;
+    text-align: center;
+
+    color: #fff;
+    font-size: 12px;
+}
+
+.z_video-class-play-bg {
+    top: 53px;
+    left: 110px;
+
+    width: 40px;
+    height: 40px;
+
+    background-color: #000;
+
+    opacity: 0.5;
+}
+
+.z_video-class-play-icon {
+    top: 60px;
+    left: 120px;
+
+    width: 20px;
+    height: 25px;
+
+    opacity: 0.9;
+}
+
+.z_video-class-video-title {
+    overflow: hidden;
+
+    margin-bottom: 24px;
+    width: 260px;
+    height: 30px;
+
+    line-height: 30px;
+}
+
+.z_video-class-more {
+    margin-top: 20px;
+    margin-left: 525px;
+    border: 1px solid #a3a3a3;
+    width: 50px;
+    height: 30px;
+
+    font-size: 15px;
+    line-height: 30px;
+    text-align: center;
+
+    color: #a3a3a3;
+}
+
+.z_video-class-more:hover {
+    color: #fff;
+    background-color: #9b9b9b;
+
+    cursor: pointer;
+}
+
+.z_video-hot-body-father .z_video-left {
+    top: 400px;
+    left: -70px;
+
+    font-size: 40px;
+
+    color: #707070;
+}
+
+.z_video-hot-body-father .z_video-left:hover {
+    color: #3893ff;
+
+    cursor: pointer;
+}
+
+.z_video-hot-body-father .z_video-right {
+    top: 400px;
+    right: -70px;
+
+    color: #707070;
+    font-size: 40px;
+}
+
+.z_video-hot-body-father .z_video-right:hover {
+    color: #3893ff;
+
+    cursor: pointer;
+}

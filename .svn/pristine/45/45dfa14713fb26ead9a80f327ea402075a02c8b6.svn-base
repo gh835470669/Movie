@@ -1,0 +1,28 @@
+package com.luwei.hackvr.pojo;
+
+import java.io.Serializable;
+import java.util.List;
+
+public class ArticlesJson implements Serializable {
+    private String isEnd;
+
+    private List<Article> articles;
+
+    private static final long serialVersionUID = 1L;
+
+    public String getIsEnd() {
+        return isEnd;
+    }
+
+    public void setIsEnd(String isEnd) {
+        this.isEnd = isEnd;
+    }
+
+    public List<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
+    }
+}

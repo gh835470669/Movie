@@ -1,0 +1,3223 @@
+.z_home-footer {
+    position: relative;
+
+    margin-top: 100px;
+    height: 300px;
+
+    background-color: #313131;
+}
+
+.z_home-footer-footer {
+    bottom: 0px;
+    width: 100%;
+    height: 60px;
+
+    background-color: #000;
+
+    opacity: 0.5;
+}
+
+.z_home-footer-footer-content {
+    bottom: 0px;
+    z-index: 99;
+
+    margin-left: 350px;
+    margin-bottom: 10px;
+    height: 40px;
+
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+
+    color: #707070;
+}
+
+.z_home-footer-footer-content a {
+    color: #707070;
+}
+
+.z_home-footer-content {
+    padding-top: 50px;
+    /*width: 800px;*/
+    height: 60%;
+
+    color: #fff;
+}
+
+.z_home-footer-menu {
+    margin-right: 100px;
+    width: 300px;
+    height: 140px;
+}
+
+.z_home-dooter-menu-list {
+    width: 150px;
+    height: 25px;
+}
+
+/*.z_home-dooter-menu-list a {
+    color: #fff;
+}*/
+
+.z_home-footer-pb {
+    margin-bottom: 20px;
+}
+
+.z_footer-color-w {
+    font-size: 16px;
+
+    color: #fff;
+}
+
+.z_footer-color-g {
+    font-size: 14px;
+
+    color: #909090;
+}
+
+.z_home-footer-contact {
+    width: 193px;
+    height: 145px;
+
+    text-align: center;
+}
+
+.z_home-footer-img {
+    width: 119px;
+    height: 119px;
+}
+.z_home-game {
+    overflow: hidden;
+
+    margin-top: 20px;
+    margin-bottom: 100px;
+    height: 573px;
+}
+
+.z_home-game-body {
+    overflow: hidden;
+
+    width: 1140px;
+    height: 528px;
+}
+
+.z_home-game-list {
+    overflow: hidden;
+
+    position: relative;
+
+    margin: 24px 40px 24px 0;
+    width: 340px;
+    height: 216px;
+}
+
+.z_home-game-list img {
+    width: 340px;
+    height: 216px;
+}
+
+.z_home-game-intro-bg {
+    position: absolute;
+    top: 186px;
+    
+    width: 340px;
+    height: 30px;
+
+    background-color: #000;
+
+    opacity: 0.3;
+}
+
+.z_home-game-intro {
+    position: absolute;
+    top: 186px;
+    right: 30px;
+    left: 30px;
+
+    width: 280px;
+    height: 30px;
+
+    line-height: 30px;
+    text-align: center;
+}
+
+div.z_home-game-intro span {
+    overflow: hidden;
+
+    color: #fff;
+}
+.z_home {
+    overflow: hidden;
+
+    height: 86px;
+
+    background-color: #313131;
+}
+
+.z_home-header {
+    display: block;
+    overflow: hidden;
+
+    position: relative;
+
+    height: 86px;
+}
+
+.z_home-logo {
+    margin-top: 26px;
+    margin-right: 36px;
+    width: 115px;
+    height: 32px;
+}
+
+/*add by Nicholas 7/22/2016*/
+.z_home-logo a {
+    display: block;
+
+    height: 100%;
+
+    background-image: url(../images/logo.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.z_home-menu {
+    width: 612px;
+}
+
+ul.z_home-menu li {
+    width: 153px;
+    height: 86px;
+
+    line-height: 86px;
+    text-align: center;
+}
+
+ul.z_home-menu li:hover {
+    background-color: #1b1b1b;
+}
+
+ul.z_home-menu li.home-ico {
+    background-color: #1b1b1b;
+}
+
+ul.z_home-menu li a {
+    display: block;
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+
+    color: #fff;
+}
+
+.z_search-icon {
+    width: 30px;
+    height: 30px;
+    z-index: 99;
+
+    line-height: 86px;
+    vertical-align: center;
+}
+
+div.z_search-icon i:hover {
+    cursor: pointer;
+}
+
+.z_search {
+    position: absolute;
+
+    display: none;
+    /*隐藏时*/
+    top: 28px;
+    left: 1063px;
+    
+    /*显示时*/
+    /*top: 28px;
+    left: 333px;*/
+    width: 760px;
+    height: 30px;
+}
+
+.z_search-input {
+    position: absolute;
+
+    margin: 0px;
+    border: 0px;
+    border-radius: 20px;
+    padding-right: 28px;
+    padding-left: 28px;
+    width: 704px;
+    height: 30px;
+
+    font-size: 15px;
+
+    color: #fff;
+    background-color: #1b1b1b;
+    /*background-color: #fff;*/
+    outline: none;
+}
+
+.z_search-left-ico {
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    z-index: 99;
+}
+
+i.z_search-left-ico:hover {
+    cursor: pointer;
+}
+
+.z_search-right-ico {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    z-index: 99;
+}
+
+i.z_search-right-ico {
+    cursor: pointer;
+}
+
+.z_icon-color-w {
+    color: #fff;
+    font-size: 14px;
+}
+
+.z_icon-color-g {
+    color: #7d7d7d;
+    font-size: 14px;
+}
+
+::-webkit-input-placeholder {
+    color: #7d7d7d;
+}
+
+::-moz-placeholder {
+    color: #7d7d7d;
+}
+
+:-moz-placeholder {
+    color: #7d7d7d;
+}
+.z_home-hot {
+    overflow: hidden;
+
+    height: 620px;
+}
+
+.z_home-hot1 {
+    display: block;
+    overflow: hidden;
+
+    position: relative;
+
+    height: 390px;
+}
+
+.z_img1 {
+    display: inline;
+
+    margin-top: 20px;
+    width: 1100px;
+    height: 370px;
+}
+
+.z_img2 {
+    display: inline;
+
+    margin-top: 20px;
+    width: 538px;
+    height: 183px;
+}
+
+.z_home-hot1-intro-bg {
+    position: absolute;
+    top: 342px;
+
+    width: 1100px;
+    height: 48px;
+
+    background-color: #000;
+
+    opacity: 0.3;
+}
+
+.z_home-hot1-intro {
+    position: absolute;
+    top: 342px;
+    right: 25px;
+    left: 25px;
+
+    width: 1050px;
+    height: 48px;
+
+    line-height: 48px;
+    vertical-align: center;
+}
+
+div.z_home-hot1-intro span {
+    overflow: hidden;
+
+    
+    font-size: 16px;
+
+    color: #fff;
+}
+
+.z_home-hot2-son {
+    overflow: hidden;
+
+    position: relative;
+    
+    width: 538px;
+    height: 203px;
+}
+
+.z_home-hot2-intro-bg {
+    position: absolute;
+    top: 173px;
+
+    width: 538px;
+    height: 30px;
+
+    background-color: #000;
+
+    opacity: 0.3;
+}
+
+.z_home-hot2-intro {
+    position: absolute;
+    top: 173px;
+    right: 15px;
+    left: 15px;
+
+    width: 538px;
+    height: 30px;
+
+    line-height: 30px;
+    vertical-align: center;
+}
+
+div.z_home-hot2-son span {
+    overflow: hidden;
+    
+    font-size: 12px;
+
+    color: #fff;
+}.z_home-news {
+    overflow: hidden;
+
+    margin-top: 20px;
+    height: 952px;
+}
+
+.z_home-news-header {
+    overflow: hidden;
+
+    height: 45px;
+    line-height: 45px;
+
+    vertical-align: center;
+}
+
+.z_mark1 {
+    margin-top: 13px;
+    margin-right: 10px;
+    width: 8px;
+    height: 18px;
+
+    background-color: #1e6fff;
+}
+
+.z_home-news1 {
+    width: 790px;
+}
+
+.z_home-news1-list {
+    display: list-item;
+    overflow: hidden;
+
+    padding-top: 14px;
+    padding-bottom: 14px;
+    height: 144px;
+}
+
+.z_home-news1-list img {
+    width: 224px;
+    height: 144px;
+}
+
+.z_home-news1-intro {
+    width: 584px;
+}
+
+/*add by Nicholas 7/22/2016*/
+/*最新快讯，重置多行省略的参数*/
+.z_home-news1-intro .w_multi-ellipsis {
+    margin-top: 4px;
+    height: 80px;
+}
+
+.z_home-news1-intro .w_multi-ellipsis:before {
+    height: 80px;
+}
+
+.z_home-news1-intro .w_multi-ellipsis:after {
+    top: -24px;
+}
+
+.z_home-news1-intro .w_multi-ellipsis p {
+    font-size: 14px;
+    line-height: 20px;
+
+    color: #999;
+}
+
+.z_type {
+    margin-top: 10px;
+    height: 20px;
+
+    line-height: 20px;
+    vertical-align: center;
+}
+
+div.z_type p {
+    margin-left: 20px;
+    border-radius: 5px;
+    width: 25px;
+    height: 20px;
+
+    font-size: 12px;
+    text-align: center;
+
+    color: #fff;
+}
+
+.z_type-colorY {
+    background-color: #f75037;
+}
+
+.z_type-colorG {
+    background-color: #bababa;
+}
+
+.z_home-news1-show-more {
+    width: 823px;
+    height: 47px;
+}
+
+div.z_home-news1-show-more a {
+    display: block;
+
+    margin: 14px auto 13px auto;
+    width: 390px;
+    height: 20px;
+
+    
+    line-height: 20px;
+    text-align: center;
+
+    color: #fff;
+
+    background-color: #707070;
+}
+
+.z_home-news2 {
+    width: 260px;
+    height: 892px;
+}
+
+.z_home-news2-son1-header {
+    height: 40px;
+}
+
+.z_mark2 {
+    margin-top: 7px;
+    margin-right: 5px;
+    width: 6px;
+    height: 12px;
+
+    background-color: #1e6fff;
+}
+
+.z_home-news2 h3 {
+    
+}
+
+.z_home-news2-son1-list {
+    border-bottom: 1px solid #dcdcdc;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: 260px;
+    height: 69px;
+}
+
+.z_home-news2-son1-list img {
+    width: 122px;
+    height: 69px;
+}
+
+li.z_home-news2-son1-list div {
+    width: 130px;
+    height: 69px;
+}
+
+li.z_home-news2-son1-list div a {
+    display: block;
+    overflow: hidden;
+
+    margin: 20px auto;
+    width: 130px;
+    height: 35px;
+    text-align: center;
+
+    vertical-align: center;
+}
+
+.z_home-news2-son2-header {
+    padding-top: 24px;
+    padding-bottom: 30px;
+    height: 25px;
+}
+
+div.z_home-news2-son2-header li {
+    width: 40px;
+    height: 25px;
+}
+
+div.z_home-news2-son2-header li p {
+    display: block;
+    overflow: hidden;
+
+    padding-top: 2px;
+    padding-bottom: 3px; 
+    width: 32px;
+    height: 20px;
+    text-align: center;
+    
+    /*text-decoration: */
+
+    vertical-align: center;
+}
+
+.z_pc-p {
+    border-bottom: 3px solid #1e6fff;
+}
+
+div.z_home-news2-son2-header li p:hover {
+    cursor: pointer;
+}
+
+.z_home-PC-game {
+    border-bottom: 1px solid #dcdcdc;
+    height: 37px;
+}
+
+li.z_home-PC-game a {
+    display: block;
+    overflow: hidden;
+
+    padding-left: 15px;
+    width: 200px;
+    height: 20px;
+
+    line-height: 20px;
+}
+
+.z_home-news2-son2-body {
+    position: relative;
+}
+
+.z_game {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.z_pc {
+    opacity: 1;
+}
+
+.z_android {
+    opacity: 0;
+}
+
+.z_iOS {
+    opacity: 0;
+}
+.z_home-VR {
+    overflow: hidden;
+
+    margin-top: 20px;
+    height: 527px;
+}
+
+.z_home-VR-body {
+    overflow: hidden;
+
+    height: 482px;
+}
+
+.z_home-VR-list {
+    padding-top: 15px;
+    padding-right: 7.5px; 
+    padding-left: 7.5px; 
+    width: 260px;
+    height: 226px; 
+}
+
+.z_home-video-img {
+    width: 260px;
+    height: 186px;
+}
+
+.z_home-vr-film-name {
+    display: block;
+    overflow: hidden;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+    width: 200px;
+    height: 21px;
+
+    line-height: 20px;
+    text-align: center;
+}
+
+.z_video-play {
+    top: 73px;
+    left: 110px;
+
+    width: 40px;
+    height: 40px;
+}
+
+.z_video-play-bg {
+    top : 83px;
+    left: 117px;
+
+    width: 50px;
+    height: 50px;
+
+    background-color: #000;
+    opacity: 0.5;
+}
+
+.z_video-play-icon {
+    top: 93px;
+    left: 129px;
+
+    width: 25px;
+    height: 30px;
+
+    opacity: 0.9;
+}
+
+
+
+/*---------------------reset---------------------*/
+body,
+p,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+
+    outline: none;
+}
+
+input {
+    padding: 0;
+    border: 0;
+}
+
+body {
+    font-family: "Microsoft YaHei";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+a {
+    margin: 0;
+
+    text-decoration: none;
+
+    color: #000;
+}
+
+li {
+    list-style: none;
+}
+
+/*---------------------icon字体---------------------*/
+/*@font-face {
+    font-family: 'iconfont';
+    src: url('../iconfont/iconfont.eot'); /* IE9*/
+    /*src: url('../iconfont/iconfont.eot?#iefix') format('embedded-opentype'); /* IE6-IE8 */
+    /*url('../iconfont/iconfont.woff') format('woff'), /* chrome、firefox */
+    /*url('../iconfont/iconfont.ttf') format('truetype') /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    /*url('../iconfont/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+/*}*/
+
+/*.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}*/
+
+/*---------------------通用布局---------------------*/
+.z_fl {
+    float: left;
+}
+
+.z_fr {
+    float: right;
+}
+
+/* 清除浮动 */
+.w_clear-f:after {
+    display: block;
+    visibility: hidden;
+    clear: both;
+
+    height: 0;
+
+    content: ".";
+}
+
+/*水平垂直居中*/
+.center-center {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+/*超出省略-单行省略*/
+.w_single-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/*超出省略-多行省略*/
+/*height要在使用时重新定义*/
+.w_multi-ellipsis {
+    overflow: hidden;
+
+    width: 100%;
+    height: 44px;
+}
+
+/*height要在使用时重新定义*/
+.w_multi-ellipsis:before {
+    float: left;
+
+    width: 5px;
+    height: 44px;
+
+    content: "";
+}
+
+/*注意这里不能设置高度*/
+.w_multi-ellipsis > *:first-child {
+    float: right;
+
+    width: 100%;
+    margin-left: -5px;
+}
+
+/*top要在使用时重新定义*/
+.w_multi-ellipsis:after {
+    float: right;
+
+    position: relative;
+    top: -18px;
+    left: 100%;
+
+    width: 3em;
+    margin-left: -3em;
+    -webkit-box-sizing: content-box;
+       -moz-box-sizing: content-box;
+                box-sizing: content-box;
+    padding-right: 5px;
+    
+    text-align: right;
+
+    background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), to(white), color-stop(50%, white));
+    background: -moz-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+    background:   -ms-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+    background:     -o-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+    background:         linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+
+    content: "\2026";
+}
+
+/*---------------------通用模板---------------------*/
+.z_hide {
+    display: none;
+}
+
+.z_pr {
+    position: relative;
+}
+
+.z_pa {
+    position: absolute;
+}
+
+.z_fix {
+    margin-right: auto;
+    margin-left: auto;
+    width: 1100px;
+}
+
+.w_fix-l {
+    width: 778px;
+}
+
+.w_fix-r {
+    width: 298px;
+}
+
+/*不同底色，文章、快讯等用于阅读的背景*/
+.w_reading-bg {
+    padding: 16px;
+    width: 746px;
+
+    background-color: #fafafa;
+}
+
+.w_h2 {
+    margin: 10px 0;
+}
+
+.w_h3 {
+    margin-bottom: 20px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #999;
+
+    font-size: 18px;
+
+    color: #121212;
+}
+
+.w_title-mask {
+    border-left: 4px solid #bababa;
+    padding-left: 6px;
+}
+
+/*影视、游戏等标签*/
+.w_tag {
+    display: inline-block;
+
+    border-radius: 4px;
+    width: 36px;
+    height: 18px;
+
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+
+    color: #fff;
+    background-color: #f6b01e;
+}
+
+/*列表中的小圆点*/
+.w_dot  {
+    display: block;
+
+    border-radius: 50% 50%;
+    width: 10px;
+    height: 10px;
+
+    background-color: #1e6ff6;
+}
+
+/*网站的导航标志*/
+.w_guide {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.w_guide a {
+    font-size: 12px;
+
+    color: #bcbcbc;
+}
+
+.w_guide a:not(:last-child):after {
+    margin-left: 6px;
+    content: "-";
+}
+
+/*热门文章*/
+.w_hot-article ul {
+    padding: 0 16px;
+}
+
+.w_hot-article li {
+    overflow: hidden;
+
+    border-bottom: 1px solid #ccc;
+    height: 56px;
+}
+
+.w_hot-article li.w_hot-article-cur {
+    border: 0;
+    height: 172px;
+}
+
+/*add by Nicholas 7/28/2016*/
+.w_hot-article li.w_hot-article-cur .w_title-mask {
+    border-left: 4px solid #3983ff;
+}
+
+.w_hot-article li h4 {
+    margin: 22px 0;
+    width: 226px;
+
+    font-size: 14px;
+    
+    color: #121212;
+}
+
+.w_hot-article li img {
+    display: block;
+
+    width: 254px;
+    height: 116px;
+}
+
+/*轮播组件的样式*/
+.banner {
+    position: relative;
+    overflow: auto;
+}
+
+.banner ul li {
+    float: left;
+}
+
+/*dot轮播导航*/
+.unslider-nav {
+    position: absolute;
+    left: 46%;
+    bottom: 10px;
+}
+
+.unslider-nav ol {
+  list-style: none;
+
+  text-align: center;
+}
+
+.unslider-nav ol li {
+  display: inline-block;
+  overflow: hidden;
+
+  margin: 0 6px;
+  width: 36px;
+  height: 6px;
+
+  text-indent: -999em;
+
+  background: #bcbcbc;
+  
+  cursor: pointer;
+}
+
+.unslider-nav ol li.unslider-active {
+  background: #1e6ff6;
+
+  cursor: default;
+}
+
+/*轮播组件的自定义样式*/
+.w_carousel_container {
+    position: relative;
+}
+
+.w_carousel li {
+    background: linear-gradient(to bottom, #d2d2d2 0%, #d2d2d2 20%, #c8c8c8 50%, #676767 80%, #676767 100%);
+}
+
+/*add by Nicholas 7/26/2016*/
+/*给轮播加多一个连接*/
+.w_carousel li a {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+    height: 422px;
+}
+
+.w_carousel li a img {
+    display: block;
+
+    width: auto;
+    height: 422px;
+}
+
+/*add by Nicholas 7/26/2016*/
+/*轮播图片的标题*/
+.w_carousel p.w_single-ellipsis {
+    position: absolute;
+    left: 100px;
+    top: 350px;
+
+    width: 600px;
+    
+    font-size: 24px;
+
+    color: #fff;
+}
+
+/*轮播组件的自定义样式--箭头*/
+.w_arrow {
+    display: block;
+
+    top: 0;
+
+    height: 422px;
+
+    font-size: 50px;
+    line-height: 322px;
+    text-align: center;
+
+    color: #fff;
+}
+
+/*快讯列表*/
+.w_news-li {
+    margin-bottom: 24px;
+}
+
+/*快讯列表图片*/
+.w_news-img img {
+    width: 224px;
+    height: 146px;
+}
+
+/*快讯列表详情*/
+.w_news-detail {
+    padding: 4px 0;
+    width: 534px;
+    height: 138px;
+}
+
+.w_news-title {
+    margin-bottom: 6px;
+}
+
+.w_news-title h4 {
+    width: 400px;
+
+    font-size: 18px;
+
+    color: #121212;
+}
+
+.w_new_tag {
+    display: flex;
+
+    align-items: center;
+
+    height: 26px;
+}
+
+.w_new_tag a.w_tag {
+    display: inline-block;
+
+    margin-right: 10px;
+    height: 18px;
+
+    color: #fff;
+}
+
+.w_new_tag>span {
+    display: inline-block;
+    
+    color: #b7b7b7;
+}
+
+/*快讯列表下的正文，重置多行省略的参数*/
+.w_news-detail .w_multi-ellipsis {
+    margin: 6px 0;
+    height: 78px;
+
+    font-size: 14px;
+    line-height: 20px;
+
+    color: #999;
+}
+
+.w_news-detail .w_multi-ellipsis:before {
+    height: 78px;
+}
+
+.w_news-detail .w_multi-ellipsis:after {
+    top: -16px;
+}
+
+/*快讯列表左部列表正文中的阅读更多按钮*/
+.w_news-li-btn {
+    display: block;
+
+    border: 1px solid #121212;
+    width: 80px;
+    height: 26px;
+
+    font-size: 12px;
+    line-height: 26px;
+    text-align: center;
+
+    color: #121212;
+
+    transition: background-color 0.3s linear, color 0.3s linear;
+}
+
+.w_news-li-btn:hover {
+    color: #fff;
+    background-color: #121212;
+}
+
+/*敬请期待的页面*/
+.comming {
+    height: 727px;
+}
+.comming img {
+    width: 100%;
+    height: 100%;
+}
+/*add by Nicholas 8/1/2016*/
+/*给comming暂时加上这个*/
+.comming-footer {
+    margin-top: 0!important;
+}
+
+/*add by Nicholas 7/25/2016*/
+.wu_is-end {
+    display: none;
+
+     margin: 30px auto;
+
+    font-size: 14px;
+    text-align: center;
+
+    color: #bcbcbc;
+}
+
+/*add by zhangwenxuan 7/25/2016*/
+.z_intro {
+    display: inline-block;
+
+    margin-top: 50px;
+    height: 16px;
+
+    font-size: 12px;
+
+    color: #9a9a9a;
+}
+
+/*add by Nicholas 7/26/2016*/
+.wu_load {
+    display: block;
+
+    margin: 30px auto;
+    width: 390px;
+    height: 32px;
+
+    line-height: 32px;
+    text-align: center;
+
+    color: #bcbcbc;
+    background-color: #fafafa;
+}
+
+.wu_load:hover {
+    color: #b1b1b1;
+    background-color: #e5e5e5;
+}
+.z_game-header {
+    margin-top: 30px;
+    height: 344px;
+}
+
+.z_game-header-son1 {
+    width: 740px;
+    height: 100%;
+}
+
+.z_game-header-img {
+    top: 0px;
+    left: 0px;
+
+    width: 100%;
+    height: 100%;
+}
+
+.z_game-header-bg {
+    bottom: 0px;
+
+    width: 100%;
+    height: 48px;
+
+    background-color: #000;
+
+    opacity: 0.5;
+}
+
+.z_game-header-content-father {
+    /*text-overflow: ellipsis;*/
+    bottom: 0px;
+
+    width: 100%;
+    height: 48px;
+
+    line-height: 48px;
+}
+
+.z_game-header-content {
+    text-overflow: ellipsis;
+
+    margin-left: 20px;
+    width: 736px;
+
+    font-size: 18px;
+
+    color: #fff;
+    /*height: 100%;*/
+}
+
+.z_game-news {
+    overflow: hidden;
+
+    width: 340px;
+    height: 100%;
+
+    background-color: #fafafa;
+}
+
+.z_game-news-title {
+    border-bottom: 1px solid #e5e5e5;
+    width: 100%;
+    height: 46px;
+}
+
+.z_game-news-title-content {
+    overflow: hidden;
+
+    margin-left: 7px;
+    width: 280px;
+    height: 46px;
+
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 46px;
+}
+
+.z_game-news-list {
+    border-bottom: 1px solid #e5e5e5;
+    width: 100%;
+    height: 41px;
+}
+
+.z_game-news-list-content {
+    overflow: hidden;
+    margin-left: 10px;
+    width: 320px;
+
+    font-size: 15px;
+    line-height: 41px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    /*word-break: break-all;*/
+}
+
+.z_game-Hike-intro-father {
+    margin-top: 30px;
+    height: 210px;
+}
+
+.z_game-Hike-intro-header {
+    width: 100%;
+    height: 40px;
+}
+
+.z_game-Hike-intro-header p {
+    width: 50%;
+    height: 40px; 
+ 
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 40px;
+}
+
+.z_game-Hike-intro-menu {
+    margin-top: 8px;
+    margin-left: 10px;
+    border: 1px solid #e5e5e5;
+    border-radius: 7px;
+    width: 62px;
+    height: 22px;
+
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+
+    color: #666;
+}
+
+.z_game-Hike-intro-menu:first-child:hover {
+    /*color: #fff;
+    background-color: #66cc33;*/
+
+    cursor: pointer;
+}
+
+.z_game-Hike-intro-menu:nth-child(2):hover {
+    /*color: #fff;
+    background-color: #313131;*/
+
+    cursor: pointer;
+}
+
+.z_game-Hike-intro-menu:last-child:hover {
+    /*color: #fff;
+    background-color: #3893ff;*/
+
+    cursor: pointer;
+}
+
+.z_game-Hike-intro-menu:last-child {
+    color: #fff;
+    background-color: #3893ff;
+}
+
+.z_game-Hike-intro-body-list {
+    margin-top: 8px;
+    margin-right: 22px;
+    width: 202px;
+}
+
+.z_game-Hike-intro-body-list:last-child {
+    margin-right: 0px;
+}
+
+.z_game-Hike-intro-img {
+    width: 100%;
+    height: 128px;
+}
+
+.z_game-Hike-intro-title {
+    overflow: hidden;
+
+    margin-left: 10px;
+    width: 182px;
+    height: 30px;
+
+    font-size: 18px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.z_game-body {
+    margin-top: 20px;
+}
+
+.z_game-game-list-father {
+    width: 816px;
+}
+
+.z_game-game-list-header {
+    overflow: hidden;
+
+    width: 100%;
+    height: 40px;
+
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 40px;
+}
+
+.z_game-game-list {
+    margin-top: 10px;
+    margin-right: 18px;
+    margin-bottom: 20px;
+    border: 1px solid #e5e5e5;
+    width: 258px;
+    height: 367px;
+
+    background-color: #fafafa;
+}
+
+.z_game-game-list:nth-child(3n) {
+    margin-right: 0px;
+}
+
+.z_game-game-list-img {
+    width: 100%;
+    height: 164px;
+}
+
+.z_game-game-list-intro-father {
+    border: 1px solid #e5e5e5;
+    width: 256px;
+    height: 201px;
+}
+
+.z_game-game-list-title {
+    overflow: hidden;
+
+    margin-left: 10px;
+    width: 236px;
+    height: 30px;
+    
+    font-size: 18px;
+    line-height: 30px;
+}
+
+.z_game-game-list-intro {
+    overflow: hidden;
+
+    margin-bottom: 43px;
+    margin-left: 10px;
+    width: 236px;
+    height: 88px;
+
+    font-size: 16px;
+    line-height: 22px;
+
+    color: #7d7d7d;
+}
+
+.z_game-game-list-footer {
+    margin-left: 10px;
+    width: 236px;
+    height: 40px;
+
+    line-height: 40px;
+
+    color: #d2d2d2;
+}
+
+.z_game-game-list-time {
+    font-size: 16px;
+}
+
+.z_game-game-list-footer .z_game-game-count-icon {
+    margin-right: 3px;
+    font-size: 16px;
+    color: #999;
+}
+
+.z_game-more {
+    margin: 50px 213px;
+    height: 30px;
+    width: 390px;
+
+    line-height: 30px;
+    text-align: center;
+
+    color: #b1b1b1;
+    background-color: #fafafa;
+}
+
+.z_game-more:hover {
+    color: #707070;
+    background-color: #e9e9e9;
+
+    cursor: pointer;
+}
+
+.z_game-more1 {
+    margin: 50px 213px;
+    height: 30px;
+    width: 390px;
+
+    line-height: 30px;
+    text-align: center;
+
+    color: #b1b1b1;
+    background-color: #e9e9e9;
+}
+
+.z_game-more1:hover {
+    color: #707070;
+
+    cursor: pointer;
+}
+
+.z_game-game-class {
+    width: 260px;
+}
+
+.z_game-game-class-header {
+    border-bottom: 1px solid #e5e5e5;
+    width: 100%;
+    height: 40px;
+
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 40px;
+}
+
+.z_game-game-class-menu {
+    width: 267px;
+}
+
+.z_game-game-class-list {
+    margin-top: 10px;
+    margin-right: 7px;
+    margin-bottom: 4px;
+    border-radius: 15px;
+    padding: 0 15px;
+    /*width: 82px;
+    height: 28px;*/
+
+    font-size: 12px;
+    line-height: 28px;
+    text-align: center;
+
+    color: #666;
+    background-color: #f7f7f7;
+}
+
+.z_game-game-class-list:hover {
+    color: #fff;
+    background-color: #3893ff;
+
+    cursor: pointer;
+}
+
+/*.z_game-game-class-list[id*=第一人称射击] {
+    width: 112px;
+}*/
+
+.z_game-game-platform {
+    margin-top: 30px;
+    width: 260px;
+}
+
+.z_game-game-platform-list {
+    margin-top: 10px;
+    margin-right: 7px;
+    margin-bottom: 4px;
+    border-radius: 15px;
+    padding: 0 15px;
+    /*width: 82px;
+    height: 28px;*/
+
+    font-size: 12px;
+    line-height: 28px;
+    text-align: center;
+
+    color: #666;
+    background-color: #f7f7f7;
+}
+
+.z_game-game-platform-list:hover {
+    color: #fff;
+    background-color: #3893ff;
+
+    cursor: pointer;
+}
+
+/*.z_game-game-platform-list[id*=PlaySation] {
+    width: 112px;
+}*/
+
+.z_game-game-present-list {
+    margin-top: 10px;
+    margin-right: 7px;
+    margin-bottom: 4px;
+    border-radius: 15px;
+    padding: 0 15px;
+    /*width: 82px;
+    height: 28px;*/
+
+    font-size: 12px;
+    line-height: 28px;
+    text-align: center;
+
+    color: #666;
+    background-color: #f7f7f7;
+}
+
+.z_game-game-present-list:hover {
+    color: #fff;
+    background-color: #3893ff;
+
+    cursor: pointer;
+}
+
+/*.z_game-game-present-list[id*=PlaySationVR] {
+    width: 112px;
+}
+
+.z_game-game-present-list[id*=OculusCV1] {
+    width: 112px;
+}
+
+.z_game-game-present-list[id*=OculusDK2] {
+    width: 112px;
+}*/
+
+.z_game-game-rank {
+    margin-top: 80px;
+    width: 260px;
+    height: 530px;
+}
+
+.z_game-game-rank-header {
+    border-bottom: 1px solid #e5e5e5;
+    width: 260px;
+    height: 40px;
+
+    line-height: 40px;
+}
+
+.z_game-game-rank-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.z_game-game-rank-menu {
+    height: 40px;
+
+    line-height: 40px;
+}
+
+.z_game-game-rank-menu-list {
+    margin-left: 5px;
+    width: 28px;
+    height: 30px;
+
+    font-size: 14px;
+    text-align: center;
+}
+
+.z_game-game-rank-menu-list:hover {
+    cursor: pointer;
+}
+
+.z_game-game-rank-menu-list:first-child {
+    border-bottom: 3px solid #1e6fff;
+}
+
+.z_game-PC-game {
+    border-bottom: 1px solid #dcdcdc;
+    height: 37px;
+}
+
+.z_game-Pc-game-name {
+    display: block;
+    overflow: hidden;
+
+    padding-left: 15px;
+    width: 200px;
+    height: 20px;
+
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.z_game-page-father {
+    margin-top: 50px;
+    border: 2px solid #e5e5e5;
+    border-radius: 10px;
+    height: 32px;
+}
+
+.z_game-page-list {
+    border-right: 1px solid #e5e5e5;
+    width: 41px;
+    height: 32px;
+
+    line-height: 32px;
+    text-align: center;
+    background-color: #f5f5f5;
+}
+
+.z_game-page-list:first-child {
+    border-radius: 10px 0 0 10px;
+    width: 71px;
+}
+
+.z_game-page-list:nth-child(3) {
+    width: 71px;
+}
+
+.z_game-page-list:last-child {
+    border-radius: 0 10px 10px 0;
+    width: 71px;
+}
+
+.z_game-page-list-son {
+    width: 100%;
+    height: 32px;
+}
+
+.z_game-page-num {
+    z-index: 999;
+
+    width: 100%;
+    height: 100%;
+}
+
+.z_game-page-list:first-child .z_game-page-list-son {
+    border-radius: 10px 0 0 10px;
+}
+
+.z_game-page-list:last-child .z_game-page-list-son {
+    border-radius: 0 10px 10px 0;
+}
+
+.z_game-page-list-son:hover {
+    color: #fff;
+    background-color: #313131;
+
+    cursor: pointer;
+}
+
+.z_game-cycle {
+    bottom: 15px;
+
+    border: 1px solid #fff;
+    border-radius: 10px;
+    width: 14px;
+    height: 14px;
+}
+
+.z_game-cycle-first {
+    right: 80px;
+
+    /*border-color: #f6b01e;*/
+    border-color: #3893ff;
+    background-color: #3893ff;
+}
+
+.z_game-cycle-second {
+    right: 50px;
+
+    background-color: #fff;
+}
+
+.z_game-cycle-third {
+    right: 20px;
+
+    background-color: #fff;
+}
+
+.z_game-cycle:hover {
+    border-color: #3893ff;
+    background-color: #3893ff;
+
+    cursor: pointer;
+}
+
+.z_game-page-father-new {
+    margin-right: 260px;
+    margin-left: 250px;
+}
+
+.z_game-news-more {
+    margin-right: 14px;
+
+    font-size: 14px;
+    line-height: 46px;
+}
+
+.z_game-news-more a {
+    color: #7d7d7d;
+}
+.z_game_download-header {
+    margin-top: 30px;
+    height: 366px;
+}
+
+.z_game_download-img {
+    width: 676px;
+    height: 366px;
+}
+
+.z_game_download-entry {
+    width: 400px;
+    height: 366px;
+
+    background-color: #fafafa;
+}
+
+.z_game_download-name {
+    overflow: hidden;
+
+    margin-left: 10px;
+    width: 380px;
+    height: 40px;
+
+    font-size: 20px;
+    line-height: 40px;
+}
+
+.z_game_download-intro {
+    overflow: hidden;
+
+    margin-left: 10px;
+    width: 380px;
+    height: 80px;
+
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.z_game_download_label {
+    margin-top: 25px;
+    margin-left: 10px;
+    width: 380px;
+    height: 60px;
+
+    font-size: 14px;
+}
+
+.z_game_download_label_list {
+    width: 190px;
+    height: 20px;
+
+    line-height: 20px;
+}
+
+.z_game_download-entrence {
+    margin: 69px 56px 0;
+    width: 282px;
+    height: 62px;
+
+    line-height: 62px;
+    background-color: #33cc33;
+}
+
+.z_game_download-entrence:hover {
+    cursor: pointer;
+}
+
+.z_game_download-entrence .z_game_download-download-ico {
+    margin-left: 90px;
+    margin-right: 10px;
+
+    font-size: 16px;
+    color: #fff;
+}
+
+.z_game_download-download {
+    font-size: 16px;
+    color: #fff;
+}
+
+.z_game_download-game-intro-header {
+    overflow: hidden;
+
+    margin-top: 30px;
+    border-bottom: 1px solid #e5e5e5;
+    height: 49px;
+
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 49px;
+}
+
+.z_game_download-game-intro-body {
+    border-bottom: 1px solid #e5e5e5;
+    /*height: 2000px;*/
+}
+
+/*.z_game_download-intro1 {
+    margin-top: 30px;
+    margin-left: 32px;
+    width: 1036px;
+
+    font-size: 16px;
+    line-height: 25px;
+}
+
+.z_game_download-intro-video {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    margin-left: 110px;
+    width: 880px;
+    height: 551px;
+}
+
+.z_game_download-intro-img {
+    width: 100%;
+    height: 100%;
+}
+
+.z_game_download-intro2 {
+    margin-left: 32px;
+    width: 1036px;
+
+    font-size: 16px;
+    line-height: 25px;
+}
+
+.z_game_download-intro-img1 {
+    margin-top: 57px;
+    margin-bottom: 50px;
+    margin-left: 110px;
+    width: 880px;
+    height: 551px;
+}
+
+.z_game_download-intro3 {
+    margin-bottom: 31px;
+    margin-left: 32px;
+    width: 1036px;
+
+    font-size: 16px;
+    line-height: 25px;
+}*/
+
+.z_game_download-intro1 {
+    margin-left: 32px;
+    width: 1036px;
+}
+
+.z_game_download-intro1>p {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.z_game_download-intro1 p img {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-left: 78px;
+    width: 880px;
+    height: 551px;
+}
+
+/*.z_game_download-intro-img {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-left: 78px;
+    width: 880px;
+    height: 551px;
+}*/
+
+.z_game_download-footer-header {
+    margin-top: 30px;
+    height: 30px;
+    
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
+}
+
+.z_game_download-footer-content {
+    overflow: hidden;
+
+    margin-top: 10px;
+    margin-bottom: 50px;
+    height: 194px;
+}
+
+.z_game_download-footer-list {
+    margin-right: 21px;
+    width: 259px;
+    height: 100%;
+}
+
+.z_game_download-footer-list:last-child {
+    margin-right: 0px;
+}
+
+.z_game_download-footer-img {
+    width: 100%;
+    height: 164px;
+}
+
+.z_game_download-footer-title {
+    overflow: hidden;
+
+    width: 259px;
+    height: 30px;
+
+    font-size: 14px;
+    line-height: 30px;
+    text-align: center;
+}
+.z_game_class-header {
+    margin-top: 16px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.z_game_class-header-class {
+    margin: 14px 32px 0px 14px;
+    height: 32px;
+
+    line-height: 32px;
+}
+
+.z_game_class-father {
+    height: 92px;
+}
+
+.z_game_class-father1 {
+    margin-top: 22px;
+    height: 46px;
+}
+
+.z_game_class-father2 {
+    margin-top: 22px;
+    margin-bottom: 26px;
+    height: 46px;
+}
+
+.z_game_class-header-all {
+    margin-top: 14px;
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+    width: 62px;
+    height: 30px;
+
+    line-height: 32px;
+    text-align: center;
+
+    color: #666;
+}
+
+.z_game_class-header-all:hover {
+    color: #fff;
+    background-color: #3893ff;
+
+    cursor: pointer;
+}
+
+.z_game_class-header-menu {
+    margin-left: 14px;
+    width: 880px;
+}
+
+.z_game_class-class-list {
+    margin-top: 14px;
+    margin-right: 14px;
+    padding: 0 15px;
+    border-radius: 15px;
+    /*width: 102px;
+    height: 32px;*/
+
+    font-size: 16px;
+    line-height: 32px;
+    text-align: center;
+
+    color: #666;
+    background-color: #f7f7f7;
+}
+
+/*.z_game_class-class-list[id*=第一人称射击] {
+    width: 162px;
+}*/
+
+.z_game_class-class-list:hover {
+    color: #fff;
+    background-color: #3893ff;
+
+    cursor: pointer;
+}
+
+.z_game_class-platform-list {
+    margin-top: 14px;
+    margin-right: 14px;
+    border-radius: 15px;
+    padding: 0 15px;
+/*    width: 102px;
+    height: 32px;*/
+
+    font-size: 16px;
+    line-height: 32px;
+    text-align: center;
+
+    color: #666;
+    background-color: #f7f7f7;
+}
+
+/*.z_game_class-platform-list[id*=PlaySation] {
+    width: 162px;
+}*/
+
+.z_game_class-platform-list:hover {
+    color: #fff;
+    background-color: #3893ff;
+
+    cursor: pointer;
+}
+
+.z_game_class-present-list {
+    margin-top: 14px;
+    margin-right: 14px;
+    /*margin-bottom: 4px;*/
+    border-radius: 15px;
+    padding: 0 15px;
+    /*width: 102px;
+    height: 32px;*/
+
+    font-size: 16px;
+    line-height: 32px;
+    text-align: center;
+
+    color: #666;
+    background-color: #f7f7f7;
+}
+
+/*.z_game_class-present-list[id*=PlaySationVR] {
+    width: 162px;
+}
+
+.z_game_class-present-list[id*=OculusCV1] {
+    width: 162px;
+}
+
+.z_game_class-present-list[id*=OculusDK2] {
+    width: 162px;
+}
+*/
+.z_game_class-present-list:hover {
+    color: #fff;
+    background-color: #3893ff;
+
+    cursor: pointer;
+}
+
+.z_game_class-game-list {
+    margin-top: 10px;
+    margin-right: 18px;
+    margin-bottom: 20px;
+    border: 1px solid #e5e5e5;
+    width: 258px;
+    height: 367px;
+
+    background-color: #fafafa;
+}
+
+.z_game_class-game-list:nth-child(4n) {
+    margin-right: 0px;
+}
+
+.z_game-page-father-new2 {
+    margin-right: 400px;
+    margin-left: 350px;
+}
+.z_video-hot {
+    border-bottom: 2px solid #e5e5e5;
+    height: 730px;
+}
+
+.z_video-hot-body-father {
+    height: 730px;
+}
+
+.z_video-hot-b {
+    overflow: hidden;
+
+    width: 100%;
+    height: 555px;
+}
+
+.z_video-hot-menu {
+    overflow: hidden;
+
+    margin-right: auto;
+    margin-left: auto;
+    width: 420px;
+    height: 175px;
+
+    line-height: 175px;
+}
+
+.z_video-hot-menu-list {
+    margin: 60px 15px 0 15px;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    width: 175px;
+    height: 50px;
+
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.z_video-hot-menu-list:hover {
+    cursor: pointer;
+
+    color: #fff;
+    background-color: #3893ff;
+}
+
+.z_video-hot-menu-first {
+    color: #fff;
+    background-color: #3893ff;
+}
+
+.z_video-hot-menu-second {
+    color: #dcdcdc;
+}
+
+.z_video-hot-body {
+    width: 9999px;
+    height: 534px;
+}
+
+.z_video-hot-list {
+    margin-right: 31px;
+    width: 346px;
+    height: 534px;
+}
+
+.z_video-hot-list-son {
+    width: 346px;
+    height: 205px;
+}
+
+.z_video-hot-video-img {
+    width: 346px;
+    height: 205px;
+}
+
+.z_video-hot-video-bg {
+    bottom: 0px;
+
+    width: 60px;
+    height: 26px;
+
+    background-color: #000;
+
+    opacity: 0.5;
+}
+
+.z_video-hot-video-time {
+    bottom: 0px;
+
+    width: 60px;
+    height: 26px;
+
+    font-size: 12px;
+    text-align: center;
+    line-height: 26px;
+
+    color: #fff;
+}
+
+.z_video-hot-play-bg {
+    top: 75px;
+    left: 148px;
+
+    width: 50px;
+    height: 50px;
+
+    background-color: #000;
+
+    opacity: 0.5;
+}
+
+.z_video-hot-play-icon {
+    top: 85px;
+    left: 161px;
+
+    width: 25px;
+    height: 30px;
+
+    opacity: 0.9;
+}
+
+.z_video-hot-video-title {
+    overflow: hidden;
+    margin-bottom: 32px;
+    width: 346px;
+    height: 30px;
+
+    line-height: 30px;
+}
+
+.z_video-class-body {
+    border-bottom: 2px solid #dcdcdc;
+    height: 370px;
+}
+
+.z_video-class-title {
+    margin-top: 35px;
+    margin-bottom: 35px;
+    padding-left: 480px;
+    height: 30px;
+
+    line-height: 30px;
+    text-align: center;
+}
+
+.z_video-class-title span {
+    font-size: 20px;
+    color: #000;
+}
+
+.z_video-class-title-line {
+    margin: 15px 10px 0 10px;
+    border-bottom: 1px solid #000;
+    width: 30px;
+}
+
+.z_video-class-content {
+    overflow: hidden;
+
+    padding-top: 20px;
+    width: 1100px;
+    height: 200px;
+}
+
+.z_video-class-content-list {
+    margin-right: 7px;
+    margin-left: 8px;
+    width: 260px;
+    height: 100%;
+}
+
+.z_video-class-content-list-son {
+    width: 260px;
+    height: 146px;
+}
+
+.z_video-class-video-img {
+    width: 260px;
+    height: 146px;
+}
+
+.z_video-class-video-bg {
+    bottom: 0px;
+    left: 0px;
+
+    width: 56px;
+    height: 22px;
+
+    background-color: #000;
+
+    opacity: 0.5;
+}
+
+.z_video-class-video-time {
+    bottom: 0px;
+    left: 0px;
+
+    width: 56px;
+    height: 22px;
+
+    line-height: 22px;
+    text-align: center;
+
+    color: #fff;
+    font-size: 12px;
+}
+
+.z_video-class-play-bg {
+    top: 53px;
+    left: 110px;
+
+    width: 40px;
+    height: 40px;
+
+    background-color: #000;
+
+    opacity: 0.5;
+}
+
+.z_video-class-play-icon {
+    top: 60px;
+    left: 120px;
+
+    width: 20px;
+    height: 25px;
+
+    opacity: 0.9;
+}
+
+.z_video-class-video-title {
+    overflow: hidden;
+
+    margin-bottom: 24px;
+    width: 260px;
+    height: 30px;
+
+    line-height: 30px;
+}
+
+.z_video-class-more {
+    margin-top: 20px;
+    margin-left: 525px;
+    border: 1px solid #a3a3a3;
+    width: 50px;
+    height: 30px;
+
+    font-size: 15px;
+    line-height: 30px;
+    text-align: center;
+
+    color: #a3a3a3;
+}
+
+.z_video-class-more:hover {
+    color: #fff;
+    background-color: #9b9b9b;
+
+    cursor: pointer;
+}
+
+.z_video-hot-body-father .z_video-left {
+    top: 400px;
+    left: -70px;
+
+    font-size: 40px;
+
+    color: #707070;
+}
+
+.z_video-hot-body-father .z_video-left:hover {
+    color: #3893ff;
+
+    cursor: pointer;
+}
+
+.z_video-hot-body-father .z_video-right {
+    top: 400px;
+    right: -70px;
+
+    color: #707070;
+    font-size: 40px;
+}
+
+.z_video-hot-body-father .z_video-right:hover {
+    color: #3893ff;
+
+    cursor: pointer;
+}
+.z_video-class {
+    border-bottom: 2px solid #dcdcdc;
+    /*height: 110px;*/
+}
+
+.z_video-class-father {
+    z-index: 99;
+
+    padding-top: 37px;
+    padding-bottom: 37px;
+    padding-left: 256px;
+    padding-right: 256px;
+    height: 36px;
+
+    background-color: #fff;
+}
+
+.z_video-class-icon {
+    margin-right: 10px;
+    margin-left: 10px;
+    border: 1px solid #dcdcdc;
+    border-radius: 18px;
+    width: 62px;
+    height: 32px;
+
+    line-height: 32px;
+    text-align: center;
+
+    color: #dcdcdc;
+}
+
+.z_video-class-icon:hover {
+    /*color: #fff;
+    background-color: #3893ff;*/
+
+    cursor: pointer;
+}
+
+.z_video-class-icon-first {
+    color: #fff;
+    background-color: #3893ff;
+}
+.z_video_class-body {
+    overflow-x: hidden;
+}
+
+.z_video_class-content {
+    width: 1128px;
+}
+
+.z_video_class-content-list {
+    margin-top: 40px;
+    margin-right: 28px;
+    border: 1px solid #dcdcdc;
+    width: 252px;
+    height: 214px;
+}
+
+.z_video-img {
+    width: 252px;
+    height: 144px;
+}
+
+.z_video_class-video-bg {
+    top: 122px;
+    left: 0px;
+
+    width: 56px;
+    height: 22px;
+
+    background-color: #000;
+
+    opacity: 0.5;
+}
+
+.z_video_class-video-time {
+    top: 122px;
+    left: 0px;
+
+    width: 56px;
+    height: 22px;
+
+    line-height: 22px;
+    text-align: center;
+
+    color: #fff;
+    font-size: 12px;
+}
+
+.z_video_class-play-bg {
+    top: 53px;
+    left: 110px;
+
+    width: 40px;
+    height: 40px;
+
+    background-color: #000;
+
+    opacity: 0.5;
+}
+
+.z_video_class-play-icon {
+    top: 60px;
+    left: 120px;
+
+    width: 20px;
+    height: 25px;
+
+    opacity: 0.9;
+}
+
+.z_video_class-count {
+    height: 20px;
+
+    line-height: 20px;
+}
+
+.z_video_class-count img {
+    margin-right: 8px;
+    margin-left: 8px;
+    width: 16px;
+    height: 20px;
+
+    color: #999;
+
+    opacity: 0.6;
+}
+
+.z_video_class-count span {
+    color: #999;
+}
+
+.z_video_class-video-title {
+    overflow: hidden;
+
+    margin-bottom: 10px;
+    margin-left: 5px;
+    width: 247px;
+    height: 20px;
+
+    line-height: 20px;
+}
+
+.z_video_class-more {
+    margin: 50px 355px;
+    height: 30px;
+    width: 390px;
+
+    line-height: 30px;
+    text-align: center;
+
+    color: #b1b1b1;
+    background-color: #fafafa;
+}
+
+.z_video_class-more:hover {
+    color: #707070;
+    background-color: #e9e9e9;
+
+    cursor: pointer;
+}
+
+.z_video_class-more1 {
+    margin: 50px 355px;
+    height: 30px;
+    width: 390px;
+
+    line-height: 30px;
+    text-align: center;
+
+    color: #b1b1b1;
+    background-color: #e9e9e9;
+}
+
+.z_video_class-more1:hover {
+    color: #707070;
+
+    cursor: pointer;
+}
+.z_video_play-screen-father {
+    background-color: #9a9a9a;
+}
+
+.z_item {
+
+}
+
+.z_video_play-screen {
+    position: relative;
+
+    margin-right: auto;
+    margin-left: auto;
+    width: 1100px;
+    height: 690px;
+}
+
+.z_video_play-title {
+    overflow: hidden;
+
+    border-bottom: 2px solid #909090;
+    height: 160px;
+}
+
+.z_video_play-title h2 {
+    overflow: hidden;
+
+    width: 100%;
+    height: 50px;
+
+    line-height: 50px;
+}
+
+.z_video_play-description {
+    overflow: hidden;
+
+    width: 100%;
+    height: 85px;
+
+    color: #909090;
+}
+
+.z_video_play-relative-header {
+    overflow: hidden;
+
+    height: 30px;
+
+    line-height: 30px;
+}
+
+.z_video_play-relative-content {
+    overflow: hidden;
+
+    width: 1100px;
+    height: 210px;
+}
+
+.z_video_class-relative-list {
+    margin: 20px 15px 0px 16px;
+    width: 189px;
+    height: 176px;
+}
+
+.z_video_play-video-img {
+    width: 189px;
+    height: 126px;
+}
+
+.z_video_play-relative-title {
+    overflow: hidden;
+
+    width: 189px;
+    height: 30px;
+
+    line-height: 30px;
+    text-align: center;
+
+    color: #909090;
+}
+
+.z_video_play-relative-title a {
+    color: #909090;
+}
+
+.z_video_play-video-bg {
+    top: 104px;
+    left: 0px;
+
+    width: 56px;
+    height: 22px;
+
+    background-color: #000;
+
+    opacity: 0.5;
+}
+
+.z_video_play-video-time {
+    top: 104px;
+    left: 0px;
+
+    width: 56px;
+    height: 22px;
+
+    line-height: 22px;
+    text-align: center;
+
+    color: #fff;
+    font-size: 12px;
+}
+
+.z_video_play-play-bg {
+    top: 43px;
+    left: 75px;
+
+    width: 40px;
+    height: 40px;
+
+    background-color: #000;
+
+    opacity: 0.5;
+}
+
+.z_video_play-play-icon {
+    top: 50px;
+    left: 87px;
+
+    width: 20px;
+    height: 25px;
+
+    opacity: 0.9;
+}
+/*add by Nicholas 7/20/2016*/
+
+/*资讯页轮播图下的四个文章快照*/
+.w_snapshoot {
+    margin: 30px 0;
+}
+
+.w_snapshoot li {
+    margin-left: 20px;
+    width: 260px;
+
+    font-size: 14px;
+}
+
+.w_snapshoot li:first-child {
+    margin-left: 0;
+}
+
+/*资讯页轮播图下的四个文章图片*/
+.w_snapshoot-img {
+    display: block;
+
+    width: 100%;
+    height: 178px;
+}
+
+.w_snapshoot-detail {
+    margin-top: 6px;
+    width: 100%;
+    height: 20px;
+}
+
+/*资讯页轮播图下的四个文章中的标签*/
+.w_snapshoot-detail .w_tag {
+    margin-right: 6px;
+}
+
+.w_snapshoot-detail a:last-child {
+    display: inline-block;
+
+    width: 210px;
+}
+
+/*快讯*/
+.w_flash {
+    margin-bottom: 30px;
+
+    color: #666;
+}
+
+.w_flash .w_h3 a {
+    font-size: 12px;
+
+    color: #999;
+}
+
+/*快讯的时间列表*/
+.w_flash-time {
+    margin-right: 12px;
+
+    font-size: 14px;
+}
+
+.w_flash-time li {
+    margin-bottom: 38px; /*modified by Nicholas 7/26/2016*/
+}
+
+.w_flash-time p {
+    margin-bottom: 4px;
+
+    text-align: right;
+}
+
+/*快讯中的列表图片*/
+.w_flash-list {
+    margin-top: 14px;
+    width: 8px;
+    height: 366px;
+
+    background-image: url("../images/list.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+/*快讯的具体内容*/
+.w_flash-detail {
+    margin-left: 10px;
+    margin-right: 8px;
+}
+
+.w_flash-detail li {
+    margin-bottom: 20px;
+}
+
+.w_flash-detail li:nth-child(5) {
+    margin-bottom: 0;
+}
+
+.w_flash-detail a {
+    display: block;
+    width: 196px;
+
+    font-size: 14px;
+    line-height: 20px;
+
+    color: #666;
+}
+
+/*快讯，重置多行省略的参数*/
+.w_flash-detail .w_multi-ellipsis {
+    height: 58px;
+}
+
+.w_flash-detail .w_multi-ellipsis:before {
+    height: 58px;
+}
+
+.w_flash-detail .w_multi-ellipsis:after {
+    top: -16px;
+}
+
+.w_flash-detail p {
+    width: 196px;
+
+    font-size: 14px;
+    line-height: 20px;
+}
+.unslider {
+    overflow: auto;
+    margin: 0;
+    padding: 0
+}
+
+.unslider-wrap {
+    position: relative
+}
+
+.unslider-wrap.unslider-carousel>li {
+    float: left
+}
+
+.unslider-vertical>ul {
+    height: 100%
+}
+
+.unslider-vertical li {
+    float: none;
+    width: 100%
+}
+
+.unslider-fade {
+    position: relative
+}
+
+.unslider-fade .unslider-wrap li {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 8
+}
+
+.unslider-fade .unslider-wrap li.unslider-active {
+    z-index: 10
+}
+
+.unslider li,
+.unslider ol,
+.unslider ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: none
+}
+
+.unslider-arrow {
+    position: absolute;
+    left: 0;
+    z-index: 2;
+    cursor: pointer
+}
+
+.unslider-arrow.next {
+    left: auto;
+    right: 0;
+}
+.w_flash {
+    margin-bottom: 20px;
+}
+
+.w_flash img {
+    width: 100%;
+    height: 326px;
+}
+
+.w_flash-day {
+    margin-bottom: 18px;
+}
+
+.w_time {
+    width: 108px;
+}
+
+.w_time li {
+    position: relative;
+
+    border-right: 1px solid #999;
+    padding-right: 10px;
+    padding-bottom: 116px;
+    width: 100%;
+
+    font-size: 12px;
+    text-align: right;
+
+    color: #999;
+}
+
+.w_time li:first-child {
+    padding-bottom: 32px;
+
+    font-size: 14px;
+
+    color: #121212;
+}
+
+.w_time li em.w_dot {
+    position: absolute;
+    top: 2px;
+    right: -6px;
+}
+
+.w_time li:first-child em.w_dot {
+    top: 0;
+    right: -9px;
+
+    width: 16px;
+    height: 16px;
+}
+
+.w_time li:last-child {
+    border: 0;
+}
+
+.z_flash-detail {
+    margin-top: 36px;
+    width: 616px;
+}
+
+.z_flash-detail li {
+    margin-bottom: 12px;
+    height: 120px;
+}
+
+.z_flash-detail h2.w_h2 {
+    margin-bottom: 4px;
+    font-size: 18px;
+
+    color: #121212;
+}
+
+/*资讯页轮播图下的四个文章快照，重置多行省略的参数*/
+.z_flash-detail .w_multi-ellipsis {
+    height: 50px;
+}
+
+.z_flash-detail .w_multi-ellipsis:before {
+    height: 50px;
+}
+
+.z_flash-detail .w_multi-ellipsis:after {
+    top: -20px;
+
+    background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), to(#fafafa), color-stop(50%, #fafafa));
+    background: -moz-linear-gradient(to right, #fafafa);
+    background:   -ms-linear-gradient(to right, #fafafa);
+    background:     -o-linear-gradient(to right, #fafafa);
+    background:         linear-gradient(to right, #fafafa);
+}
+
+.z_flash-detail .w_multi-ellipsis p {
+    font-size: 12px;
+    line-height: 16px;
+
+    color: #999;
+}
+
+.w_flash-btn {
+    font-size: 12px;
+    font-weight: bold;
+
+    color: #1e6ff6;
+}
+.w_article h1 {
+    font-size: 32px;
+
+    color: #121212;
+}
+
+.w_article p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    font-size: 14px;
+
+    color: #333;
+}
+
+.w_article p img {
+    display: block;
+
+    width: 746px;
+    height: auto;
+}
+
+/*add by Nicholas 8/4/2016*/
+.w_article p embed,
+.w_article p iframe,
+.w_article p video {
+    display: block;
+
+    width: 100%;
+    height: 460px;
+}
+
+.w_relevant {
+    margin-bottom: 74px;
+}
+
+.w_relevant .w_h3 {
+    margin-bottom: 0px;
+    padding-left: 6px;
+}
+
+.w_relevant-ul li {
+
+    border-bottom: 1px solid #ccc;
+}
+
+.w_relevant-ul li a {
+    display: block;
+    
+    padding-left: 18px;
+    width: 262px;
+    height: 46px;
+
+    font-size: 14px;
+    line-height: 46px;
+
+    color: #121212;
+    background-image: url("../images/square.png");
+    background-repeat: no-repeat;
+    background-position: 8px 22px;
+}
+
+.z_td-code {
+    position: absolute;
+    top: -65px;
+    left: -64px;
+}
+
+.z_td-code img {
+    width: 115px;
+    height: 115px;
+}
+
+.z_fixed-left {
+    position: absolute;
+    top: 50px;
+    left: -64px;
+
+    width: 54px;
+    height: 108px;
+
+}
+
+.z_left-weChat {
+    width: 54px;
+    height: 54px;
+
+    line-height: 54px;
+    text-align: center;
+
+    background-color: #f7f7f7;
+}
+
+.z_left-weChat:hover {
+    cursor: pointer;
+}
+
+.z_left-weChat .z_left-icon {
+    font-size: 20px;
+
+    color: #bcbcbc;
+}
+
+/*# sourceMappingURL=pc_style.css.map*/

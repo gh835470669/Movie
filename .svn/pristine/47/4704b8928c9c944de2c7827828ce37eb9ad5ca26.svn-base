@@ -1,0 +1,42 @@
+.z_video-class {
+    border-bottom: 3px solid #dcdcdc;
+    /*height: 110px;*/
+}
+
+.z_video-class-father {
+    z-index: 99;
+
+    padding-top: 37px;
+    padding-bottom: 37px;
+    padding-left: 245px;
+    padding-right: 245px;
+    height: 36px;
+
+    background-color: #fff;
+}
+
+.z_video-class-icon {
+    margin-right: 10px;
+    margin-left: 10px;
+    border: 2px solid #dcdcdc;
+    border-radius: 18px;
+    width: 62px;
+    height: 32px;
+
+    line-height: 32px;
+    text-align: center;
+
+    color: #dcdcdc;
+}
+
+.z_video-class-icon:hover {
+    /*color: #fff;
+    background-color: #3893ff;*/
+
+    cursor: pointer;
+}
+
+.z_video-class-icon-first {
+    color: #fff;
+    background-color: #3893ff;
+}

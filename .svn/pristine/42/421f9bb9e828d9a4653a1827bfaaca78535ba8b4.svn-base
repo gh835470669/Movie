@@ -1,0 +1,79 @@
+package excel.util;
+
+import java.util.Date;
+
+public class MerchantVo {
+
+	private String keywords;
+	
+    private String merchantName;
+
+    private byte[] logoUrl;
+
+    private String description;
+    
+    private String merchantUrl;
+
+    private byte[] merchantQrcodeUrl;
+
+    private String merchantWeiboUrl;
+
+   
+	public MerchantVo() {  
+        super();  
+    }
+    public MerchantVo(String keywords, String merchantName, byte[] logoUrl, String description,  
+    		String merchantUrl,byte[] merchantQrcodeUrl,String merchantWeiboUrl) {  
+  
+        super();  
+        this.keywords = keywords;  
+        this.merchantName = merchantName;  
+        this.logoUrl = logoUrl;  
+        this.description = description;  
+        this.merchantUrl = merchantUrl;  
+        this.merchantQrcodeUrl = merchantQrcodeUrl;  
+        this.merchantWeiboUrl = merchantWeiboUrl;  
+    }
+    public String getKeywords() {
+		return keywords;
+	}
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
+	}
+	public String getMerchantName() {
+		return merchantName;
+	}
+	public void setMerchantName(String merchantName) {
+		this.merchantName = merchantName;
+	}
+	public byte[] getLogoUrl() {
+		return logoUrl;
+	}
+	public void setLogoUrl(byte[] logoUrl) {
+		this.logoUrl = logoUrl;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getMerchantUrl() {
+		return merchantUrl;
+	}
+	public void setMerchantUrl(String merchantUrl) {
+		this.merchantUrl = merchantUrl;
+	}
+	public byte[] getMerchantQrcodeUrl() {
+		return merchantQrcodeUrl;
+	}
+	public void setMerchantQrcodeUrl(byte[] merchantQrcodeUrl) {
+		this.merchantQrcodeUrl = merchantQrcodeUrl;
+	}
+	public String getMerchantWeiboUrl() {
+		return merchantWeiboUrl;
+	}
+	public void setMerchantWeiboUrl(String merchantWeiboUrl) {
+		this.merchantWeiboUrl = merchantWeiboUrl;
+	}
+}

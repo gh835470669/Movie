@@ -1,0 +1,100 @@
+.w_flash {
+    margin-bottom: 20px;
+}
+
+.w_flash img {
+    width: 100%;
+    height: 326px;
+}
+
+.w_flash-day {
+    margin-bottom: 18px;
+}
+
+.w_time {
+    width: 108px;
+}
+
+.w_time li {
+    position: relative;
+
+    border-right: 1px solid #999;
+    padding-right: 10px;
+    padding-bottom: 116px;
+    width: 100%;
+
+    font-size: 12px;
+    text-align: right;
+
+    color: #999;
+}
+
+.w_time li:first-child {
+    padding-bottom: 32px;
+
+    font-size: 14px;
+
+    color: #121212;
+}
+
+.w_time li em.w_dot {
+    position: absolute;
+    top: 2px;
+    right: -6px;
+}
+
+.w_time li:first-child em.w_dot {
+    top: 0;
+    right: -9px;
+
+    width: 16px;
+    height: 16px;
+}
+
+.w_time li:last-child {
+    border: 0;
+}
+
+.w_flash-detail {
+    margin-top: 36px;
+    width: 616px;
+}
+
+.w_flash-detail li {
+    margin-bottom: 12px;
+    height: 120px;
+}
+
+.w_flash-detail h2.w_h2 {
+    margin-bottom: 4px;
+    font-size: 18px;
+
+    color: #121212;
+}
+
+/*资讯页轮播图下的四个文章快照，重置多行省略的参数*/
+.w_flash-detail .w_multi-ellipsis {
+    height: 50px;
+}
+
+.w_flash-detail .w_multi-ellipsis:before {
+    height: 50px;
+}
+
+.w_flash-detail .w_multi-ellipsis:after {
+    top: -16px;
+}
+
+.w_flash-detail .w_multi-ellipsis p {
+    font-size: 12px;
+    line-height: 16px;
+
+    color: #999;
+}
+
+.w_flash-btn {
+    font-size: 12px;
+    font-weight: bold;
+
+    color: #1e6ff6;
+}

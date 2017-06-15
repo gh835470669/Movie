@@ -1,0 +1,54 @@
+package com.luwei.hackvr.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import cn.jpush.api.report.UsersResult.User;
+
+import com.luwei.hackvr.service.ArticleService;
+
+public class ArticleController {
+	private static Logger logger = Logger.getLogger(BackController.class);
+
+	@Autowired
+	private ArticleService articleService;
+	
+	@RequestMapping(value="deleteArticle")
+	String deleteArticle(HttpServletRequest request, Model model) {
+		try {
+			HttpSession session = request.getSession();
+			User userInfo = (User) session.getAttribute("userInfo");
+			if (userInfo == null) {
+				model.addAttribute("errorMessage", "用户状态异常");
+				return "jsp/login";
+			}
+			
+			String toutiaoIdStr = request.getParameter("toutiaoId");
+			if (toutiaoIdStr == null || "".equals(toutiaoIdStr)) {
+				model.addAttribute("errorMessage", "url参数异常");
+				return "jsp/toutiao/edit_toutiao";
+			}
+			Integer toutiaoId = Integer.valueOf(toutiaoIdStr);
+			// 通过设置flag为0来设置删除
+			int ret = articleService.offLineArticleById(toutiaoId);
+			if (ret > 0) { // 添加成功
+				model.addAttribute("retFlag", 1);
+			} else { // 添加失败
+				model.addAttribute("retFlag", 0);
+				model.addAttribute("errorMessage", "添加法庭信息失敗！");
+				return "jsp/toutiao/edit_toutiao";
+			}
+			return "jsp/toutiao/edit_toutiao";
+		} catch (Exception e) {
+			logger.error("toAddManager异常", e);
+			model.addAttribute("errorMessage", "页面跳转异常");
+			return "jsp/toutiao/edit_toutiao";
+		}
+	}
+	
+}

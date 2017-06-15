@@ -1,0 +1,29 @@
+package com.luwei.hackvr.controller;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/youxi")
+public class YouxiController {
+    private static Logger logger = Logger.getLogger(LoadController.class);
+    
+    @RequestMapping("")
+    public String comming (
+            HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
+        try {
+            return "jsp/comming";
+        } catch (Exception e) {
+            logger.error("加载主页异常", e);
+            model.addAttribute("errorMessage", "加载类型页面异常");
+            return "jsp/comming";
+        }
+    }
+}

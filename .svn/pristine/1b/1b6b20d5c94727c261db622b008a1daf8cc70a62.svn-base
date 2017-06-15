@@ -1,0 +1,68 @@
+#配置Logger
+#--log4j.rootLogger=[level], appenderName1, appenderName2, ...
+#level分为:
+#		FATAL : 0
+#		ERROR : 3
+#		WARN  : 4
+#		INFO  : 6
+#		DEBUG : 7
+#appenderName 任意取
+#
+#配置Appender
+#--log4j.appender.appenderName= appenderClassName
+#--log4j.appender.appenderName.option1= value1
+#--...........................................
+#appenderClassName必须为类的全名,log4j提供以下几种：
+#		org.apache.log4j.ConsoleAppender			: 控制台
+#		org.apache.log4j.FileAppender				: 文件
+#		org.apache.log4j.DailyRollingFileAppender	: 每天产生一个新的日志文件
+#		org.apache.log4j.RollingFileAppender		: 文件达到指定大小时产生一个新的日志文件
+#		org.apache.log4j.WriterAppender				: 将日志以流形式发送到任意指定地方
+#
+#option根据appenderClass的不同而有所区别，但有些是共同的.
+#option为layout时指定appenderName的布局
+#--log4j.appender.appenderName.layout= layoutClassName
+#--log4j.appender.appenderName.layout.option1= value1
+#--..................................................
+#layoutClassName必须为类的全名,log4j提供以下几种：
+#		org.apache.log4j.HTMLLayout		: 以HTML表格形式布局
+#		org.apache.log4j.PatternLayout	: 指定格式布局
+#		org.apache.log4j.SimpleLayout	: 包含日志级别和信息的字符串
+#		org.apache.log4j.TTCCLayout		: 包含日志产生的时间、线程、类别等等信息
+#
+#option根据layoutClass的不同而有所区别，但有些是共同的.
+#option为ConversionPattern时指定布局格式.
+#--log4j.appender.appenderName.layout.ConversionPattern= PatternString
+#PatternString为格式字符串，如下
+#	%m : 要输出的信息
+#	%p : 输出级别
+#	%r : 输出自应用启动到输出该log信息耗费的毫秒数
+#	%c : 输出所在类全名
+#	%t : 线程名
+#	%n : 换行符（根据平台不同而不同）
+#	%d : 输出日期和时间，可以指定格式，如: %d{yyyy MM dd HH:mm:ss}
+#	%l : 输出日志事件的发生位置，包括类目名、发生的线程，以及在代码中的行数。举例：Testlog4.main(TestLog4.java: 10 )  
+
+#示例:
+
+log4j.rootLogger=info, console, LogFile, ErrorFile
+
+log4j.appender.console= org.apache.log4j.ConsoleAppender
+log4j.appender.console.Target= System.out
+log4j.appender.console.layout= org.apache.log4j.PatternLayout
+log4j.appender.console.layout.ConversionPattern= %d{yyyy-MM-dd HH:mm:ss} %5p %c{1}: %L - %m%n
+
+#log4j.appender.LogFile= org.apache.log4j.DailyRollingFileAppender
+#log4j.appender.LogFile.File= ss1/app.log
+#log4j.appender.LogFile.Append= true
+#log4j.appender.LogFile.Threshold= DEBUG
+#log4j.appender.LogFile.layout= org.apache.log4j.PatternLayout
+#log4j.appender.LogFile.layout.ConversionPattern= %-d{yyyy-MM-dd HH:mm:ss} [%t:%r] - [%5p] %m%n
+#
+#log4j.appender.ErrorFile= org.apache.log4j.DailyRollingFileAppender
+#log4j.appender.ErrorFile.File= ss1/app.err
+#log4j.appender.ErrorFile.Append= true
+#log4j.appender.ErrorFile.Threshold = ERROR
+#log4j.appender.ErrorFile.layout= org.apache.log4j.PatternLayout
+#log4j.appender.ErrorFile.layout.ConversionPattern=%-d{yyyy-MM-dd HH\:mm\:ss} [%5p] - [%c]\: %m%n 
+log4j.logger.com.yudong=DEBUG

@@ -1,0 +1,70 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="javax.servlet.http.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <base href="<%=path%>/"/>
+    <meta charset="UTF-8">
+    <title>文章发布</title>
+    <link rel="stylesheet" type="text/css" href="./styles/public.css">
+    <link rel="stylesheet" type="text/css" href="./styles/backstage.css">
+</head>
+
+<body>
+	<!-- 文章发布 -->
+	<div class="z_backstage-content z_fl" id="zPublishContent">
+		<div class="z_backstage-content-title">
+			<h5>文章发布 > 抓取资源</h5>
+		</div>
+		<c:if test="${not empty article_poolSet }">
+			<c:forEach var="article_pools" items="${article_poolSet }">
+				<ul>
+					<c:forEach var="article_pool" items="${article_pools }" begin="0"
+						end="0" step="1">
+						<div class="z_backstage-list-title">
+							<span class="z_backstage-date1 z_fl"> <fmt:formatDate
+									value="${article_pool.createTime }" type="both"
+									pattern="yyyy年MM月dd日" />
+							</span> <span class="z_backstage-line z_fl"></span>
+						</div>
+					</c:forEach>
+					<c:forEach var="article_pool" items="${article_pools }">
+						<li class="z_backstage-list-p"><img
+							class="z_backstage-list-img z_fl" src="${article_pool.preimage }">
+							<div class="z_backstage-list-intro z_fl">
+								<a href="./load/article.do?articleId=${article_pool.articleId }"
+									target="_blank">${article_pool.title }</a>
+								<p class="z_backstage-intro-detail">${article_pool.preinfo }</p>
+								<div class="z_backstage-type">
+									<p class="z_fl">
+										<c:if test="${1 == article_pool.type }">时讯</c:if>
+										<c:if test="${2 == article_pool.type }">观察</c:if>
+										<c:if test="${3 == article_pool.type }">游戏</c:if>
+										<c:if test="${4 == article_pool.type }">影视</c:if>
+									</p>
+									<span> <fmt:formatDate
+											value="${article_pool.createTime }" type="both"
+											pattern="MM月dd日 HH:mm" />
+									</span>
+								</div>
+							</div>
+							<div class="z_backstage-checkbox z_fl">
+								<input class="z_checkbox" type="checkbox"> <span
+									class="z_backstage-list-flag z_hide-content">已发布</span>
+							</div></li>
+					</c:forEach>
+				</ul>
+			</c:forEach>
+		</c:if>
+	</div>
+</body>
+</html>

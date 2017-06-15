@@ -1,0 +1,217 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<%@include file="/WEB-INF/include/importFile.inc"%>
+<script type="text/javascript" src="<%=basePath%>js/checkboxutil.js"></script>
+
+<title>订单管理</title>
+</head>
+
+<body>
+	<div class="back-concen">
+		<h1>
+			订单管理<input type="button" id="showCond" onclick="changShowCond()"
+				value="隐藏条件栏" />
+		</h1>
+		<form method="post" name="queryform">
+			<div id="condDiv" class="breakdown">
+				<div class="inquire">
+					<input type="hidden" name="showCondFlag" id="showCondFlag"
+						value="${showCondFlag}" />
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td width="100px">创建时间从</td>
+							<td colspan="3"><input type="text" id="opTimeStart"
+								name="opTimeStart" value="${opTimeStart}" style="width: 150px"
+								readonly /><img src="<%=basePath%>images/calendar.gif"
+								alt="点击选择起始时间" style="cursor: pointer;" />
+								&nbsp;&nbsp;&nbsp;至&nbsp;&nbsp;&nbsp; <input type="text"
+								id="opTimeEnd" name="opTimeEnd" value="${opTimeEnd}"
+								style="width: 150px" readonly /><img
+								src="<%=basePath%>images/calendar.gif" alt="点击选择结束时间"
+								style="cursor: pointer;" /></td>
+						</tr>
+						<tr>
+							<td align="left">用户名:</td>
+							<td><input type="text" id="userId" name="userId"
+								value="${userId}" /></td>
+							<td align="left" width="10%">订单状态：</td>
+							<td><select id="flag" name="flag" style="width: 100px">
+									<option value="-1">全部</option>
+									<option value="0" <c:if test="${0 == flag}">selected </c:if>>资料未齐全</option>
+									<option value="1" <c:if test="${1 == flag}">selected </c:if>>未支付</option>
+									<option value="2" <c:if test="${2 == flag}">selected </c:if>>已支付</option>
+									<option value="3" <c:if test="${3 == flag}">selected </c:if>>已出单</option>
+									<option value="4" <c:if test="${4 == flag}">selected </c:if>>已完成</option>
+							</select></td>
+							<td align="left" width="10%">公司：</td>
+							<p>
+								<table>
+									<tr>
+										<td>省份： <select id="province"
+											onchange="setSelect(this,'city');"></select>
+											 城市： <select id="city"
+											onchange="setComSelect(this,'companyId');">
+												<option value="">请选择</option>
+										</select> 公司： <select name="companyId" id="companyId">
+												<option value="-1">全部公司</option>
+										</select>
+										</td>
+									</tr>
+								</table>
+							</p>
+							<td align="right"><input type="button" name="query"
+								onclick="doQuery(false)" value="查询" /></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="tab" style="padding-left:0px;">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td class="back-concen-tab-top">订单ID</td>
+						<td class="back-concen-tab-top">用户名</td>
+						<td class="back-concen-tab-top">费率</td>
+						<td class="back-concen-tab-top">保额</td>
+						<td class="back-concen-tab-top">法庭</td>
+						<td class="back-concen-tab-top">保险或者担保公司</td>
+						<td class="back-concen-tab-top">订单状态</td>
+						<!-- 			        <td class="back-concen-tab-top">帐号类型</td> -->
+						<td class="back-concen-tab-top">下单时间</td>
+						<td class="back-concen-tab-top">更新时间</td>
+						<td class="back-concen-tab-top"></td>
+					</tr>
+					<c:if test="${not empty subaoOrderData}">
+						<c:forEach var="subaoOrderInfo" items="${subaoOrderData}">
+							<tr>
+								<td>${subaoOrderInfo.orderId}</td>
+								<td>${subaoOrderInfo.userName}&nbsp;</td>
+								<td>${subaoOrderInfo.rate}&nbsp;</td>
+								<td>${subaoOrderInfo.premium}&nbsp;</td>
+								<td>${subaoOrderInfo.courtName}&nbsp;</td>
+								<td>${subaoOrderInfo.companyName}&nbsp;</td>
+								<td><c:choose>
+										<c:when test="${subaoOrderInfo.flag==0}">资料未齐全</c:when>
+										<c:when test="${subaoOrderInfo.flag==-2}">未支付</c:when>
+										<c:when test="${subaoOrderInfo.flag==-1}">已支付</c:when>
+										<c:when test="${subaoOrderInfo.flag==-1}">已出单</c:when>
+										<c:otherwise>已完成</c:otherwise>
+									</c:choose></td>
+								<%-- <td>
+			        		<c:choose>
+								<c:when test="${subaoOrderInfo.type==1}">普通帐号</c:when>
+								<c:when test="${subaoOrderInfo.type==2}"><a href="/v/dsSysAccount/toUpdateSysAccount.do?userId=${subaoOrderInfo.userId} ">系统帐号</a></c:when>
+								<c:otherwise>&nbsp;</c:otherwise>
+							</c:choose>
+					</td> --%>
+								<td><fmt:formatDate value="${subaoOrderInfo.createTime}"
+										type="both" pattern="yyyy-MM-dd HH:mm:ss" />&nbsp;</td>
+								<td><fmt:formatDate value="${subaoOrderInfo.updateTime}"
+										type="both" pattern="yyyy-MM-dd HH:mm:ss" />&nbsp;</td>
+								<td><a
+									href="<%=basePath%>order/toUpdateOrder.do?orderId=${subaoOrderInfo.orderId}">修改</a></td>
+							</tr>
+						</c:forEach>
+					</c:if>
+				</table>
+			</div>
+			<%@include file="/WEB-INF/include/paging.inc"%>
+		</form>
+	</div>
+	<%@include file="/WEB-INF/include/tipsDialog.inc"%>
+</body>
+</html>
+
+<script type="text/javascript">
+	$(function() {
+		initDateInput();
+		doShowCond();
+		setSelect(null, "province");
+	});
+ 
+	function initDateInput() {
+		$("#opTimeStart").dynDateTime({
+			showsTime: true,
+			ifFormat: "%Y-%m-%d",
+			button: ".next()"
+		});
+		$("#opTimeEnd").dynDateTime({
+			showsTime: true,
+			ifFormat: "%Y-%m-%d",
+			button: ".next()"
+		});
+	}	; 
+
+	function doQuery(newSql) {
+		if(!check())
+			return;
+		if(newSql){ 
+			//重新初始化页信息
+			resetPaging();
+		}
+		document.queryform.action="<%=basePath%>order/orderList.do";
+		document.queryform.submit();
+		openTipsDialog();
+	};
+	function check() {
+		return true;
+	};
+	function doShowCond() {
+		if ($("#showCondFlag").val() == "0") {
+			$("#condDiv").css("display", "none");
+			$("#showCond").val("显示条件栏");
+			$("#showCondFlag").val("0");
+		} else {
+			$("#condDiv").css("display", "");
+			$("#showCond").val("隐藏条件栏");
+			$("#showCondFlag").val("1");
+		}
+	};
+	function changShowCond() {
+		if ($("#showCondFlag").val() == "0") {
+			$("#showCondFlag").val("1");
+		} else {
+			$("#showCondFlag").val("0");
+		}
+		doShowCond();
+	};
+
+	function setSelect(fromSelVal,toSelId) {
+		if (fromSelVal == null) {
+			var url = "<%=basePath%>area/provinceList.do";
+		} else {
+			var url = "<%=basePath%>area/cityList.do?provinceId=" + fromSelVal.value;
+				}
+				jQuery.getJSON(url, {}, function(result) {
+					jQuery("#" + toSelId).get(0).options.length = 0;
+					if (fromSelVal == null) {
+						jQuery.each(result, function(i) {
+							jQuery("#" + toSelId).get(0).options.add(new Option(
+									result[i].provinceName, result[i].provinceId));
+						});
+						setSelect(document.getElementById("province"), "city");
+					} else {
+						jQuery.each(result, function(i) {
+							jQuery("#" + toSelId).get(0).options.add(new Option(
+									result[i].cityName, result[i].cityId));
+						});
+					}
+				});
+			};
+
+			function setComSelect(fromSelVal,toSelId) {
+				var url = "<%=basePath%>company/companyListByCity.do?cityId=" + fromSelVal.value;
+				jQuery.getJSON(url, {}, function(result) {
+					jQuery("#" + toSelId).get(0).options.length = 0;
+					jQuery("#" + toSelId).get(0).options.add(new Option(
+							"全部公司", -1));
+					jQuery.each(result, function(i) {
+						jQuery("#" + toSelId).get(0).options.add(new Option(
+								result[i].companyName, result[i].companyId));
+					});
+				});
+			};
+</script>

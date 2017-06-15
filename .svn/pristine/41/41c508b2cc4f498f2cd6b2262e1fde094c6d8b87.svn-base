@@ -1,0 +1,134 @@
+package com.luwei.hackvr.utils;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.apache.commons.lang.StringUtils;
+
+public class Zhuaqushuju {
+	public static void main(String args[]) {
+		try {
+			StringBuffer html = new StringBuffer();
+			URL url = new URL("http://www.80oto.com/index.php?m=weixin&a=show&id=4946");
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			InputStreamReader isr = new InputStreamReader(conn.getInputStream(),"utf-8");
+			BufferedReader br = new BufferedReader(isr);
+			String temp;
+			while ((temp = br.readLine()) != null) {
+				html.append(temp).append("\n");
+			}
+			br.close();
+			isr.close();
+//			System.out.println(html);
+			String yes = html.toString();
+//			yes = new String();
+			System.out.println(Zhuaqushuju.getContext(yes).get(0));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static List getContext(String html) {
+        List resultList = new ArrayList();
+        String a = StringUtils.substringBetween(html,"<li><span>O2O平台名称：</span>","&nbsp");
+//        Pattern p = Pattern.compile("<li><span>O2O平台名称：</span>([^&nbsp;<a target=\"_self\" href=\"javascript:void(0)\"]*)");//匹配<title>开头，</title>结尾的文档
+//        Matcher m = p.matcher(html );//开始编译
+       // while (m.find()) {
+            resultList.add(a);//获取被匹配的部分
+       // }
+        return resultList;
+    }
+	
+	public static List getContext1(String html) {
+        List resultList = new ArrayList();
+//        Pattern p = Pattern.compile("<li><span>关键词标签：</span>([^</li>]*)");//匹配<title>开头，</title>结尾的文档
+        String a = StringUtils.substringBetween(html,"<li><span>关键词标签：</span>","</li>");
+//      Pattern p = Pattern.compile("<li><span>O2O平台名称：</span>([^&nbsp;<a target=\"_self\" href=\"javascript:void(0)\"]*)");//匹配<title>开头，</title>结尾的文档
+//      Matcher m = p.matcher(html );//开始编译
+     // while (m.find()) {
+          resultList.add(a);//获取被匹配的部分
+        return resultList;
+    }
+	//关注度
+	public static List getContext2(String html) {
+        List resultList = new ArrayList();
+//        Pattern p = Pattern.compile("<li><span>关注度：</span>([^人关注</li>]*)");//匹配<title>开头，</title>结尾的文档
+        String a = StringUtils.substringBetween(html,"<li><span>关注度：</span>","人关注");
+//      Pattern p = Pattern.compile("<li><span>O2O平台名称：</span>([^&nbsp;<a target=\"_self\" href=\"javascript:void(0)\"]*)");//匹配<title>开头，</title>结尾的文档
+//      Matcher m = p.matcher(html );//开始编译
+     // while (m.find()) {
+          resultList.add(a);
+        return resultList;
+    }
+	//微博url
+	public static List getContext3(String html) {
+		List resultList = new ArrayList();
+//      Pattern p = Pattern.compile("<li><span>关注度：</span>([^人关注</li>]*)");//匹配<title>开头，</title>结尾的文档
+      String a = StringUtils.substringBetween(html,"<a rel=\"nofollow\" target=\"_blank\" href=\"http://weibo.com/","\"><img width=\"50\" height=\"42\" src=\"/Apps/Tpl/default/Public/images/sina_on.png\"></a>");
+//    Pattern p = Pattern.compile("<li><span>O2O平台名称：</span>([^&nbsp;<a target=\"_self\" href=\"javascript:void(0)\"]*)");//匹配<title>开头，</title>结尾的文档
+//    Matcher m = p.matcher(html );//开始编译<a rel="nofollow" target="_blank" href="http://weibo.com/daojiadaojia"><img width="50" height="42" src="/Apps/Tpl/default/Public/images/sina_on.png"></a>
+   // while (m.find()) {
+        resultList.add("http://weibo.com/" + a);
+        return resultList;
+    }
+	
+	//二维码url
+	public static List getContext4(String html) {
+//		System.out.println(html);
+        List resultList = new ArrayList();
+//        Pattern p = Pattern.compile("<img src=\"([^\"+\\stitle]*)");//匹配<title>开头，</title>结尾的文档
+//        Matcher m = p.matcher(html );//开始编译
+//        while (m.find()) {
+//            resultList.add(m.group(1));//获取被匹配的部分
+//            m.group(0);
+//        }
+       String a = StringUtils.substringBetween(html, "<ul class=\"iewm fl\">", "title=\"使用微信安装并打开二维码扫描工具");
+       a = StringUtils.substringBetween(a,"<img src=\"","\" ");
+       //        resultList.remove(0);
+       resultList.add("http://www.80oto.com" + a);
+        return resultList;
+    }
+	
+	//简介
+	public static List getContext5(String html) {
+        List resultList = new ArrayList();
+       String a = StringUtils.substringBetween(html, "<div class=\"content fz14\"> ", "</div>");
+       resultList.add(a);
+        return resultList;
+    }
+	
+	//logo url
+    public static List getContext6(String html) {
+        List resultList = new ArrayList();
+       String a = StringUtils.substringBetween(html, "<div class=\"photo fl\"> <img src=\"", "\" /></br>");
+       resultList.add("http://www.80oto.com" + a);
+        return resultList;
+    }
+    
+    //标签
+    public static List getContext7(String html) {
+        List resultList = new ArrayList();
+       String a = StringUtils.substringBetween(html, "<li><span>标签：</span>", "</li>");
+       a = StringUtils.substringBetween(a, "target=\"_blank\">", "</a>");
+       resultList.add(a);
+        return resultList;
+    }
+    
+  //官网url
+  	public static List getContext8(String html) {
+  		List resultList = new ArrayList();
+//        Pattern p = Pattern.compile("<li><span>关注度：</span>([^人关注</li>]*)");//匹配<title>开头，</title>结尾的文档
+        String a = StringUtils.substringBetween(html,"<a rel=\"nofollow\" target=\"_blank\" href=\"","\"><img width=\"50\" height=\"42\" src=\"/Apps/Tpl/default/Public/images/guan_on.png\"></a>");
+//      Pattern p = Pattern.compile("<li><span>O2O平台名称：</span>([^&nbsp;<a target=\"_self\" href=\"javascript:void(0)\"]*)");//匹配<title>开头，</title>结尾的文档
+//      Matcher m = p.matcher(html );//开始编译<a rel="nofollow" target="_blank" href="http://weibo.com/daojiadaojia"><img width="50" height="42" src="/Apps/Tpl/default/Public/images/sina_on.png"></a>
+     // while (m.find()) {
+          resultList.add(a);
+          return resultList;
+      }
+}

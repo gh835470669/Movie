@@ -1,0 +1,140 @@
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : 127.0.0.1
+Source Server Version : 50522
+Source Host           : localhost:3306
+Source Database       : hackvr
+
+Target Server Type    : MYSQL
+Target Server Version : 50522
+File Encoding         : 65001
+
+Date: 2016-07-31 20:09:09
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+-- ----------------------------
+-- Table structure for `article`
+-- ----------------------------
+DROP TABLE IF EXISTS `article`;
+CREATE TABLE `article` (
+  `article_id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) NOT NULL COMMENT '文章题目',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '文章发布时间',
+  `preinfo` varchar(500) NOT NULL COMMENT '文章导语',
+  `content` text NOT NULL COMMENT '文章内容',
+  `preimage` varchar(400) DEFAULT NULL COMMENT '预览图',
+  `source` varchar(400) DEFAULT NULL COMMENT '来源',
+  `author` varchar(50) DEFAULT NULL COMMENT '编辑作者',
+  `label` varchar(600) DEFAULT NULL COMMENT '标签名，以 | 分割',
+  `type` tinyint(3) NOT NULL COMMENT '1：时讯；2：观察；3：游戏；4：影视',
+  `click_num` int(11) NOT NULL DEFAULT '11' COMMENT '阅读量',
+  `flag` tinyint(2) NOT NULL DEFAULT '1' COMMENT '0：无效；1：已发布；2：未发布',
+  `sort` int(11) DEFAULT NULL,
+  `like_num` int(11) DEFAULT '11',
+  `unlike_num` int(11) DEFAULT '0',
+  `qrcode_url` varchar(400) DEFAULT NULL COMMENT '二维码路径',
+  PRIMARY KEY (`article_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+-- ----------------------------
+-- Table structure for `kuaixun`
+-- ----------------------------
+DROP TABLE IF EXISTS `kuaixun`;
+CREATE TABLE `kuaixun` (
+  `kuaixun_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '快讯id',
+  `title` varchar(200) NOT NULL COMMENT '快讯标题',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '快讯时间',
+  `preinfo` varchar(500) NOT NULL COMMENT '快讯导语',
+  `link` varchar(400) NOT NULL COMMENT '快讯链接',
+  `flag` tinyint(2) NOT NULL DEFAULT '1' COMMENT '1：有效；0：无效',
+  PRIMARY KEY (`kuaixun_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+-- ----------------------------
+-- Table structure for `label`
+-- ----------------------------
+DROP TABLE IF EXISTS `label`;
+CREATE TABLE `label` (
+  `label_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '标签id',
+  `label_name` varchar(50) NOT NULL COMMENT '标签名',
+  `flag` tinyint(2) NOT NULL DEFAULT '1' COMMENT '0：无效；1：有效',
+  PRIMARY KEY (`label_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+-- ----------------------------
+-- Table structure for `mapper`
+-- ----------------------------
+DROP TABLE IF EXISTS `mapper`;
+CREATE TABLE `mapper` (
+  `mapper_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'label与article对应的id',
+  `label_id` int(11) NOT NULL,
+  `article_id` int(11) NOT NULL,
+  `flag` tinyint(2) NOT NULL DEFAULT '1' COMMENT '0：无效；1：有效',
+  PRIMARY KEY (`mapper_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+-- ----------------------------
+-- Table structure for `toutiao`
+-- ----------------------------
+DROP TABLE IF EXISTS `toutiao`;
+CREATE TABLE `toutiao` (
+  `toutiao_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '头条id',
+  `article_id` int(11) NOT NULL,
+  `type` tinyint(3) NOT NULL COMMENT '0：首页头条；1：时讯头条；2：观察头条；3：游戏头条；4：影视头条；5:资讯轮播；6：视频轮播',
+  `flag` tinyint(2) NOT NULL DEFAULT '1' COMMENT '0：无效；1：有效',
+  `sort` int(11) DEFAULT NULL COMMENT '排行',
+  `img_url` varchar(400) DEFAULT NULL COMMENT '头条图片url',
+  PRIMARY KEY (`toutiao_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+-- ----------------------------
+-- Table structure for `user`
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(200) NOT NULL,
+  `passwd` varchar(200) NOT NULL,
+  `flag` int(2) NOT NULL COMMENT '是否可用，1表示可以，0表示不可以',
+  `role` int(2) NOT NULL DEFAULT '1' COMMENT '角色，0表示超级管理员，1表示普通用户',
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES ('1', 'superman_luwei', '13b5c59d7538432a04fd38ce94dd986e', '1', '0');
+
+-- ----------------------------
+-- Table structure for `video`
+-- ----------------------------
+DROP TABLE IF EXISTS `video`;
+CREATE TABLE `video` (
+  `video_id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) NOT NULL COMMENT '文章题目',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '文章发布时间',
+  `preinfo` varchar(1000) NOT NULL COMMENT '文章导语',
+  `video_url` varchar(400) NOT NULL COMMENT '视频链接',
+  `preimage` varchar(400) DEFAULT NULL COMMENT '预览图',
+  `source` varchar(400) DEFAULT NULL COMMENT '来源',
+  `author` varchar(50) DEFAULT NULL COMMENT '编辑作者',
+  `label` varchar(600) DEFAULT NULL COMMENT '标签名，以 | 分割',
+  `type` int(11) NOT NULL,
+  `click_num` int(11) NOT NULL DEFAULT '0' COMMENT '阅读量',
+  `flag` tinyint(2) NOT NULL DEFAULT '1' COMMENT '0：无效；1：有效',
+  `sort` int(11) DEFAULT NULL,
+  `like_num` int(11) DEFAULT NULL,
+  `unlike_num` int(11) DEFAULT NULL,
+  `qrcode_url` varchar(100) DEFAULT NULL COMMENT '二维码路径',
+  `video_length` varchar(100) DEFAULT NULL COMMENT '视频长度',
+  `video_clarity` varchar(100) DEFAULT NULL COMMENT '视频清晰度',
+  PRIMARY KEY (`video_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+

@@ -1,0 +1,309 @@
+package com.luwei.hackvr.controller;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.luwei.hackvr.pojo.Article;
+import com.luwei.hackvr.pojo.Kuaixun;
+import com.luwei.hackvr.pojo.Video;
+import com.luwei.hackvr.service.ArticleService;
+import com.luwei.hackvr.service.KuaixunService;
+import com.luwei.hackvr.service.ToutiaoService;
+import com.luwei.hackvr.service.VideoService;
+import com.luwei.hackvr.utils.QRCodeUtil;
+
+@Controller
+public class LoadController {
+    private static Logger logger = Logger.getLogger(LoadController.class);
+    
+    @Autowired
+    private ArticleService articleService;
+    @Autowired
+    private KuaixunService kuaixunService;
+    @Autowired
+    private ToutiaoService toutiaoService;
+    @Autowired
+    private VideoService videoService;
+    
+    @RequestMapping(value = "load")
+    public String load(
+            HttpServletRequest request, Model model) throws IOException {
+        try {
+            List<Article> articles = articleService.getLateArticles(0, 5);
+            List<Map<String, Object>> shouyeToutiaos = articleService.getShouyeToutiaoArticles(3);
+
+            request.setAttribute("firstFlag", "no");
+            if (articles != null && shouyeToutiaos != null) {
+                request.setAttribute("articles", articles);
+                request.setAttribute("shouyeToutiaos", shouyeToutiaos);
+                return "index";
+            } else {
+                model.addAttribute("errorMessage", "文章资源加载异常");
+                return "index";
+            }
+
+        } catch (Exception e) {
+            logger.error("加载主页异常", e);
+            model.addAttribute("errorMessage", "加载主页异常");
+            return "index";
+        }
+    }
+    
+    @RequestMapping(value = "flash")
+    public String flash (
+            HttpServletRequest request, Model model) throws IOException {
+        try {
+//          TODO
+//            List<Article> remenToutiaos = articleService.getRemenToutiaoArticles();
+            List<Article> remenToutiaos = articleService.getLateArticles(30, 6);
+            List<List<Kuaixun>> kuaixunSet = kuaixunService.getDayKuaixunsByNum(0, 5);
+            
+            if (remenToutiaos != null && kuaixunSet != null) {
+                request.setAttribute("remenToutiaos", remenToutiaos);
+                request.setAttribute("kuaixunSet", kuaixunSet);
+                return "jsp/flash";
+            } else {
+                model.addAttribute("errorMessage", "文章资源加载异常");
+                return "index";
+            }
+
+        } catch (Exception e) {
+            logger.error("加载快讯页面异常", e);
+            model.addAttribute("errorMessage", "加载快讯页面异常");
+            return "index";
+        }
+    }
+    
+    @RequestMapping(value = "zixun")
+    public String zixun (
+            HttpServletRequest request, Model model) throws IOException {
+        try {
+            List<Article> articles = articleService.getLateArticles(0, 8);
+            List<Map<String, Object>> zixunToutios = articleService.getZixunToutiaoArticles(3);
+//          TODO
+//          List<Article> remenToutiaos = articleService.getRemenToutiaoArticles();
+            List<Article> remenToutiaos = articleService.getLateArticles(30, 6);
+            Map<String, Object> shixunToutiao = articleService.getShixunToutiaoArticle();
+            Map<String, Object> guanchaToutiao = articleService.getGuanchaToutiaoArticle();
+            Map<String, Object> yingshiToutiao = articleService.getYingshiToutiaoArticle();
+            Map<String, Object> youxiToutiao = articleService.getYouxiToutiaoArticle();
+            List<Kuaixun> kuaixuns = kuaixunService.getLateKuaixuns(0, 5);
+            
+            if (articles != null && zixunToutios != null && remenToutiaos != null &&
+                    shixunToutiao != null && guanchaToutiao != null && yingshiToutiao != null &&
+                    youxiToutiao != null && kuaixuns != null) {
+                request.setAttribute("articles", articles);
+                request.setAttribute("zixunToutios", zixunToutios);
+                request.setAttribute("remenToutiaos", remenToutiaos);
+                request.setAttribute("shixunToutiao", shixunToutiao);
+                request.setAttribute("guanchaToutiao", guanchaToutiao);
+                request.setAttribute("yingshiToutiao", yingshiToutiao);
+                request.setAttribute("youxiToutiao", youxiToutiao);
+                request.setAttribute("kuaixuns", kuaixuns);
+                return "jsp/information";
+                
+            } else {
+                model.addAttribute("errorMessage", "文章资源加载异常");
+                return "index";
+            }
+
+        } catch (Exception e) {
+            logger.error("加载资讯页面异常", e);
+            model.addAttribute("errorMessage", "加载资讯页面异常");
+            return "index";
+        }
+    }
+    
+    @RequestMapping(value = "type")
+    public String type (
+            @RequestParam(value = "type", required = true) Byte typeString,
+            HttpServletRequest request, Model model) throws IOException {
+        try {
+            List<Article> articles = articleService.getLateArticles(0, 8, typeString);
+//          TODO
+//          List<Article> remenToutiaos = articleService.getRemenToutiaoArticles();
+            List<Article> remenToutiaos = articleService.getLateArticles(30, 6);
+            if (articles != null && remenToutiaos != null) {
+                request.setAttribute("type", typeString);
+                request.setAttribute("articles", articles);
+                request.setAttribute("remenToutiaos", remenToutiaos); 
+                return "jsp/news";
+            } else {
+                model.addAttribute("errorMessage", "文章资源加载异常");
+                return "index";
+            }
+
+        } catch (Exception e) {
+            logger.error("加载类型页面异常", e);
+            model.addAttribute("errorMessage", "加载类型页面异常");
+            return "index";
+        }
+    }
+    
+    @RequestMapping(value = "article")
+    public String article (
+            @RequestParam(value = "articleId", required = true) int articleId,
+            HttpServletRequest request, Model model) throws IOException {
+        Article article = articleService.getArticleById(articleId);
+//      TODO
+//      List<Article> remenToutiaos = articleService.getRemenToutiaoArticles();
+        List<Article> remenToutiaos = articleService.getLateArticles(30, 6);
+        List<Article> xiangguanArticles = remenToutiaos;
+        
+        try {
+            if (article != null && remenToutiaos != null) {
+                request.setAttribute("article", article);
+                request.setAttribute("remenToutiaos", remenToutiaos);
+                // TODO 相关文章
+                request.setAttribute("xiangguanArticles", xiangguanArticles);
+                return "jsp/article";
+            } else {
+                model.addAttribute("errorMessage", "文章资源加载异常");
+                return "index";
+            }
+
+        } catch (Exception e) {
+            logger.error("加载文章页面异常", e);
+            model.addAttribute("errorMessage", "加载文章页面异常");
+            return "index";
+        }
+    }
+    
+    @RequestMapping(value = "comming")
+    public String comming (
+            HttpServletRequest request, Model model) throws IOException {
+        try {
+            return "jsp/comming";
+        } catch (Exception e) {
+            logger.error("加载主页异常", e);
+            model.addAttribute("errorMessage", "加载类型页面异常");
+            return "jsp/comming";
+        }
+    }
+    
+
+    @RequestMapping(value = "video")
+    public String video (
+            HttpServletRequest request, Model model) throws IOException {
+        try {
+            List<List<Map<String, Object>>> shipinToutiaoSet = videoService.getShipinToutiaoVideos(8);
+            List<List<Map<String, Object>>> remenShipinSet = videoService.getRemenShipinVideos(8);
+            List<Video> tiyanVideos = videoService.getLateVideos(0, 4, 0);
+            List<Video> shishangVideos = videoService.getLateVideos(0, 4, 1);
+            List<Video> yuleVideos = videoService.getLateVideos(0, 4, 2);
+            List<Video> fengguangVideos = videoService.getLateVideos(0, 4, 3);
+            List<Video> kejiVideos = videoService.getLateVideos(0, 4, 4);
+            List<Video> shenghuoVideos = videoService.getLateVideos(0, 4, 5);
+            List<Video> shehuiVideos = videoService.getLateVideos(0, 4, 6);
+            
+//            if (shipinToutiaoSet != null && remenShipinSet != null && tiyanVideos != null && shishangVideos != null
+//                    && yuleVideos != null && fengguangVideos != null && kejiVideos != null && shenghuoVideos != null
+//                    && shehuiVideos != null && fengguangVideos != null) {
+                request.setAttribute("shipinToutiaoSet", shipinToutiaoSet);
+                request.setAttribute("remenShipinSet", remenShipinSet);
+                request.setAttribute("tiyanVideos", tiyanVideos);
+                request.setAttribute("shishangVideos", shishangVideos);
+                request.setAttribute("yuleVideos", yuleVideos);
+                request.setAttribute("fengguangVideos", fengguangVideos);
+                request.setAttribute("kejiVideos", kejiVideos);
+                request.setAttribute("shenghuoVideos", shenghuoVideos);
+                request.setAttribute("shehuiVideos", shehuiVideos);
+                return "jsp/video";
+                
+//            } else {
+//                model.addAttribute("errorMessage", "视频资源加载异常");
+//                return "index";
+//            }
+
+        } catch (Exception e) {
+            logger.error("加载视频页面异常", e);
+            model.addAttribute("errorMessage", "加载视频页面异常");
+            return "index";
+        }
+    }
+    
+
+    @RequestMapping(value = "videoclass")
+    public String videoclass (
+            HttpServletRequest request, Model model) throws IOException {
+        try {
+            List<Video> tiyanVideos = videoService.getLateVideos(0, 4, 0);
+            List<Video> shishangVideos = videoService.getLateVideos(0, 4, 1);
+            List<Video> yuleVideos = videoService.getLateVideos(0, 4, 2);
+            List<Video> fengguangVideos = videoService.getLateVideos(0, 4, 3);
+            List<Video> kejiVideos = videoService.getLateVideos(0, 4, 4);
+            List<Video> shenghuoVideos = videoService.getLateVideos(0, 4, 5);
+            List<Video> shehuiVideos = videoService.getLateVideos(0, 4, 6);
+            
+//            if (tiyanVideos != null && shishangVideos != null
+//                    && yuleVideos != null && fengguangVideos != null && kejiVideos != null && shenghuoVideos != null
+//                    && shehuiVideos != null && fengguangVideos != null) {
+                request.setAttribute("tiyanVideos", tiyanVideos);
+                request.setAttribute("shishangVideos", shishangVideos);
+                request.setAttribute("yuleVideos", yuleVideos);
+                request.setAttribute("fengguangVideos", fengguangVideos);
+                request.setAttribute("kejiVideos", kejiVideos);
+                request.setAttribute("shenghuoVideos", shenghuoVideos);
+                request.setAttribute("shehuiVideos", shehuiVideos);
+                return "jsp/videoclass";
+                
+//            } else {
+//                model.addAttribute("errorMessage", "视频资源加载异常");
+//                return "index";
+//            }
+
+        } catch (Exception e) {
+            logger.error("加载视频页面异常", e);
+            model.addAttribute("errorMessage", "加载视频页面异常");
+            return "index";
+        }
+    }
+    
+    @RequestMapping(value = "videoplay")
+    public String videoplay (
+            
+            HttpServletRequest request, Model model) throws IOException {
+        try {
+            List<Video> tiyanVideos = videoService.getLateVideos(0, 4, 0);
+            List<Video> shishangVideos = videoService.getLateVideos(0, 4, 1);
+            List<Video> yuleVideos = videoService.getLateVideos(0, 4, 2);
+            List<Video> fengguangVideos = videoService.getLateVideos(0, 4, 3);
+            List<Video> kejiVideos = videoService.getLateVideos(0, 4, 4);
+            List<Video> shenghuoVideos = videoService.getLateVideos(0, 4, 5);
+            List<Video> shehuiVideos = videoService.getLateVideos(0, 4, 6);
+            
+//            if (tiyanVideos != null && shishangVideos != null
+//                    && yuleVideos != null && fengguangVideos != null && kejiVideos != null && shenghuoVideos != null
+//                    && shehuiVideos != null && fengguangVideos != null) {
+                request.setAttribute("tiyanVideos", tiyanVideos);
+                request.setAttribute("shishangVideos", shishangVideos);
+                request.setAttribute("yuleVideos", yuleVideos);
+                request.setAttribute("fengguangVideos", fengguangVideos);
+                request.setAttribute("kejiVideos", kejiVideos);
+                request.setAttribute("shenghuoVideos", shenghuoVideos);
+                request.setAttribute("shehuiVideos", shehuiVideos);
+                return "jsp/videoclass";
+                
+//            } else {
+//                model.addAttribute("errorMessage", "视频资源加载异常");
+//                return "index";
+//            }
+
+        } catch (Exception e) {
+            logger.error("加载视频页面异常", e);
+            model.addAttribute("errorMessage", "加载视频页面异常");
+            return "index";
+        }
+    }
+    
+}

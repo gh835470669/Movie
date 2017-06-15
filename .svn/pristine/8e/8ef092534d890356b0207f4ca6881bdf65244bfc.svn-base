@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.luwei.hackvr.mapper.VideoMapper" >
+  <resultMap id="BaseResultMap" type="com.luwei.hackvr.pojo.Video" >
+    <id column="video_id" property="videoId" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="preinfo" property="preinfo" jdbcType="VARCHAR" />
+    <result column="video_url" property="videoUrl" jdbcType="VARCHAR" />
+    <result column="preimage" property="preimage" jdbcType="VARCHAR" />
+    <result column="source" property="source" jdbcType="VARCHAR" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="label" property="label" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="click_num" property="clickNum" jdbcType="INTEGER" />
+    <result column="flag" property="flag" jdbcType="TINYINT" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="like_num" property="likeNum" jdbcType="INTEGER" />
+    <result column="unlike_num" property="unlikeNum" jdbcType="INTEGER" />
+    <result column="qrcode_url" property="qrcodeUrl" jdbcType="VARCHAR" />
+    <result column="video_length" property="videoLength" jdbcType="VARCHAR" />
+    <result column="video_clarity" property="videoClarity" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    video_id, title, create_time, preinfo, video_url, preimage, source, author, label, 
+    type, click_num, flag, sort, like_num, unlike_num, qrcode_url, video_length, video_clarity
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.luwei.hackvr.pojo.VideoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from video
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from video
+    where video_id = #{videoId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from video
+    where video_id = #{videoId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.luwei.hackvr.pojo.VideoExample" >
+    delete from video
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.luwei.hackvr.pojo.Video" >
+    <selectKey resultType="java.lang.Integer" keyProperty="videoId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into video (title, create_time, preinfo, 
+      video_url, preimage, source, 
+      author, label, type, 
+      click_num, flag, sort, 
+      like_num, unlike_num, qrcode_url, 
+      video_length, video_clarity)
+    values (#{title,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{preinfo,jdbcType=VARCHAR}, 
+      #{videoUrl,jdbcType=VARCHAR}, #{preimage,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, 
+      #{author,jdbcType=VARCHAR}, #{label,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{clickNum,jdbcType=INTEGER}, #{flag,jdbcType=TINYINT}, #{sort,jdbcType=INTEGER}, 
+      #{likeNum,jdbcType=INTEGER}, #{unlikeNum,jdbcType=INTEGER}, #{qrcodeUrl,jdbcType=VARCHAR}, 
+      #{videoLength,jdbcType=VARCHAR}, #{videoClarity,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.luwei.hackvr.pojo.Video" >
+    <selectKey resultType="java.lang.Integer" keyProperty="videoId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into video
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="preinfo != null" >
+        preinfo,
+      </if>
+      <if test="videoUrl != null" >
+        video_url,
+      </if>
+      <if test="preimage != null" >
+        preimage,
+      </if>
+      <if test="source != null" >
+        source,
+      </if>
+      <if test="author != null" >
+        author,
+      </if>
+      <if test="label != null" >
+        label,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="clickNum != null" >
+        click_num,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="likeNum != null" >
+        like_num,
+      </if>
+      <if test="unlikeNum != null" >
+        unlike_num,
+      </if>
+      <if test="qrcodeUrl != null" >
+        qrcode_url,
+      </if>
+      <if test="videoLength != null" >
+        video_length,
+      </if>
+      <if test="videoClarity != null" >
+        video_clarity,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="preinfo != null" >
+        #{preinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="videoUrl != null" >
+        #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="preimage != null" >
+        #{preimage,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null" >
+        #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="clickNum != null" >
+        #{clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=TINYINT},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="likeNum != null" >
+        #{likeNum,jdbcType=INTEGER},
+      </if>
+      <if test="unlikeNum != null" >
+        #{unlikeNum,jdbcType=INTEGER},
+      </if>
+      <if test="qrcodeUrl != null" >
+        #{qrcodeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoLength != null" >
+        #{videoLength,jdbcType=VARCHAR},
+      </if>
+      <if test="videoClarity != null" >
+        #{videoClarity,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.luwei.hackvr.pojo.VideoExample" resultType="java.lang.Integer" >
+    select count(*) from video
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update video
+    <set >
+      <if test="record.videoId != null" >
+        video_id = #{record.videoId,jdbcType=INTEGER},
+      </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.preinfo != null" >
+        preinfo = #{record.preinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.videoUrl != null" >
+        video_url = #{record.videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.preimage != null" >
+        preimage = #{record.preimage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.source != null" >
+        source = #{record.source,jdbcType=VARCHAR},
+      </if>
+      <if test="record.author != null" >
+        author = #{record.author,jdbcType=VARCHAR},
+      </if>
+      <if test="record.label != null" >
+        label = #{record.label,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=INTEGER},
+      </if>
+      <if test="record.clickNum != null" >
+        click_num = #{record.clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.flag != null" >
+        flag = #{record.flag,jdbcType=TINYINT},
+      </if>
+      <if test="record.sort != null" >
+        sort = #{record.sort,jdbcType=INTEGER},
+      </if>
+      <if test="record.likeNum != null" >
+        like_num = #{record.likeNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.unlikeNum != null" >
+        unlike_num = #{record.unlikeNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.qrcodeUrl != null" >
+        qrcode_url = #{record.qrcodeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.videoLength != null" >
+        video_length = #{record.videoLength,jdbcType=VARCHAR},
+      </if>
+      <if test="record.videoClarity != null" >
+        video_clarity = #{record.videoClarity,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update video
+    set video_id = #{record.videoId,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      preinfo = #{record.preinfo,jdbcType=VARCHAR},
+      video_url = #{record.videoUrl,jdbcType=VARCHAR},
+      preimage = #{record.preimage,jdbcType=VARCHAR},
+      source = #{record.source,jdbcType=VARCHAR},
+      author = #{record.author,jdbcType=VARCHAR},
+      label = #{record.label,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=INTEGER},
+      click_num = #{record.clickNum,jdbcType=INTEGER},
+      flag = #{record.flag,jdbcType=TINYINT},
+      sort = #{record.sort,jdbcType=INTEGER},
+      like_num = #{record.likeNum,jdbcType=INTEGER},
+      unlike_num = #{record.unlikeNum,jdbcType=INTEGER},
+      qrcode_url = #{record.qrcodeUrl,jdbcType=VARCHAR},
+      video_length = #{record.videoLength,jdbcType=VARCHAR},
+      video_clarity = #{record.videoClarity,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.luwei.hackvr.pojo.Video" >
+    update video
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="preinfo != null" >
+        preinfo = #{preinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="videoUrl != null" >
+        video_url = #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="preimage != null" >
+        preimage = #{preimage,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null" >
+        label = #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="clickNum != null" >
+        click_num = #{clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=TINYINT},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="likeNum != null" >
+        like_num = #{likeNum,jdbcType=INTEGER},
+      </if>
+      <if test="unlikeNum != null" >
+        unlike_num = #{unlikeNum,jdbcType=INTEGER},
+      </if>
+      <if test="qrcodeUrl != null" >
+        qrcode_url = #{qrcodeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoLength != null" >
+        video_length = #{videoLength,jdbcType=VARCHAR},
+      </if>
+      <if test="videoClarity != null" >
+        video_clarity = #{videoClarity,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where video_id = #{videoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.luwei.hackvr.pojo.Video" >
+    update video
+    set title = #{title,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      preinfo = #{preinfo,jdbcType=VARCHAR},
+      video_url = #{videoUrl,jdbcType=VARCHAR},
+      preimage = #{preimage,jdbcType=VARCHAR},
+      source = #{source,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      label = #{label,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      click_num = #{clickNum,jdbcType=INTEGER},
+      flag = #{flag,jdbcType=TINYINT},
+      sort = #{sort,jdbcType=INTEGER},
+      like_num = #{likeNum,jdbcType=INTEGER},
+      unlike_num = #{unlikeNum,jdbcType=INTEGER},
+      qrcode_url = #{qrcodeUrl,jdbcType=VARCHAR},
+      video_length = #{videoLength,jdbcType=VARCHAR},
+      video_clarity = #{videoClarity,jdbcType=VARCHAR}
+    where video_id = #{videoId,jdbcType=INTEGER}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="com.luwei.hackvr.pojo.VideoExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from video
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

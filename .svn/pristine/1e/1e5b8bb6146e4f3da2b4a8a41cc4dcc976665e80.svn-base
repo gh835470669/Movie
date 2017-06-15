@@ -1,0 +1,51 @@
+(function() {
+    var now = 0;
+    var turn = 0;
+
+    var menuList = document.getElementsByClassName('z_video-class-icon');
+    var contentList = document.getElementsByClassName('z_video_class-content');
+    var more = document.getElementsByClassName("z_video_class-more");
+    var moring = document.getElementsByClassName("z_video_class-more1");
+
+    more[0].onclick = showMore();
+    more[1].onclick = showMore();
+    more[2].onclick = showMore();
+    more[3].onclick = showMore();
+    more[4].onclick = showMore();
+    more[5].onclick = showMore();
+    more[6].onclick = showMore();
+
+    menuList[0].onclick = show(0);
+    menuList[1].onclick = show(1);
+    menuList[2].onclick = show(2);
+    menuList[3].onclick = show(3);
+    menuList[4].onclick = show(4);
+    menuList[5].onclick = show(5);
+    menuList[6].onclick = show(6);
+
+    function show(to) {
+        return function() {
+            showContent(to);
+        }
+    }
+
+    function showContent(to) {
+        turn = to;
+        if (turn != now) {
+            menuList[now].style.backgroundColor = '#fff';
+            menuList[now].style.color = '#dcdcdc';
+            menuList[turn].style.backgroundColor = '#3889ff';
+            menuList[turn].style.color = '#fff';
+            contentList[now].style.display = 'none';
+            contentList[turn].style.display = 'block';
+            now = turn;
+        }
+    }
+
+    function showMore() {
+        return function() {
+            more[now].style.display = 'none';
+            moring[now].style.display = 'block';
+        }
+    }
+})();

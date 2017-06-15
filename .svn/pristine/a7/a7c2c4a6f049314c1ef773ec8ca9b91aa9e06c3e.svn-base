@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.luwei.hackvr.mapper.DisplayDeviceMapMapper" >
+  <resultMap id="BaseResultMap" type="com.luwei.hackvr.pojo.DisplayDeviceMap" >
+    <id column="display_device_mapper_id" property="displayDeviceMapperId" jdbcType="INTEGER" />
+    <result column="display_device_id" property="displayDeviceId" jdbcType="INTEGER" />
+    <result column="game_id" property="gameId" jdbcType="INTEGER" />
+    <result column="flag" property="flag" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    display_device_mapper_id, display_device_id, game_id, flag
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.luwei.hackvr.pojo.DisplayDeviceMapExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from display_device_map
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from display_device_map
+    where display_device_mapper_id = #{displayDeviceMapperId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from display_device_map
+    where display_device_mapper_id = #{displayDeviceMapperId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.luwei.hackvr.pojo.DisplayDeviceMapExample" >
+    delete from display_device_map
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.luwei.hackvr.pojo.DisplayDeviceMap" >
+    <selectKey resultType="java.lang.Integer" keyProperty="displayDeviceMapperId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into display_device_map (display_device_id, game_id, flag
+      )
+    values (#{displayDeviceId,jdbcType=INTEGER}, #{gameId,jdbcType=INTEGER}, #{flag,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.luwei.hackvr.pojo.DisplayDeviceMap" >
+    <selectKey resultType="java.lang.Integer" keyProperty="displayDeviceMapperId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into display_device_map
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="displayDeviceId != null" >
+        display_device_id,
+      </if>
+      <if test="gameId != null" >
+        game_id,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="displayDeviceId != null" >
+        #{displayDeviceId,jdbcType=INTEGER},
+      </if>
+      <if test="gameId != null" >
+        #{gameId,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.luwei.hackvr.pojo.DisplayDeviceMapExample" resultType="java.lang.Integer" >
+    select count(*) from display_device_map
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update display_device_map
+    <set >
+      <if test="record.displayDeviceMapperId != null" >
+        display_device_mapper_id = #{record.displayDeviceMapperId,jdbcType=INTEGER},
+      </if>
+      <if test="record.displayDeviceId != null" >
+        display_device_id = #{record.displayDeviceId,jdbcType=INTEGER},
+      </if>
+      <if test="record.gameId != null" >
+        game_id = #{record.gameId,jdbcType=INTEGER},
+      </if>
+      <if test="record.flag != null" >
+        flag = #{record.flag,jdbcType=TINYINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update display_device_map
+    set display_device_mapper_id = #{record.displayDeviceMapperId,jdbcType=INTEGER},
+      display_device_id = #{record.displayDeviceId,jdbcType=INTEGER},
+      game_id = #{record.gameId,jdbcType=INTEGER},
+      flag = #{record.flag,jdbcType=TINYINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.luwei.hackvr.pojo.DisplayDeviceMap" >
+    update display_device_map
+    <set >
+      <if test="displayDeviceId != null" >
+        display_device_id = #{displayDeviceId,jdbcType=INTEGER},
+      </if>
+      <if test="gameId != null" >
+        game_id = #{gameId,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=TINYINT},
+      </if>
+    </set>
+    where display_device_mapper_id = #{displayDeviceMapperId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.luwei.hackvr.pojo.DisplayDeviceMap" >
+    update display_device_map
+    set display_device_id = #{displayDeviceId,jdbcType=INTEGER},
+      game_id = #{gameId,jdbcType=INTEGER},
+      flag = #{flag,jdbcType=TINYINT}
+    where display_device_mapper_id = #{displayDeviceMapperId,jdbcType=INTEGER}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="com.luwei.hackvr.pojo.DisplayDeviceMapExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from display_device_map
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

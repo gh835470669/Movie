@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.luwei.hackvr.mapper.GameMapper" >
+  <resultMap id="BaseResultMap" type="com.luwei.hackvr.pojo.Game" >
+    <id column="game_id" property="gameId" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="company" property="company" jdbcType="INTEGER" />
+    <result column="preinfo" property="preinfo" jdbcType="VARCHAR" />
+    <result column="preimage" property="preimage" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="system" property="system" jdbcType="INTEGER" />
+    <result column="display_device" property="displayDevice" jdbcType="VARCHAR" />
+    <result column="control_device" property="controlDevice" jdbcType="VARCHAR" />
+    <result column="download_url" property="downloadUrl" jdbcType="VARCHAR" />
+    <result column="download_num" property="downloadNum" jdbcType="INTEGER" />
+    <result column="installation_size" property="installationSize" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="DECIMAL" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="source" property="source" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="flag" property="flag" jdbcType="TINYINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.luwei.hackvr.pojo.Game" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    game_id, title, create_time, company, preinfo, preimage, type, system, display_device, 
+    control_device, download_url, download_num, installation_size, score, author, source, 
+    sort, flag
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.luwei.hackvr.pojo.GameExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from game
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.luwei.hackvr.pojo.GameExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from game
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from game
+    where game_id = #{gameId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from game
+    where game_id = #{gameId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.luwei.hackvr.pojo.GameExample" >
+    delete from game
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.luwei.hackvr.pojo.Game" >
+    <selectKey resultType="java.lang.Integer" keyProperty="gameId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into game (title, create_time, company, 
+      preinfo, preimage, type, 
+      system, display_device, control_device, 
+      download_url, download_num, installation_size, 
+      score, author, source, 
+      sort, flag, content
+      )
+    values (#{title,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{company,jdbcType=INTEGER}, 
+      #{preinfo,jdbcType=VARCHAR}, #{preimage,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{system,jdbcType=INTEGER}, #{displayDevice,jdbcType=VARCHAR}, #{controlDevice,jdbcType=VARCHAR}, 
+      #{downloadUrl,jdbcType=VARCHAR}, #{downloadNum,jdbcType=INTEGER}, #{installationSize,jdbcType=VARCHAR}, 
+      #{score,jdbcType=DECIMAL}, #{author,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, 
+      #{sort,jdbcType=INTEGER}, #{flag,jdbcType=TINYINT}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.luwei.hackvr.pojo.Game" >
+    <selectKey resultType="java.lang.Integer" keyProperty="gameId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into game
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="company != null" >
+        company,
+      </if>
+      <if test="preinfo != null" >
+        preinfo,
+      </if>
+      <if test="preimage != null" >
+        preimage,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="system != null" >
+        system,
+      </if>
+      <if test="displayDevice != null" >
+        display_device,
+      </if>
+      <if test="controlDevice != null" >
+        control_device,
+      </if>
+      <if test="downloadUrl != null" >
+        download_url,
+      </if>
+      <if test="downloadNum != null" >
+        download_num,
+      </if>
+      <if test="installationSize != null" >
+        installation_size,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="author != null" >
+        author,
+      </if>
+      <if test="source != null" >
+        source,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=INTEGER},
+      </if>
+      <if test="preinfo != null" >
+        #{preinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="preimage != null" >
+        #{preimage,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="system != null" >
+        #{system,jdbcType=INTEGER},
+      </if>
+      <if test="displayDevice != null" >
+        #{displayDevice,jdbcType=VARCHAR},
+      </if>
+      <if test="controlDevice != null" >
+        #{controlDevice,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadUrl != null" >
+        #{downloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadNum != null" >
+        #{downloadNum,jdbcType=INTEGER},
+      </if>
+      <if test="installationSize != null" >
+        #{installationSize,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=DECIMAL},
+      </if>
+      <if test="author != null" >
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=TINYINT},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.luwei.hackvr.pojo.GameExample" resultType="java.lang.Integer" >
+    select count(*) from game
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update game
+    <set >
+      <if test="record.gameId != null" >
+        game_id = #{record.gameId,jdbcType=INTEGER},
+      </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.company != null" >
+        company = #{record.company,jdbcType=INTEGER},
+      </if>
+      <if test="record.preinfo != null" >
+        preinfo = #{record.preinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.preimage != null" >
+        preimage = #{record.preimage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.system != null" >
+        system = #{record.system,jdbcType=INTEGER},
+      </if>
+      <if test="record.displayDevice != null" >
+        display_device = #{record.displayDevice,jdbcType=VARCHAR},
+      </if>
+      <if test="record.controlDevice != null" >
+        control_device = #{record.controlDevice,jdbcType=VARCHAR},
+      </if>
+      <if test="record.downloadUrl != null" >
+        download_url = #{record.downloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.downloadNum != null" >
+        download_num = #{record.downloadNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.installationSize != null" >
+        installation_size = #{record.installationSize,jdbcType=VARCHAR},
+      </if>
+      <if test="record.score != null" >
+        score = #{record.score,jdbcType=DECIMAL},
+      </if>
+      <if test="record.author != null" >
+        author = #{record.author,jdbcType=VARCHAR},
+      </if>
+      <if test="record.source != null" >
+        source = #{record.source,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sort != null" >
+        sort = #{record.sort,jdbcType=INTEGER},
+      </if>
+      <if test="record.flag != null" >
+        flag = #{record.flag,jdbcType=TINYINT},
+      </if>
+      <if test="record.content != null" >
+        content = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update game
+    set game_id = #{record.gameId,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      company = #{record.company,jdbcType=INTEGER},
+      preinfo = #{record.preinfo,jdbcType=VARCHAR},
+      preimage = #{record.preimage,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=VARCHAR},
+      system = #{record.system,jdbcType=INTEGER},
+      display_device = #{record.displayDevice,jdbcType=VARCHAR},
+      control_device = #{record.controlDevice,jdbcType=VARCHAR},
+      download_url = #{record.downloadUrl,jdbcType=VARCHAR},
+      download_num = #{record.downloadNum,jdbcType=INTEGER},
+      installation_size = #{record.installationSize,jdbcType=VARCHAR},
+      score = #{record.score,jdbcType=DECIMAL},
+      author = #{record.author,jdbcType=VARCHAR},
+      source = #{record.source,jdbcType=VARCHAR},
+      sort = #{record.sort,jdbcType=INTEGER},
+      flag = #{record.flag,jdbcType=TINYINT},
+      content = #{record.content,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update game
+    set game_id = #{record.gameId,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      company = #{record.company,jdbcType=INTEGER},
+      preinfo = #{record.preinfo,jdbcType=VARCHAR},
+      preimage = #{record.preimage,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=VARCHAR},
+      system = #{record.system,jdbcType=INTEGER},
+      display_device = #{record.displayDevice,jdbcType=VARCHAR},
+      control_device = #{record.controlDevice,jdbcType=VARCHAR},
+      download_url = #{record.downloadUrl,jdbcType=VARCHAR},
+      download_num = #{record.downloadNum,jdbcType=INTEGER},
+      installation_size = #{record.installationSize,jdbcType=VARCHAR},
+      score = #{record.score,jdbcType=DECIMAL},
+      author = #{record.author,jdbcType=VARCHAR},
+      source = #{record.source,jdbcType=VARCHAR},
+      sort = #{record.sort,jdbcType=INTEGER},
+      flag = #{record.flag,jdbcType=TINYINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.luwei.hackvr.pojo.Game" >
+    update game
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="company != null" >
+        company = #{company,jdbcType=INTEGER},
+      </if>
+      <if test="preinfo != null" >
+        preinfo = #{preinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="preimage != null" >
+        preimage = #{preimage,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="system != null" >
+        system = #{system,jdbcType=INTEGER},
+      </if>
+      <if test="displayDevice != null" >
+        display_device = #{displayDevice,jdbcType=VARCHAR},
+      </if>
+      <if test="controlDevice != null" >
+        control_device = #{controlDevice,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadUrl != null" >
+        download_url = #{downloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadNum != null" >
+        download_num = #{downloadNum,jdbcType=INTEGER},
+      </if>
+      <if test="installationSize != null" >
+        installation_size = #{installationSize,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=DECIMAL},
+      </if>
+      <if test="author != null" >
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=TINYINT},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where game_id = #{gameId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.luwei.hackvr.pojo.Game" >
+    update game
+    set title = #{title,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      company = #{company,jdbcType=INTEGER},
+      preinfo = #{preinfo,jdbcType=VARCHAR},
+      preimage = #{preimage,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      system = #{system,jdbcType=INTEGER},
+      display_device = #{displayDevice,jdbcType=VARCHAR},
+      control_device = #{controlDevice,jdbcType=VARCHAR},
+      download_url = #{downloadUrl,jdbcType=VARCHAR},
+      download_num = #{downloadNum,jdbcType=INTEGER},
+      installation_size = #{installationSize,jdbcType=VARCHAR},
+      score = #{score,jdbcType=DECIMAL},
+      author = #{author,jdbcType=VARCHAR},
+      source = #{source,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      flag = #{flag,jdbcType=TINYINT},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where game_id = #{gameId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.luwei.hackvr.pojo.Game" >
+    update game
+    set title = #{title,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      company = #{company,jdbcType=INTEGER},
+      preinfo = #{preinfo,jdbcType=VARCHAR},
+      preimage = #{preimage,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      system = #{system,jdbcType=INTEGER},
+      display_device = #{displayDevice,jdbcType=VARCHAR},
+      control_device = #{controlDevice,jdbcType=VARCHAR},
+      download_url = #{downloadUrl,jdbcType=VARCHAR},
+      download_num = #{downloadNum,jdbcType=INTEGER},
+      installation_size = #{installationSize,jdbcType=VARCHAR},
+      score = #{score,jdbcType=DECIMAL},
+      author = #{author,jdbcType=VARCHAR},
+      source = #{source,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      flag = #{flag,jdbcType=TINYINT}
+    where game_id = #{gameId,jdbcType=INTEGER}
+  </update>
+  <select resultMap="ResultMapWithBLOBs" parameterType="com.luwei.hackvr.pojo.GameExample" id="selectByExampleWithBLOBsWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from game
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select resultMap="BaseResultMap" parameterType="com.luwei.hackvr.pojo.GameExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from game
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

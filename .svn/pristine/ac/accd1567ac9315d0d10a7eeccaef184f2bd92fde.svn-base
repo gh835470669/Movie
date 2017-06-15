@@ -1,0 +1,52 @@
+.z_login {
+
+    margin: 50px auto 0;
+    border: 1px solid #dcdcdc;
+    width: 600px;
+    height: 400px;
+
+    background-color: #000;
+
+    vertical-align: center;
+}
+
+.z_login-input {
+    display: block;
+    
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 220px;
+    height: 25px;
+
+    font-size: 15px;
+    font-family: "microsoft yahei";
+
+    outline: none;
+}
+
+.z_login-input1 {
+
+    margin-top: 120px;
+}
+
+.z_login-input2 {
+    margin-top: 20px;
+}
+
+.z_login-button {
+    display: block;
+
+    margin: 20px auto 0;
+    width: 240px;
+    height: 25px;
+
+    font-size: 15px;
+    font-family: "microsoft yahei";
+}
+
+.z_login-button:hover {
+    cursor: pointer;
+}

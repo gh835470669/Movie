@@ -1,0 +1,138 @@
+package com.luwei.hackvr.controller;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.luwei.hackvr.pojo.Article;
+import com.luwei.hackvr.pojo.ArticlesJson;
+import com.luwei.hackvr.pojo.Kuaixun;
+import com.luwei.hackvr.pojo.KuaixunJson;
+import com.luwei.hackvr.pojo.Video;
+import com.luwei.hackvr.service.ArticleService;
+import com.luwei.hackvr.service.KuaixunService;
+import com.luwei.hackvr.service.ToutiaoService;
+import com.luwei.hackvr.service.VideoService;
+
+@Controller
+@RequestMapping("json/")
+public class JsonController {
+    
+    @Autowired
+    private ArticleService articleService;
+    
+    @Autowired
+    private KuaixunService kuaixunService;
+    
+    @Autowired
+    private ToutiaoService toutiaoService;
+    
+    @Autowired
+    private VideoService videoservice;
+    
+    @ResponseBody
+    @RequestMapping("article.do")
+    public ArticlesJson article(
+            @RequestParam(value="index") Integer index,
+            @RequestParam(value="num") Integer num,
+            HttpServletRequest request, Model model,
+            HttpServletResponse response) throws Exception{
+//        response.setCharacterEncoding("UTF-8"); //设置编码格式
+//        response.setContentType("text/html");   //设置数据格式
+        
+        List<Article> articles = articleService.getLateArticles(index, num);
+        ArticlesJson articlesJson = new ArticlesJson();
+        if (articles == null) {
+            articlesJson.setIsEnd("true");
+            articlesJson.setArticles(null);
+        } else {
+            articlesJson.setIsEnd("false");
+            articlesJson.setArticles(articles);
+        }
+        
+        return articlesJson;
+    }
+    
+    @ResponseBody
+    @RequestMapping("type.do")
+    public ArticlesJson type(
+            @RequestParam(value="index") Integer index,
+            @RequestParam(value="num") Integer num,
+            @RequestParam(value="type") Byte type,
+            HttpServletRequest request, Model model,
+            HttpServletResponse response) throws Exception{
+//        response.setCharacterEncoding("UTF-8"); //设置编码格式
+//        response.setContentType("text/html");   //设置数据格式
+        
+        List<Article> articles = articleService.getLateArticles(index, num, type);
+        ArticlesJson articlesJson = new ArticlesJson();
+        if (articles == null) {
+            articlesJson.setIsEnd("true");
+            articlesJson.setArticles(null);
+        } else {
+            articlesJson.setIsEnd("false");
+            articlesJson.setArticles(articles);
+        }
+        
+        return articlesJson;
+    }
+    
+    @ResponseBody
+    @RequestMapping("video.do")
+    public Map<String, Object> video(
+            @RequestParam(value="index") Integer index,
+            @RequestParam(value="num") Integer num,
+            @RequestParam(value="type") Byte type,
+            HttpServletRequest request, Model model,
+            HttpServletResponse response) throws Exception{
+//        response.setCharacterEncoding("UTF-8"); //设置编码格式
+//        response.setContentType("text/html");   //设置数据格式
+
+        List<Video> videos = videoservice.getLateVideos(index, num, type);
+        Map<String, Object> map = new HashMap<String, Object>();
+        if (videos == null) {
+            map.put("isEnd", "true");
+            map.put("videos", videos);
+        } else {
+            map.put("isEnd", "false");
+            map.put("videos", videos);
+        }
+        
+        return map;
+    }
+
+    @ResponseBody
+    @RequestMapping("kuaixun.do")
+    public KuaixunJson kuaixun(
+            @RequestParam(value="index") Integer index,
+            @RequestParam(value="num") Integer num,
+            HttpServletRequest request, Model model,
+            HttpServletResponse response) throws Exception{
+//        response.setCharacterEncoding("UTF-8"); //设置编码格式
+//        response.setContentType("text/html");   //设置数据格式
+        
+        List<List<Kuaixun>> kuaixuns = kuaixunService.getDayKuaixunsByNum(index, num);
+        KuaixunJson kuaixunJson = new KuaixunJson();
+        if (kuaixuns == null) {
+            kuaixunJson.setIsEnd("true");
+            kuaixunJson.setArticles(null);
+        } else {
+            kuaixunJson.setIsEnd("false");
+            kuaixunJson.setArticles(kuaixuns);
+        }
+        
+        return kuaixunJson;
+    }
+
+}

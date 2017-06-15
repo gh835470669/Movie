@@ -1,0 +1,260 @@
+// 立即调用函数
+// 封装了热门文章的交互效果
+(function() {
+    // 热门文章中的交互效果
+    $('.w_hot-article ul li').hover(function() {
+        $('.w_hot-article ul li').attr('class', '');
+        $(this).attr('class', 'w_hot-article-cur');
+    });
+
+})(); // End of 封装了热门文章的交互效果
+
+// 立即调用函数
+// 封装了information.html、flash.html、news.html，三个页面中的点击加载更多交互效果
+(function() {
+    var wuRollLoad = document.getElementsByClassName('roll-load')[0];
+    if (wuRollLoad) {
+        document.getElementsByClassName('roll-load')[0].isEnd = 'false';
+    }
+
+    // modified by Nicholas 7/26/2016 改成点击加载更多
+    $('.wu_load').bind('click', function(e) {
+        e.preventDefault();
+
+        // 点击加载更多的话，就不需要这个了
+        // var scrollHeight = $(document).scrollTop(), // 滚动条到顶部的垂直高度
+        //      browserHeight = $(window).height(), // 浏览器的高度
+        //      docHeight =  $(document).height(); // 页面的文档高度
+
+        var rollLoad = document.getElementsByClassName('roll-load')[0],
+              rollLoadIsEnd = rollLoad.isEnd,
+              hadLoadCount = rollLoad.getElementsByTagName('li').length,
+              wantToLoad = 5,
+              host = 'http://' + location.host, // 不知道为什么要加上http://
+              pathType = location.pathname,
+              url = '',
+              flag = 0; // 标志是那个页面
+
+        // 这三个只是用来测试
+        // url = 'http://10.0.0.10:8080/json/type.do?index=' + hadLoadCount + '&num=' + wantToLoad + '&type=1';
+        // url = 'http://10.0.0.10:8080/json/article.do?index=' + hadLoadCount + '&num=' + wantToLoad;
+        // url = 'http://10.0.0.10:8080/json/kuaixun.do?index=' + hadLoadCount + '&num=' + wantToLoad;
+
+        if (pathType.indexOf("type.do") > 0) {
+            // 资讯下的分类
+            var type = location.href.split('?')[1].split('=')[1], // 去除?type=1，最后面的1这个值
+            hadLoadCount = rollLoad.getElementsByTagName('li').length;
+
+            url = host + '/json/type.do?index=' + hadLoadCount + '&num=' + wantToLoad + '&type=' + type;
+
+            flag = 1;
+        } else if(pathType.indexOf("zixun.do") > 0) {
+            // 资讯
+            hadLoadCount = rollLoad.getElementsByTagName('li').length;
+
+            url = host + '/json/article.do?index=' + hadLoadCount + '&num=' + wantToLoad;
+
+            flag = 2;
+        } else if (pathType.indexOf("flash.do") > 0) {
+            // 快讯 7*24
+            hadLoadCount = rollLoad.getElementsByTagName('section').length;
+
+            url = host + '/json/kuaixun.do?index=' + hadLoadCount + '&num=' + wantToLoad;
+
+            flag = 3;
+        }
+
+        // 注意，后台传过来的json中bool型可能是字符串，而且!"false"的值是true
+        var wuLoad = $('.wu_load');
+        if (rollLoadIsEnd === 'false') {
+            wuLoad.html('正在加载...');
+
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function(data) {
+                    var jsonObj = JSON.parse(data),
+                          isEnd = jsonObj.isEnd,
+                          articles  = null,
+                          kuaixuns  = null,
+                          tempDOM = '';
+
+                    rollLoad.isEnd = isEnd;
+
+                    if (isEnd === 'true') {
+                        // 已经数据了
+                        wuLoad.css('display', 'none');
+                        $('.wu_is-end').css('display', 'block');
+                    } else {
+                        switch(flag) {
+                            case 1:
+                            case 2:
+                                articles  = jsonObj.articles,
+                                tempDOM = fashLi(articles);
+                                break;
+                            case 3:
+                                kuaixuns  = jsonObj.kuaixuns,
+                                tempDOM = newsLi(kuaixuns);
+                                break;
+                            default:
+                                tempDOM = '';
+                        }
+                        wuLoad.before(tempDOM); // 在加载更多前面加入新增节点 
+                    }
+                },
+                error: function() {
+                    rollLoad.isEnd = true;
+                },
+                complete: function() {
+                    wuLoad.html('点击加载更多');
+                }
+            });
+        } else {
+            $('.wu_is-end').css('display', 'block');
+        }
+    });
+
+    var newsLi = function (news) {
+        var tempDOM = '',
+              newsCount = news.length,
+              dayNews  = null,
+              dayNewsCount = 0;
+
+        for (var i = 0; i < newsCount; i++) {
+            dayNews = news[i]; // 每天的新闻
+            dayNewsCount = dayNews.length;
+
+            tempDOM = '';
+
+            tempDOM += '<section class="w_flash-day w_reading-bg w_clear-f">';
+                tempDOM += '<ol class="w_time z_fl">';
+
+            for (var j = 0; j < dayNewsCount; j++) {
+                tempDOM += '<li>' + format(dayNews[j].createTime, '年月 时:分', 'cn') + '<em class="w_dot"></em></li>';
+            }
+
+                tempDOM += '</ol>';
+            tempDOM += '<ul class="w_flash-detail z_fr">';
+
+            for (var k = 0; k < dayNewsCount; k++) {
+                tempDOM += '<li>';
+                    tempDOM += '<h2 class="w_h2">' + dayNews[k].title + '</h2>';
+                    tempDOM += '<div class="w_multi-ellipsis">';
+                        tempDOM += '<p>' + dayNews[k].preinfopreinfo + '</p>';
+                    tempDOM += '</div>';
+                    tempDOM +='<a class="w_flash-btn" href="' + dayNews[k].link + '">阅读原文</a>';
+                tempDOM += '</li>';
+            }
+
+            tempDOM += '</ul>';
+
+            rollLoadUl.append(tempDOM);
+        }
+
+        return tempDOM;
+    }
+
+    var fashLi = function (articles) {
+        var tempDOM = '',
+              articleCount = articles.length;
+
+        for (var i = 0; i < articleCount; i++) {
+            tempDOM += '<li class="w_news-li w_clear-f">';
+                tempDOM += '<a class="w_news-img z_fl" href="load/article.do?articleId=' + articles[i].articleId +' " target="_blank">';
+                    tempDOM += '<img src="' + articles[i].preimage+ '" alt="' + articles[i].title + '">';
+                tempDOM += '</a>';
+                tempDOM += '<div class="w_news-detail z_fr">';
+                    tempDOM += '<div class="w_news-title">';
+                        tempDOM += '<a class="w_clear-f" href="load/article.do?articleId=' + articles[i].articleId +' " target="_blank">';
+                            tempDOM += '<h4 class="w_single-ellipsis z_fl">' + articles[i].title + '</h4>';
+                        tempDOM += '</a>';
+                    tempDOM += '</div>';
+                    tempDOM += '<div class="w_multi-ellipsis">';
+                        tempDOM += '<p>' + articles[i].preinfo + '</p>';
+                    tempDOM += '</div>';
+                    tempDOM += '<div class="w_new_tag">';
+                        tempDOM += '<a class="w_tag" href="load/type.do?type=' + articles[i].type + '">';
+
+                            switch (articles[i].type) {
+                                case 1:
+                                    tempDOM += '时讯';
+                                    break;
+                                case 2:
+                                    tempDOM += '观察';
+                                    break;
+                                case 3:
+                                    tempDOM += '游戏';
+                                    break;
+                                case 4:
+                                    tempDOM += '影视';
+                                    break;
+                                default:
+                                    tempDOM += '';
+                            }
+
+                        tempDOM += '</a>';
+                        tempDOM += '<span>' + format(articles[i].createTime, 'yyyy-MM-dd', 'en') + '</span>';
+                    tempDOM += '</div>';
+                tempDOM += '</div>';
+            tempDOM += '</li>';
+        }
+
+        return tempDOM;
+    }
+
+    var format = function(time, format, lang) {
+        var t = new Date(time);
+        var tf = function(i) {
+            return (i < 10 ? '0' : '') + i
+        };
+
+        if (lang === 'en') {
+            return format.replace(/yyyy|MM|dd|HH|mm|ss/g, function(a) {
+                switch (a) {
+                    case 'yyyy':
+                        return tf(t.getFullYear());
+                        break;
+                    case 'MM':
+                        return tf(t.getMonth() + 1);
+                        break;
+                    case 'mm':
+                        return tf(t.getMinutes());
+                        break;
+                    case 'dd':
+                        return tf(t.getDate());
+                        break;
+                    case 'HH':
+                        return tf(t.getHours());
+                        break;
+                    case 'ss':
+                        return tf(t.getSeconds());
+                        break;
+                }
+            });
+        } else {
+            return format.replace(/年|月|日|时|分|秒/g, function(a) {
+                switch (a) {
+                    case '年':
+                        return tf(t.getFullYear()) + '年';
+                        break;
+                    case '月':
+                        return tf(t.getMonth() + 1) + '月';
+                        break;
+                    case '分':
+                        return tf(t.getMinutes());
+                        break;
+                    case '日':
+                        return tf(t.getDate()) + '日';
+                        break;
+                    case '时':
+                        return tf(t.getHours());
+                        break;
+                    case '秒':
+                        return tf(t.getSeconds());
+                        break;
+                }
+            });
+        }
+    }
+
+})(); // End of 封装了information.html、flash.html、news.html，三个页面中的点击加载更多交互效果

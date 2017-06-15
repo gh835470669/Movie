@@ -1,0 +1,6 @@
+package com.luwei.hackvr.utils;
+
+public class ConstantUtils {
+
+	public final static String USER_INFO = "userInfo"; //session保存会员信息标识
+}

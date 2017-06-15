@@ -1,0 +1,183 @@
+package com.luwei.hackvr.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import cn.jpush.api.report.UsersResult.User;
+
+import com.luwei.hackvr.pojo.Toutiao;
+import com.luwei.hackvr.service.ArticleService;
+import com.luwei.hackvr.service.ToutiaoService;
+
+public class ToutiaoController {
+	private static Logger logger = Logger.getLogger(ToutiaoController.class);
+
+	@Autowired
+	private ToutiaoService toutiaoService;
+
+	@Autowired
+	private ArticleService articleService;
+
+	// 把一篇文章设置为type类型的头条，并且跳转到type头条的排序页面
+	@RequestMapping(value = "toToutiaoOrder")
+	String toToutiaoOrder(HttpServletRequest request, Model model) {
+		try {
+			HttpSession session = request.getSession();
+			User userInfo = (User) session.getAttribute("userInfo");
+			if (userInfo == null) {
+				model.addAttribute("errorMessage", "用户状态异常");
+				return "jsp/login";
+			}
+
+			String toutiaoIdStr = request.getParameter("toutiaoId");
+			String typeStr = request.getParameter("type");
+			if (toutiaoIdStr == null || "".equals(toutiaoIdStr)
+					|| typeStr == null || "".equals(typeStr)) {
+				model.addAttribute("errorMessage", "url参数异常");
+				return "redirect:/back/edit.do";
+			}
+
+			Integer toutiaoId = Integer.valueOf(toutiaoIdStr);
+			Byte type = Integer.valueOf(typeStr).byteValue();
+
+			// 将选择的文章设置为头条，并且插入到数据库中
+			Toutiao toutiao = new Toutiao();
+			toutiao.setArticleId(toutiaoId);
+			toutiao.setFlag((byte) 1);
+			toutiao.setSort(-1);
+			toutiao.setType(type);
+			int ret = toutiaoService.addToutiao(toutiao);
+			if (ret > 0) { // 添加成功
+				model.addAttribute("retFlag", 1);
+			} else { // 添加失败
+				model.addAttribute("retFlag", 0);
+				model.addAttribute("errorMessage", "添加头条失敗！");
+				return "redirect:/back/edit.do";
+			}
+			// 获取数据库中类别为type的所有头条
+			List<Map<String, Object>> proList = toutiaoService
+					.getToutiaoByType(type);
+			model.addAttribute("articleData", proList);
+			return "jsp/toutiao/order_toutiao";
+		} catch (Exception e) {
+			logger.error("toToutiaoOrder异常", e);
+			model.addAttribute("errorMessage", "页面跳转异常");
+			return "redirect:/back/edit.do";
+		}
+	}
+
+	@RequestMapping(value = "deleteToutiao")
+	String deleteToutiao(HttpServletRequest request, Model model) {
+		try {
+			HttpSession session = request.getSession();
+			User userInfo = (User) session.getAttribute("userInfo");
+			if (userInfo == null) {
+				model.addAttribute("errorMessage", "用户状态异常");
+				return "jsp/login";
+			}
+
+			String toutiaoIdStr = request.getParameter("toutiaoId");
+			if (toutiaoIdStr == null || "".equals(toutiaoIdStr)) {
+				model.addAttribute("errorMessage", "url参数异常");
+				return "redirect:/back/edit.do";
+			}
+			Integer toutiaoId = Integer.valueOf(toutiaoIdStr);
+			// 通过设置flag为0来设置删除
+			int ret = toutiaoService.deleteToutiao(toutiaoId);
+			if (ret > 0) { // 删除成功
+				model.addAttribute("retFlag", 1);
+			} else { // 删除失败
+				model.addAttribute("retFlag", 0);
+				model.addAttribute("errorMessage", "删除头条失败！");
+				return "jsp/toutiao/edit_toutiao";
+			}
+			return "jsp/toutiao/edit_toutiao";
+		} catch (Exception e) {
+			logger.error("deleteToutiao异常", e);
+			model.addAttribute("errorMessage", "页面跳转异常");
+			return "jsp/toutiao/edit_toutiao";
+		}
+	}
+
+	@RequestMapping(value = "setToutiaoOrder")
+	String setToutiaoOrder(HttpServletRequest request, Model model) {
+		try {
+			HttpSession session = request.getSession();
+			User userInfo = (User) session.getAttribute("userInfo");
+			if (userInfo == null) {
+				model.addAttribute("errorMessage", "用户状态异常");
+				return "jsp/login";
+			}
+
+			String toutiaoIdStr = request.getParameter("orderToutiaoId");
+			// 获取前端已经排序好的头条id
+			String[] listId = toutiaoIdStr.split(",");
+			if (toutiaoIdStr == null || "".equals(toutiaoIdStr)
+					|| listId == null || listId.length == 0) {
+				model.addAttribute("errorMessage", "url参数异常");
+				return "jsp/toutiao/order_toutiao";
+			}
+			List<Integer> toutiaoId = new ArrayList<Integer>();
+			for (String idStr : listId) {
+				toutiaoId.add(Integer.valueOf(idStr));
+			}
+
+			boolean ret = toutiaoService.setOrder(toutiaoId);
+			if (ret) { // 添加成功
+				model.addAttribute("retFlag", 1);
+			} else { // 添加失败
+				model.addAttribute("retFlag", 0);
+				model.addAttribute("errorMessage", "头条排序失败！");
+			}
+
+			return "jsp/toutiao/order_toutiao";
+		} catch (Exception e) {
+			logger.error("setToutiaoOrder异常", e);
+			model.addAttribute("errorMessage", "页面跳转异常");
+			return "jsp/toutiao/order_toutiao";
+		}
+	}
+	
+	@RequestMapping(value="toToutiaoEdit")
+	String toToutiaoEdit(HttpServletRequest request, Model model) {
+		try {
+			HttpSession session = request.getSession();
+			User userInfo = (User) session.getAttribute("userInfo");
+			if (userInfo == null) {
+				model.addAttribute("errorMessage", "用户状态异常");
+				return "jsp/login";
+			}
+
+			String toutiaoIdStr = request.getParameter("toutiaoId");
+			if (toutiaoIdStr == null || "".equals(toutiaoIdStr)) {
+				model.addAttribute("errorMessage", "url参数异常");
+				return "jsp/toutiao/order_toutiao";
+			}
+
+			Integer toutiaoId = Integer.valueOf(toutiaoIdStr);
+			// 获取头条文章，并且在页面上显示
+			Toutiao toutiao = toutiaoService.getToutiaoById(toutiaoId);
+			if (toutiao == null) { // 添加失败
+				model.addAttribute("retFlag", 0);
+				model.addAttribute("errorMessage", toutiaoId + "（id）头条获取失败！");
+				return "jsp/court/add_court";
+			}
+			model.addAttribute("articleData", toutiao);
+			return "jsp/toutiao/order_toutiao";
+		} catch (Exception e) {
+			logger.error("toToutiaoEdit异常", e);
+			model.addAttribute("errorMessage", "页面跳转异常");
+			return "jsp/toutiao/order_toutiao";
+		}
+	}
+
+}

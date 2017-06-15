@@ -1,0 +1,60 @@
+.z_home-game {
+    overflow: hidden;
+
+    margin-top: 20px;
+    margin-bottom: 100px;
+    height: 573px;
+}
+
+.z_home-game-body {
+    overflow: hidden;
+
+    width: 1140px;
+    height: 528px;
+}
+
+.z_home-game-list {
+    overflow: hidden;
+
+    position: relative;
+
+    margin: 24px 40px 24px 0;
+    width: 340px;
+    height: 216px;
+}
+
+.z_home-game-list img {
+    width: 340px;
+    height: 216px;
+}
+
+.z_home-game-intro-bg {
+    position: absolute;
+    top: 186px;
+    
+    width: 340px;
+    height: 30px;
+
+    background-color: #000;
+
+    opacity: 0.3;
+}
+
+.z_home-game-intro {
+    position: absolute;
+    top: 186px;
+    right: 30px;
+    left: 30px;
+
+    width: 280px;
+    height: 30px;
+
+    line-height: 30px;
+    text-align: center;
+}
+
+div.z_home-game-intro span {
+    overflow: hidden;
+
+    color: #fff;
+}

@@ -1,0 +1,124 @@
+.z_container {
+    height: 100%;
+}
+
+.z_backstage {
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+}
+
+.z_backstage-header {
+    margin-bottom: 1%;
+    height: 70px;
+
+    line-height: 70px;
+
+    background-color: #dcdcdc;
+}
+
+.z_backstage-menu {
+    position: relative;
+    height: 100%;
+}
+
+.z_backstage-menu-list {
+    overflow: hidden;
+
+    width: 100px;
+    height: 70px;
+
+    line-height: 70px;
+    text-align: center;
+
+    color: #707070;
+}
+
+.z_backstage-menu-list:hover {
+    color: #fff;
+    background-color: #707070;
+
+    cursor: pointer;
+}
+
+.z_backstage-menu-son {
+    position: absolute;
+
+    width: 100px;
+}
+
+.z_backstage-menu-son-list {
+    height: 70px;
+
+    line-height: 70px;
+    text-align: center;
+
+    color: #707070;
+    background-color: #dcdcdc;
+}
+
+.z_backstage-menu-son-list:hover {
+    color: #fff;
+    background-color: #707070;
+
+    cursor: pointer;
+}
+
+.z_backstage-content-title {
+    overflow: hidden;
+
+    width: 30%;
+
+    color: #707070;
+}
+
+.z_backstage-quit {
+    margin-left: 10px;
+    height: 15px;
+
+    font-size: 12px;
+
+    color: #707070;
+}
+
+.z_backstage-quit:hover {
+    color: blue;
+}
+
+.z_backstage-user {
+    overflow: hidden;
+
+    width: 200px;
+    height: 70px;
+
+    font-size: 12px;
+
+    color: #707070;
+}
+
+.z_backstage-footer {
+    position: fixed;
+    bottom: 0px;
+
+    width: 100%;
+    height: 8%;
+
+    background-color: #dcdcdc;
+}
+
+.z_backstage-publish {
+    position: absolute;
+    right: 30px;
+
+    margin-top: 15px;
+    width: 100px;
+    height: 30px;
+
+    font-size: 15px;
+}
+
+.z_f {
+    position: relative;
+
+    height: 100%;
+}

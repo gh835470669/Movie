@@ -1,0 +1,39 @@
+.z_home-VR {
+    overflow: hidden;
+
+    margin-top: 20px;
+    height: 527px;
+}
+
+.z_home-VR-body {
+    overflow: hidden;
+
+    height: 482px;
+}
+
+.z_home-VR-list {
+    padding-top: 15px;
+    padding-right: 7.5px; 
+    padding-left: 7.5px; 
+    width: 260px;
+    height: 226px; 
+}
+
+.z_home-VR-list img {
+    width: 260px;
+    height: 186px;
+}
+
+.z_home-vr-film-name {
+    display: block;
+    overflow: hidden;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+    width: 200px;
+    height: 21px;
+
+    line-height: 20px;
+    text-align: center;
+}

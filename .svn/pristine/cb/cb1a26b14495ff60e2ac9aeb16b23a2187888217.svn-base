@@ -1,0 +1,291 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="javax.servlet.http.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="cn">
+<head>
+    <base href="<%=path%>/"/>
+    <meta charset="UTF-8">
+    <title>backstage</title>
+    <link rel="stylesheet" type="text/css" href="./styles/public.css">
+    <link rel="stylesheet" type="text/css" href="./styles/backstage.css">
+</head>
+<body class="z_backstage">
+    <div class="z_backstage-body">
+        <!-- menu -->
+        <div class="z_backstage-menu z_fl">
+            <ul>
+                <li class="z_backstage-menu-list z_mt">
+                    <p class="z_backstage-menu-first" id="zPublish">文章发布</p>
+                </li>
+                <li class="z_backstage-menu-list" id="zSelect">
+                    <p>头条选择</p>
+                </li>
+                <li class="z_backstage-menu-list" id="zDelete">
+                    <p>文章管理</p>
+                </li>
+            </ul>
+        </div>
+        <!-- 文章发布 -->
+        <div class="z_backstage-content z_fl" id="zPublishContent">
+            <div class="z_backstage-content-title">
+                <h5>文章发布 > 抓取资源</h5>
+            </div>
+            <c:if test="${not empty article_poolSet }">
+                <c:forEach var="article_pools" items="${article_poolSet }">
+                    <ul>
+                        <c:forEach var="article_pool" items="${article_pools }" begin="0" end="0" step="1">
+                            <div class="z_backstage-list-title">
+                                <span class="z_backstage-date1 z_fl">
+                                    <fmt:formatDate value="${article_pool.createTime }" type="both" pattern="yyyy年MM月dd日"/>
+                                </span>
+                                <span class="z_backstage-line z_fl"></span>
+                            </div>
+                        </c:forEach>
+                        <c:forEach var="article_pool" items="${article_pools }">
+                            <li class="z_backstage-list-p">
+                                <img class="z_backstage-list-img z_fl" src="${article_pool.preimage }">
+                                <div class="z_backstage-list-intro z_fl">
+                                    <a href="./load/article.do?articleId=${article_pool.articleId }" target="_blank">${article_pool.title }</a>
+                                    <p class="z_backstage-intro-detail">${article_pool.preinfo }</p>
+                                    <div class="z_backstage-type">
+                                        <p class="z_fl">
+                                            <c:if test="${1 == article_pool.type }">时讯</c:if>
+                                            <c:if test="${2 == article_pool.type }">观察</c:if>
+                                            <c:if test="${3 == article_pool.type }">游戏</c:if>
+                                            <c:if test="${4 == article_pool.type }">影视</c:if>
+                                        </p>
+                                        <span>
+                                            <fmt:formatDate value="${article_pool.createTime }" type="both" pattern="MM月dd日 HH:mm"/>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="z_backstage-checkbox z_fl">
+                                    <input class="z_checkbox" type="checkbox">
+                                    <span class="z_backstage-list-flag z_hide-content">已发布</span>
+                                </div>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </c:forEach>
+            </c:if>
+        </div>
+        <!-- 文章管理 -->
+        <div class="z_backstage-content z_fl z_hide-content" id="zDeleteContent">
+            <div class="z_backstage-content-title">
+                <h5>文章管理 > 删除文章</h5>
+            </div>
+            <c:if test="${not empty articleSet }">
+                <c:forEach var="articles" items="${articleSet }">
+                    <ul>
+                        <c:forEach var="article" items="${articles }" begin="0" end="0" step="1">
+                            <div class="z_backstage-list-title">
+                                <span class="z_backstage-date1 z_fl">
+                                    <fmt:formatDate value="${article.createTime }" type="both" pattern="yyyy年MM月dd日"/>
+                                </span>
+                                <span class="z_backstage-line z_fl"></span>
+                            </div>
+                        </c:forEach>
+                        <c:forEach var="article" items="${articles }">
+                            <li class="z_backstage-list-p">
+                                <img class="z_backstage-list-img z_fl" src="${article.preimage }">
+                                <div class="z_backstage-list-intro z_fl">
+                                    <a href="./load/article.do?articleId=${article.articleId }" target="_blank">${article.title }</a>
+                                    <p class="z_backstage-intro-detail">${article.preinfo }</p>
+                                    <div class="z_backstage-type">
+                                        <p class="z_fl">
+                                            <c:if test="${1 == article.type }">时讯</c:if>
+                                            <c:if test="${2 == article.type }">观察</c:if>
+                                            <c:if test="${3 == article.type }">游戏</c:if>
+                                            <c:if test="${4 == article.type }">影视</c:if>
+                                        </p>
+                                        <span>
+                                            <fmt:formatDate value="${article.createTime }" type="both" pattern="MM月dd日 HH:mm"/>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="z_backstage-checkbox z_fl">
+                                    <input class="z_checkbox" type="checkbox">
+                                    <span class="z_backstage-list-flag z_hide-content">已删除</span>
+                                </div>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </c:forEach>
+            </c:if>
+        </div>
+        <!-- 头条选择 -->
+        <div class="z_backstage-content z_fl z_hide-content" id="zSelectContent">
+            <!-- 选择框图 -->
+            <div class="z_backstage-content3 z_fl" id="zSelectContent1">
+                <div class="z_backstage-content-title2">
+                    <h5>头条选择 > 选择位置</h5>
+                </div>
+                <div>
+                    <h3 class="z_backstage-home-title">首页</h3>
+                    <div class="z_backstage-home-page">
+                        <div class="z_backstage-home-first" id="zHomeHotA">A</div>
+                        <div class="z_backstage-home-second z_fl z_ml" id="zHomeHotB">B</div>
+                        <div class="z_backstage-home-second z_fr z_mr" id="zHomeHotC">C</div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="z_backstage-home-title">资讯</h3>
+                    <div class="z_backstage-home-page">
+                        <div class="z_backstage-info-first z_backstage-info-first1 z_fl" id="zInfoHotA1">A</div>
+                        <div class="z_backstage-info-first z_fl" id="zInfoHotA2">B</div>
+                        <div class="z_backstage-info-first z_fl" id="zInfoHotA3">C</div>
+                        <div class="z_backstage-home-third z_fl z_ml" id="zInfoHotB">时讯</div>
+                        <div class="z_backstage-home-third z_fl" id="zInfoHotC">观察</div>
+                        <div class="z_backstage-home-third z_fl" id="zInfoHotD">游戏</div>
+                        <div class="z_backstage-home-third z_fl" id="zInfoHotE">影视</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 当前选中头条详情 -->
+            <div class="z_backstage-now-hot-title z_fr">
+                <div class="z_hide-content" id="zSelConDet1">
+                    <h2 class="z_backstage-home-title">首页A当前头条：</h2>
+                    <h3 class="z_backstage-home-title z_color-blue">${toutiaoA.title }</h3>
+                    <span class="z_backstage-content-title">
+                        <fmt:formatDate value="${toutiaoA.createTime }" type="both" pattern="MM月dd日 HH:mm"/>
+                    </span>
+                    <span class="z_backstage-now-hot-detail">${toutiaoA.preinfo }</span>
+                </div>
+                <div class="z_hide-content" id="zSelConDet2">
+                    <h2 class="z_backstage-home-title">首页B当前头条：</h2>
+                    <h3 class="z_backstage-home-title z_color-blue">${toutiaoB.title }</h3>
+                    <span class="z_backstage-content-title">
+                        <fmt:formatDate value="${toutiaoB.createTime }" type="both" pattern="MM月dd日 HH:mm"/>
+                    </span>
+                    <span class="z_backstage-now-hot-detail">${toutiaoB.preinfo }</span>
+                </div>
+                <div class="z_hide-content" id="zSelConDet3">
+                    <h2 class="z_backstage-home-title">首页C当前头条：</h2>
+                    <h3 class="z_backstage-home-title z_color-blue">${toutiaoC.title }</h3>
+                    <span class="z_backstage-content-title">
+                        <fmt:formatDate value="${toutiaoC.createTime }" type="both" pattern="MM月dd日 HH:mm"/>
+                    </span>
+                    <span class="z_backstage-now-hot-detail">${toutiaoC.preinfo }</span>
+                </div>
+                <div class="z_hide-content" id="zSelConDet4">
+                    <h2 class="z_backstage-home-title">资讯A当前头条：</h2>
+                    <h3 class="z_backstage-home-title z_color-blue">${toutiaoA.title }</h3>
+                    <span class="z_backstage-content-title">
+                        <fmt:formatDate value="${toutiaoA.createTime }" type="both" pattern="MM月dd日 HH:mm"/>
+                    </span>
+                    <span class="z_backstage-now-hot-detail">${toutiaoA.preinfo }</span>
+                </div>
+                <div class="z_hide-content" id="zSelConDet5">
+                    <h2 class="z_backstage-home-title">资讯B当前头条：</h2>
+                    <h3 class="z_backstage-home-title z_color-blue">${toutiaoB.title }</h3>
+                    <span class="z_backstage-content-title">
+                        <fmt:formatDate value="${toutiaoB.createTime }" type="both" pattern="MM月dd日 HH:mm"/>
+                    </span>
+                    <span class="z_backstage-now-hot-detail">${toutiaoB.preinfo }</span>
+                </div>
+                <div class="z_hide-content" id="zSelConDet6">
+                    <h2 class="z_backstage-home-title">资讯C当前头条：</h2>
+                    <h3 class="z_backstage-home-title z_color-blue">${toutiaoC.title }</h3>
+                    <span class="z_backstage-content-title">
+                        <fmt:formatDate value="${toutiaoC.createTime }" type="both" pattern="MM月dd日 HH:mm"/>
+                    </span>
+                    <span class="z_backstage-now-hot-detail">${toutiaoC.preinfo }</span>
+                </div>
+                <div class="z_hide-content" id="zSelConDet7">
+                    <h2 class="z_backstage-home-title">时讯当前头条：</h2>
+                    <h3 class="z_backstage-home-title z_color-blue">${shixunToutiao.title }</h3>
+                    <span class="z_backstage-content-title">
+                        <fmt:formatDate value="${shixunToutiao.createTime }" type="both" pattern="MM月dd日 HH:mm"/>
+                    </span>
+                    <span class="z_backstage-now-hot-detail">${shixunToutiao.preinfo }</span>
+                </div>
+                <div class="z_hide-content" id="zSelConDet8">
+                    <h2 class="z_backstage-home-title">观察当前头条：</h2>
+                    <h3 class="z_backstage-home-title z_color-blue">${guanchaToutiao.title }</h3>
+                    <span class="z_backstage-content-title">
+                        <fmt:formatDate value="${guanchaToutiao.createTime }" type="both" pattern="MM月dd日 HH:mm"/>
+                    </span>
+                    <span class="z_backstage-now-hot-detail">${guanchaToutiao.preinfo }</span>
+                </div>
+                <div class="z_hide-content" id="zSelConDet9">
+                    <h2 class="z_backstage-home-title">游戏当前头条：</h2>
+                    <h3 class="z_backstage-home-title z_color-blue">${youxiToutiao.title }</h3>
+                    <span class="z_backstage-content-title">
+                        <fmt:formatDate value="${youxiToutiao.createTime }" type="both" pattern="MM月dd日 HH:mm"/>
+                    </span>
+                    <span class="z_backstage-now-hot-detail">${youxiToutiao.preinfo }</span>
+                </div>
+                <div class="z_hide-content" id="zSelConDet10">
+                    <h2 class="z_backstage-home-title">影视当前头条：</h2>
+                    <h3 class="z_backstage-home-title z_color-blue">${yingshiToutiao.title }</h3>
+                    <span class="z_backstage-content-title">
+                        <fmt:formatDate value="${yingshiToutiao.createTime }" type="both" pattern="MM月dd日 HH:mm"/>
+                    </span>
+                    <span class="z_backstage-now-hot-detail">${yingshiToutiao.preinfo }</span>
+                </div>
+            </div>
+            <!-- 可选头条 -->
+            <div class="z_backstage-content2 z_fl z_hide-content" id="zSelectContent2">
+                <div class="z_backstage-content-title2">
+                    <h5>头条选择 > 选择头条</h5>
+                </div>
+                
+                <c:if test="${not empty articleSet }">
+                    <c:forEach var="articles" items="${articleSet }">
+                        <ul>
+                            <c:forEach var="article" items="${articles }" begin="0" end="0" step="1">
+                                <div class="z_backstage-list-title">
+                                    <span class="z_backstage-date1 z_fl">
+                                        <fmt:formatDate value="${article.createTime }" type="both" pattern="yyyy年MM月dd日"/>
+                                    </span>
+                                    <span class="z_backstage-line2 z_fl"></span>
+                                </div>
+                            </c:forEach>
+                            <c:forEach var="article" items="${articles }">
+                                <li class="z_backstage-list1">
+                                    <img class="z_backstage-list-img z_fl" src="${article.preimage }">
+                                    <div class="z_backstage-list-intro2 z_fl">
+                                        <a href="./load/article.do?articleId=${article.articleId }" target="_blank" selectId="${article.articleId }">${article.title }</a>
+                                        <p class="z_backstage-intro-detail">${article.preinfo }</p>
+                                        <div class="z_backstage-type z_fl">
+                                            <p class="z_fl">
+                                                <c:if test="${1 == article.type }">时讯</c:if>
+                                                <c:if test="${2 == article.type }">观察</c:if>
+                                                <c:if test="${3 == article.type }">游戏</c:if>
+                                                <c:if test="${4 == article.type }">影视</c:if>
+                                            </p>
+                                            <span>
+                                                <fmt:formatDate value="${article.createTime }" type="both" pattern="MM月dd日 HH:mm"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="z_backstage-checkbox z_fl">
+                                        <input class="z_checkbox" id="zUpdHot1" type="radio" name="z_hot-radio">
+                                    </div>
+                                </li>
+                            </c:forEach>
+                        </ul>
+                    </c:forEach>
+                </c:if>
+            </div>
+        </div>
+    </div>
+    <div class="z_backstage-footer">
+        <div class="z_fix z_f">
+            <input class="z_backstage-publish" id="zPublishIcon" type="button" value="发布">
+            <input class="z_backstage-publish z_hide-content" id="zNextIcon" type="button" value="下一步">
+            <input class="z_backstage-publish z_hide-content" id="zDeleteIcon" type="button" value="删除">
+            <input class="z_backstage-publish z_hide-content" id="zUpdateIcon" type="button" value="更新">
+            <input class="z_backstage-back z_hide-content" id="zBackIcon" type="button" value="上一步">
+        </div>
+    </div>
+    <script type="text/javascript" src="./scripts/z_backstage.js"></script>
+</body>
+</html>
