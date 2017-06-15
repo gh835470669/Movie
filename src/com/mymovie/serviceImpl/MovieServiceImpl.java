@@ -1,8 +1,6 @@
 package com.mymovie.serviceImpl;
 
-import java.util.List;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +23,7 @@ public class MovieServiceImpl implements MovieService{
     @Override
     public int updateLike(String m_id, String m_name, String m_data, String u_id, String like) {
     	if (m_id == null || u_id == null) return 0;
+    	if (m_id.length()==0 || u_id.length()==0) return 0;
     	
     	int mId = Integer.parseInt(m_id);
     	int uId = Integer.parseInt(u_id);
@@ -33,10 +32,11 @@ public class MovieServiceImpl implements MovieService{
 		record.setmId(mId);
 		record.setmName(m_name);
 		record.setuId(uId);
+		
     	if (StringUtils.equals(like, "1")) {
-			record.setLike(1);
+			record.setUserLike(1);
     	} else {
-    		record.setLike(0);
+    		record.setUserLike(0);
     	}
     	if (isExisted(mId) > 0) {
 			MovieExample example = new MovieExample();
@@ -50,6 +50,7 @@ public class MovieServiceImpl implements MovieService{
     @Override
     public int updateHaveSeen(String m_id, String m_name, String m_data, String u_id, String haveSeen) {
     	if (m_id == null || u_id == null) return 0;
+    	if (m_id.length()==0 || u_id.length()==0) return 0;
     	
     	int mId = Integer.parseInt(m_id);
     	int uId = Integer.parseInt(u_id);

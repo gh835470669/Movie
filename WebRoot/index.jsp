@@ -45,5 +45,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	
     	<input type="submit"  value="提交" />
     </form>
+    <form action="http://172.18.68.4:8080/movie/like" method="post">
+    	电影id：
+    	<input type="text" name="m_id" width="200"/> <br/>
+    	电影名：
+    	<input type="text" name="m_name" width="200"/> <br/>
+    	电影数据：
+    	<input type="text" name="m_data" width="200"/> <br/>
+    	用户id:
+    	<input type="text" name="u_id" width="10"/> <br/>
+    	like:
+    	<input type="text" name="like" width="10"/> <br/>
+    	<input type="submit"  value="提交" />
+    </form>
   </body>
 </html>

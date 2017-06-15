@@ -9,7 +9,7 @@ public class Movie implements Serializable {
 
     private Integer mId;
 
-    private Integer like;
+    private Integer userLike;
 
     private Integer haveSeen;
 
@@ -43,12 +43,12 @@ public class Movie implements Serializable {
         this.mId = mId;
     }
 
-    public Integer getLike() {
-        return like;
+    public Integer getUserLike() {
+        return userLike;
     }
 
-    public void setLike(Integer like) {
-        this.like = like;
+    public void setUserLike(Integer userLike) {
+        this.userLike = userLike;
     }
 
     public Integer getHaveSeen() {

@@ -1,28 +1,20 @@
 package com.mymovie.controller;
 
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mymovie.service.MovieService;
 
-
-import cn.jpush.api.common.connection.IHttpClient.RequestMethod;
 
 
 
@@ -55,6 +47,7 @@ public class MovieController {
             @RequestParam(value="like") String like,
             HttpServletRequest request,
             HttpServletResponse response) {
+    	
     	Map<String, Object> map = new HashMap<String, Object>();
     	int n = movieService.updateLike(m_id, m_name, m_data, u_id, like);
     	if (n > 0) {
@@ -62,6 +55,7 @@ public class MovieController {
     	} else {
     		map.put("state", "fail");
     	}
+    	System.out.println(m_data+"\n");
     	
 		return map;
     }
@@ -77,7 +71,7 @@ public class MovieController {
             HttpServletRequest request,
             HttpServletResponse response) {
     	Map<String, Object> map = new HashMap<String, Object>();
-    	int n = movieService.updateLike(m_id, m_name, m_data, u_id, haveSeen);
+    	int n = movieService.updateHaveSeen(m_id, m_name, m_data, u_id, haveSeen);
     	if (n > 0) {
     		map.put("state", "success");
     	} else {

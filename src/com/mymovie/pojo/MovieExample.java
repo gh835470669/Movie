@@ -294,63 +294,63 @@ public class MovieExample {
             return (Criteria) this;
         }
 
-        public Criteria andLikeIsNull() {
-            addCriterion("like is null");
+        public Criteria andUserLikeIsNull() {
+            addCriterion("user_like is null");
             return (Criteria) this;
         }
 
-        public Criteria andLikeIsNotNull() {
-            addCriterion("like is not null");
+        public Criteria andUserLikeIsNotNull() {
+            addCriterion("user_like is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLikeEqualTo(Integer value) {
-            addCriterion("like =", value, "like");
+        public Criteria andUserLikeEqualTo(Integer value) {
+            addCriterion("user_like =", value, "userLike");
             return (Criteria) this;
         }
 
-        public Criteria andLikeNotEqualTo(Integer value) {
-            addCriterion("like <>", value, "like");
+        public Criteria andUserLikeNotEqualTo(Integer value) {
+            addCriterion("user_like <>", value, "userLike");
             return (Criteria) this;
         }
 
-        public Criteria andLikeGreaterThan(Integer value) {
-            addCriterion("like >", value, "like");
+        public Criteria andUserLikeGreaterThan(Integer value) {
+            addCriterion("user_like >", value, "userLike");
             return (Criteria) this;
         }
 
-        public Criteria andLikeGreaterThanOrEqualTo(Integer value) {
-            addCriterion("like >=", value, "like");
+        public Criteria andUserLikeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("user_like >=", value, "userLike");
             return (Criteria) this;
         }
 
-        public Criteria andLikeLessThan(Integer value) {
-            addCriterion("like <", value, "like");
+        public Criteria andUserLikeLessThan(Integer value) {
+            addCriterion("user_like <", value, "userLike");
             return (Criteria) this;
         }
 
-        public Criteria andLikeLessThanOrEqualTo(Integer value) {
-            addCriterion("like <=", value, "like");
+        public Criteria andUserLikeLessThanOrEqualTo(Integer value) {
+            addCriterion("user_like <=", value, "userLike");
             return (Criteria) this;
         }
 
-        public Criteria andLikeIn(List<Integer> values) {
-            addCriterion("like in", values, "like");
+        public Criteria andUserLikeIn(List<Integer> values) {
+            addCriterion("user_like in", values, "userLike");
             return (Criteria) this;
         }
 
-        public Criteria andLikeNotIn(List<Integer> values) {
-            addCriterion("like not in", values, "like");
+        public Criteria andUserLikeNotIn(List<Integer> values) {
+            addCriterion("user_like not in", values, "userLike");
             return (Criteria) this;
         }
 
-        public Criteria andLikeBetween(Integer value1, Integer value2) {
-            addCriterion("like between", value1, value2, "like");
+        public Criteria andUserLikeBetween(Integer value1, Integer value2) {
+            addCriterion("user_like between", value1, value2, "userLike");
             return (Criteria) this;
         }
 
-        public Criteria andLikeNotBetween(Integer value1, Integer value2) {
-            addCriterion("like not between", value1, value2, "like");
+        public Criteria andUserLikeNotBetween(Integer value1, Integer value2) {
+            addCriterion("user_like not between", value1, value2, "userLike");
             return (Criteria) this;
         }
 

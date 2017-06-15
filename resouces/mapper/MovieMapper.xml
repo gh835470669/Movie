@@ -1,34 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mymovie.mapper.MovieMapper">
-  <resultMap id="BaseResultMap" type="com.mymovie.pojo.Movie">
-    <id column="ml_id" jdbcType="INTEGER" property="mlId" />
-    <result column="data" jdbcType="VARCHAR" property="data" />
-    <result column="m_id" jdbcType="INTEGER" property="mId" />
-    <result column="like" jdbcType="INTEGER" property="like" />
-    <result column="have_seen" jdbcType="INTEGER" property="haveSeen" />
-    <result column="m_name" jdbcType="VARCHAR" property="mName" />
-    <result column="u_id" jdbcType="INTEGER" property="uId" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mymovie.mapper.MovieMapper" >
+  <resultMap id="BaseResultMap" type="com.mymovie.pojo.Movie" >
+    <id column="ml_id" property="mlId" jdbcType="INTEGER" />
+    <result column="data" property="data" jdbcType="VARCHAR" />
+    <result column="m_id" property="mId" jdbcType="INTEGER" />
+    <result column="user_like" property="userLike" jdbcType="INTEGER" />
+    <result column="have_seen" property="haveSeen" jdbcType="INTEGER" />
+    <result column="m_name" property="mName" jdbcType="VARCHAR" />
+    <result column="u_id" property="uId" jdbcType="INTEGER" />
   </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue">
+                <when test="criterion.singleValue" >
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue">
+                <when test="criterion.betweenValue" >
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue">
+                <when test="criterion.listValue" >
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
                   </foreach>
                 </when>
@@ -39,25 +39,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue">
+                <when test="criterion.singleValue" >
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue">
+                <when test="criterion.betweenValue" >
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue">
+                <when test="criterion.listValue" >
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
                   </foreach>
                 </when>
@@ -68,1065 +68,189 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List">
-    ml_id, data, m_id, like, have_seen, m_name, u_id
+  <sql id="Base_Column_List" >
+    ml_id, data, m_id, user_like, have_seen, m_name, u_id
   </sql>
-  <select id="selectByExample" parameterType="com.mymovie.pojo.MovieExample" resultMap="BaseResultMap">
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mymovie.pojo.MovieExample" >
     select
-    <if test="distinct">
+    <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
     from movie
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null">
+    <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from movie
     where ml_id = #{mlId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from movie
     where ml_id = #{mlId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.mymovie.pojo.MovieExample">
+  <delete id="deleteByExample" parameterType="com.mymovie.pojo.MovieExample" >
     delete from movie
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.mymovie.pojo.Movie">
-    <selectKey keyProperty="mlId" order="AFTER" resultType="java.lang.Integer">
+  <insert id="insert" parameterType="com.mymovie.pojo.Movie" >
+    <selectKey resultType="java.lang.Integer" keyProperty="mlId" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into movie (data, m_id, like, 
+    insert into movie (data, m_id, user_like, 
       have_seen, m_name, u_id
       )
-    values (#{data,jdbcType=VARCHAR}, #{mId,jdbcType=INTEGER}, #{like,jdbcType=INTEGER}, 
+    values (#{data,jdbcType=VARCHAR}, #{mId,jdbcType=INTEGER}, #{userLike,jdbcType=INTEGER}, 
       #{haveSeen,jdbcType=INTEGER}, #{mName,jdbcType=VARCHAR}, #{uId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.mymovie.pojo.Movie">
-    <selectKey keyProperty="mlId" order="AFTER" resultType="java.lang.Integer">
+  <insert id="insertSelective" parameterType="com.mymovie.pojo.Movie" >
+    <selectKey resultType="java.lang.Integer" keyProperty="mlId" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into movie
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="data != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="data != null" >
         data,
       </if>
-      <if test="mId != null">
+      <if test="mId != null" >
         m_id,
       </if>
-      <if test="like != null">
-        like,
+      <if test="userLike != null" >
+        user_like,
       </if>
-      <if test="haveSeen != null">
+      <if test="haveSeen != null" >
         have_seen,
       </if>
-      <if test="mName != null">
+      <if test="mName != null" >
         m_name,
       </if>
-      <if test="uId != null">
+      <if test="uId != null" >
         u_id,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="data != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="data != null" >
         #{data,jdbcType=VARCHAR},
       </if>
-      <if test="mId != null">
+      <if test="mId != null" >
         #{mId,jdbcType=INTEGER},
       </if>
-      <if test="like != null">
-        #{like,jdbcType=INTEGER},
+      <if test="userLike != null" >
+        #{userLike,jdbcType=INTEGER},
       </if>
-      <if test="haveSeen != null">
+      <if test="haveSeen != null" >
         #{haveSeen,jdbcType=INTEGER},
       </if>
-      <if test="mName != null">
+      <if test="mName != null" >
         #{mName,jdbcType=VARCHAR},
       </if>
-      <if test="uId != null">
+      <if test="uId != null" >
         #{uId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.mymovie.pojo.MovieExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.mymovie.pojo.MovieExample" resultType="java.lang.Integer" >
     select count(*) from movie
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map">
+  <update id="updateByExampleSelective" parameterType="map" >
     update movie
-    <set>
-      <if test="record.mlId != null">
+    <set >
+      <if test="record.mlId != null" >
         ml_id = #{record.mlId,jdbcType=INTEGER},
       </if>
-      <if test="record.data != null">
+      <if test="record.data != null" >
         data = #{record.data,jdbcType=VARCHAR},
       </if>
-      <if test="record.mId != null">
+      <if test="record.mId != null" >
         m_id = #{record.mId,jdbcType=INTEGER},
       </if>
-      <if test="record.like != null">
-        like = #{record.like,jdbcType=INTEGER},
+      <if test="record.userLike != null" >
+        user_like = #{record.userLike,jdbcType=INTEGER},
       </if>
-      <if test="record.haveSeen != null">
+      <if test="record.haveSeen != null" >
         have_seen = #{record.haveSeen,jdbcType=INTEGER},
       </if>
-      <if test="record.mName != null">
+      <if test="record.mName != null" >
         m_name = #{record.mName,jdbcType=VARCHAR},
       </if>
-      <if test="record.uId != null">
+      <if test="record.uId != null" >
         u_id = #{record.uId,jdbcType=INTEGER},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map">
+  <update id="updateByExample" parameterType="map" >
     update movie
     set ml_id = #{record.mlId,jdbcType=INTEGER},
       data = #{record.data,jdbcType=VARCHAR},
       m_id = #{record.mId,jdbcType=INTEGER},
-      like = #{record.like,jdbcType=INTEGER},
+      user_like = #{record.userLike,jdbcType=INTEGER},
       have_seen = #{record.haveSeen,jdbcType=INTEGER},
       m_name = #{record.mName,jdbcType=VARCHAR},
       u_id = #{record.uId,jdbcType=INTEGER}
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mymovie.pojo.Movie">
+  <update id="updateByPrimaryKeySelective" parameterType="com.mymovie.pojo.Movie" >
     update movie
-    <set>
-      <if test="data != null">
+    <set >
+      <if test="data != null" >
         data = #{data,jdbcType=VARCHAR},
       </if>
-      <if test="mId != null">
+      <if test="mId != null" >
         m_id = #{mId,jdbcType=INTEGER},
       </if>
-      <if test="like != null">
-        like = #{like,jdbcType=INTEGER},
+      <if test="userLike != null" >
+        user_like = #{userLike,jdbcType=INTEGER},
       </if>
-      <if test="haveSeen != null">
+      <if test="haveSeen != null" >
         have_seen = #{haveSeen,jdbcType=INTEGER},
       </if>
-      <if test="mName != null">
+      <if test="mName != null" >
         m_name = #{mName,jdbcType=VARCHAR},
       </if>
-      <if test="uId != null">
+      <if test="uId != null" >
         u_id = #{uId,jdbcType=INTEGER},
       </if>
     </set>
     where ml_id = #{mlId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.mymovie.pojo.Movie">
+  <update id="updateByPrimaryKey" parameterType="com.mymovie.pojo.Movie" >
     update movie
     set data = #{data,jdbcType=VARCHAR},
       m_id = #{mId,jdbcType=INTEGER},
-      like = #{like,jdbcType=INTEGER},
+      user_like = #{userLike,jdbcType=INTEGER},
       have_seen = #{haveSeen,jdbcType=INTEGER},
       m_name = #{mName,jdbcType=VARCHAR},
       u_id = #{uId,jdbcType=INTEGER}
     where ml_id = #{mlId,jdbcType=INTEGER}
   </update>
-  <select id="selectByExampleWithRowbounds" parameterType="com.mymovie.pojo.MovieExample" resultMap="BaseResultMap">
+  <select resultMap="BaseResultMap" parameterType="com.mymovie.pojo.MovieExample" id="selectByExampleWithRowbounds" >
     select
-    <if test="distinct">
+    <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
     from movie
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <resultMap id="BaseResultMap" type="com.mymovie.pojo.Movie">
-    <id column="ml_id" jdbcType="INTEGER" property="mlId" />
-    <result column="m_id" jdbcType="INTEGER" property="mId" />
-    <result column="like" jdbcType="VARCHAR" property="like" />
-    <result column="have_seen" jdbcType="VARCHAR" property="haveSeen" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.mymovie.pojo.MovieWithBLOBs">
-    <result column="data" jdbcType="LONGVARCHAR" property="data" />
-    <result column="comment" jdbcType="LONGVARCHAR" property="comment" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    ml_id, m_id, like, have_seen
-  </sql>
-  <sql id="Blob_Column_List">
-    data, comment
-  </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.mymovie.pojo.MovieExample" resultMap="ResultMapWithBLOBs">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from movie
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByExample" parameterType="com.mymovie.pojo.MovieExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from movie
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from movie
-    where ml_id = #{mlId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from movie
-    where ml_id = #{mlId,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.mymovie.pojo.MovieExample">
-    delete from movie
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.mymovie.pojo.MovieWithBLOBs">
-    <selectKey keyProperty="mlId" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into movie (m_id, like, have_seen, 
-      data, comment)
-    values (#{mId,jdbcType=INTEGER}, #{like,jdbcType=VARCHAR}, #{haveSeen,jdbcType=VARCHAR}, 
-      #{data,jdbcType=LONGVARCHAR}, #{comment,jdbcType=LONGVARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.mymovie.pojo.MovieWithBLOBs">
-    <selectKey keyProperty="mlId" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into movie
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="mId != null">
-        m_id,
-      </if>
-      <if test="like != null">
-        like,
-      </if>
-      <if test="haveSeen != null">
-        have_seen,
-      </if>
-      <if test="data != null">
-        data,
-      </if>
-      <if test="comment != null">
-        comment,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="mId != null">
-        #{mId,jdbcType=INTEGER},
-      </if>
-      <if test="like != null">
-        #{like,jdbcType=VARCHAR},
-      </if>
-      <if test="haveSeen != null">
-        #{haveSeen,jdbcType=VARCHAR},
-      </if>
-      <if test="data != null">
-        #{data,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="comment != null">
-        #{comment,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.mymovie.pojo.MovieExample" resultType="java.lang.Integer">
-    select count(*) from movie
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update movie
-    <set>
-      <if test="record.mlId != null">
-        ml_id = #{record.mlId,jdbcType=INTEGER},
-      </if>
-      <if test="record.mId != null">
-        m_id = #{record.mId,jdbcType=INTEGER},
-      </if>
-      <if test="record.like != null">
-        like = #{record.like,jdbcType=VARCHAR},
-      </if>
-      <if test="record.haveSeen != null">
-        have_seen = #{record.haveSeen,jdbcType=VARCHAR},
-      </if>
-      <if test="record.data != null">
-        data = #{record.data,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="record.comment != null">
-        comment = #{record.comment,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map">
-    update movie
-    set ml_id = #{record.mlId,jdbcType=INTEGER},
-      m_id = #{record.mId,jdbcType=INTEGER},
-      like = #{record.like,jdbcType=VARCHAR},
-      have_seen = #{record.haveSeen,jdbcType=VARCHAR},
-      data = #{record.data,jdbcType=LONGVARCHAR},
-      comment = #{record.comment,jdbcType=LONGVARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update movie
-    set ml_id = #{record.mlId,jdbcType=INTEGER},
-      m_id = #{record.mId,jdbcType=INTEGER},
-      like = #{record.like,jdbcType=VARCHAR},
-      have_seen = #{record.haveSeen,jdbcType=VARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mymovie.pojo.MovieWithBLOBs">
-    update movie
-    <set>
-      <if test="mId != null">
-        m_id = #{mId,jdbcType=INTEGER},
-      </if>
-      <if test="like != null">
-        like = #{like,jdbcType=VARCHAR},
-      </if>
-      <if test="haveSeen != null">
-        have_seen = #{haveSeen,jdbcType=VARCHAR},
-      </if>
-      <if test="data != null">
-        data = #{data,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="comment != null">
-        comment = #{comment,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    where ml_id = #{mlId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mymovie.pojo.MovieWithBLOBs">
-    update movie
-    set m_id = #{mId,jdbcType=INTEGER},
-      like = #{like,jdbcType=VARCHAR},
-      have_seen = #{haveSeen,jdbcType=VARCHAR},
-      data = #{data,jdbcType=LONGVARCHAR},
-      comment = #{comment,jdbcType=LONGVARCHAR}
-    where ml_id = #{mlId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.mymovie.pojo.Movie">
-    update movie
-    set m_id = #{mId,jdbcType=INTEGER},
-      like = #{like,jdbcType=VARCHAR},
-      have_seen = #{haveSeen,jdbcType=VARCHAR}
-    where ml_id = #{mlId,jdbcType=INTEGER}
-  </update>
-  <select id="selectByExampleWithBLOBsWithRowbounds" parameterType="com.mymovie.pojo.MovieExample" resultMap="ResultMapWithBLOBs">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from movie
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByExampleWithRowbounds" parameterType="com.mymovie.pojo.MovieExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from movie
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <resultMap id="BaseResultMap" type="com.mymovie.pojo.Movie">
-    <id column="ml_id" jdbcType="INTEGER" property="mlId" />
-    <result column="m_id" jdbcType="INTEGER" property="mId" />
-    <result column="like" jdbcType="VARCHAR" property="like" />
-    <result column="have_seen" jdbcType="VARCHAR" property="haveSeen" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.mymovie.pojo.MovieWithBLOBs">
-    <result column="data" jdbcType="LONGVARCHAR" property="data" />
-    <result column="comment" jdbcType="LONGVARCHAR" property="comment" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    ml_id, m_id, like, have_seen
-  </sql>
-  <sql id="Blob_Column_List">
-    data, comment
-  </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.mymovie.pojo.MovieExample" resultMap="ResultMapWithBLOBs">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from movie
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByExample" parameterType="com.mymovie.pojo.MovieExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from movie
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from movie
-    where ml_id = #{mlId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from movie
-    where ml_id = #{mlId,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.mymovie.pojo.MovieExample">
-    delete from movie
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.mymovie.pojo.MovieWithBLOBs">
-    <selectKey keyProperty="mlId" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into movie (m_id, like, have_seen, 
-      data, comment)
-    values (#{mId,jdbcType=INTEGER}, #{like,jdbcType=VARCHAR}, #{haveSeen,jdbcType=VARCHAR}, 
-      #{data,jdbcType=LONGVARCHAR}, #{comment,jdbcType=LONGVARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.mymovie.pojo.MovieWithBLOBs">
-    <selectKey keyProperty="mlId" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into movie
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="mId != null">
-        m_id,
-      </if>
-      <if test="like != null">
-        like,
-      </if>
-      <if test="haveSeen != null">
-        have_seen,
-      </if>
-      <if test="data != null">
-        data,
-      </if>
-      <if test="comment != null">
-        comment,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="mId != null">
-        #{mId,jdbcType=INTEGER},
-      </if>
-      <if test="like != null">
-        #{like,jdbcType=VARCHAR},
-      </if>
-      <if test="haveSeen != null">
-        #{haveSeen,jdbcType=VARCHAR},
-      </if>
-      <if test="data != null">
-        #{data,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="comment != null">
-        #{comment,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.mymovie.pojo.MovieExample" resultType="java.lang.Integer">
-    select count(*) from movie
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update movie
-    <set>
-      <if test="record.mlId != null">
-        ml_id = #{record.mlId,jdbcType=INTEGER},
-      </if>
-      <if test="record.mId != null">
-        m_id = #{record.mId,jdbcType=INTEGER},
-      </if>
-      <if test="record.like != null">
-        like = #{record.like,jdbcType=VARCHAR},
-      </if>
-      <if test="record.haveSeen != null">
-        have_seen = #{record.haveSeen,jdbcType=VARCHAR},
-      </if>
-      <if test="record.data != null">
-        data = #{record.data,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="record.comment != null">
-        comment = #{record.comment,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map">
-    update movie
-    set ml_id = #{record.mlId,jdbcType=INTEGER},
-      m_id = #{record.mId,jdbcType=INTEGER},
-      like = #{record.like,jdbcType=VARCHAR},
-      have_seen = #{record.haveSeen,jdbcType=VARCHAR},
-      data = #{record.data,jdbcType=LONGVARCHAR},
-      comment = #{record.comment,jdbcType=LONGVARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update movie
-    set ml_id = #{record.mlId,jdbcType=INTEGER},
-      m_id = #{record.mId,jdbcType=INTEGER},
-      like = #{record.like,jdbcType=VARCHAR},
-      have_seen = #{record.haveSeen,jdbcType=VARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mymovie.pojo.MovieWithBLOBs">
-    update movie
-    <set>
-      <if test="mId != null">
-        m_id = #{mId,jdbcType=INTEGER},
-      </if>
-      <if test="like != null">
-        like = #{like,jdbcType=VARCHAR},
-      </if>
-      <if test="haveSeen != null">
-        have_seen = #{haveSeen,jdbcType=VARCHAR},
-      </if>
-      <if test="data != null">
-        data = #{data,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="comment != null">
-        comment = #{comment,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    where ml_id = #{mlId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mymovie.pojo.MovieWithBLOBs">
-    update movie
-    set m_id = #{mId,jdbcType=INTEGER},
-      like = #{like,jdbcType=VARCHAR},
-      have_seen = #{haveSeen,jdbcType=VARCHAR},
-      data = #{data,jdbcType=LONGVARCHAR},
-      comment = #{comment,jdbcType=LONGVARCHAR}
-    where ml_id = #{mlId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.mymovie.pojo.Movie">
-    update movie
-    set m_id = #{mId,jdbcType=INTEGER},
-      like = #{like,jdbcType=VARCHAR},
-      have_seen = #{haveSeen,jdbcType=VARCHAR}
-    where ml_id = #{mlId,jdbcType=INTEGER}
-  </update>
-  <select id="selectByExampleWithBLOBsWithRowbounds" parameterType="com.mymovie.pojo.MovieExample" resultMap="ResultMapWithBLOBs">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from movie
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByExampleWithRowbounds" parameterType="com.mymovie.pojo.MovieExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from movie
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <resultMap id="BaseResultMap" type="com.mymovie.pojo.movie">
-    <id column="ml_id" jdbcType="INTEGER" property="mlId" />
-    <result column="m_id" jdbcType="INTEGER" property="mId" />
-    <result column="like" jdbcType="VARCHAR" property="like" />
-    <result column="have_seen" jdbcType="VARCHAR" property="haveSeen" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.mymovie.pojo.movieWithBLOBs">
-    <result column="data" jdbcType="LONGVARCHAR" property="data" />
-    <result column="comment" jdbcType="LONGVARCHAR" property="comment" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    ml_id, m_id, like, have_seen
-  </sql>
-  <sql id="Blob_Column_List">
-    data, comment
-  </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.mymovie.pojo.movieExample" resultMap="ResultMapWithBLOBs">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from movie
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByExample" parameterType="com.mymovie.pojo.movieExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from movie
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from movie
-    where ml_id = #{mlId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from movie
-    where ml_id = #{mlId,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.mymovie.pojo.movieExample">
-    delete from movie
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.mymovie.pojo.movieWithBLOBs">
-    <selectKey keyProperty="mlId" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into movie (m_id, like, have_seen, 
-      data, comment)
-    values (#{mId,jdbcType=INTEGER}, #{like,jdbcType=VARCHAR}, #{haveSeen,jdbcType=VARCHAR}, 
-      #{data,jdbcType=LONGVARCHAR}, #{comment,jdbcType=LONGVARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.mymovie.pojo.movieWithBLOBs">
-    <selectKey keyProperty="mlId" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into movie
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="mId != null">
-        m_id,
-      </if>
-      <if test="like != null">
-        like,
-      </if>
-      <if test="haveSeen != null">
-        have_seen,
-      </if>
-      <if test="data != null">
-        data,
-      </if>
-      <if test="comment != null">
-        comment,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="mId != null">
-        #{mId,jdbcType=INTEGER},
-      </if>
-      <if test="like != null">
-        #{like,jdbcType=VARCHAR},
-      </if>
-      <if test="haveSeen != null">
-        #{haveSeen,jdbcType=VARCHAR},
-      </if>
-      <if test="data != null">
-        #{data,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="comment != null">
-        #{comment,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.mymovie.pojo.movieExample" resultType="java.lang.Integer">
-    select count(*) from movie
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update movie
-    <set>
-      <if test="record.mlId != null">
-        ml_id = #{record.mlId,jdbcType=INTEGER},
-      </if>
-      <if test="record.mId != null">
-        m_id = #{record.mId,jdbcType=INTEGER},
-      </if>
-      <if test="record.like != null">
-        like = #{record.like,jdbcType=VARCHAR},
-      </if>
-      <if test="record.haveSeen != null">
-        have_seen = #{record.haveSeen,jdbcType=VARCHAR},
-      </if>
-      <if test="record.data != null">
-        data = #{record.data,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="record.comment != null">
-        comment = #{record.comment,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map">
-    update movie
-    set ml_id = #{record.mlId,jdbcType=INTEGER},
-      m_id = #{record.mId,jdbcType=INTEGER},
-      like = #{record.like,jdbcType=VARCHAR},
-      have_seen = #{record.haveSeen,jdbcType=VARCHAR},
-      data = #{record.data,jdbcType=LONGVARCHAR},
-      comment = #{record.comment,jdbcType=LONGVARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update movie
-    set ml_id = #{record.mlId,jdbcType=INTEGER},
-      m_id = #{record.mId,jdbcType=INTEGER},
-      like = #{record.like,jdbcType=VARCHAR},
-      have_seen = #{record.haveSeen,jdbcType=VARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mymovie.pojo.movieWithBLOBs">
-    update movie
-    <set>
-      <if test="mId != null">
-        m_id = #{mId,jdbcType=INTEGER},
-      </if>
-      <if test="like != null">
-        like = #{like,jdbcType=VARCHAR},
-      </if>
-      <if test="haveSeen != null">
-        have_seen = #{haveSeen,jdbcType=VARCHAR},
-      </if>
-      <if test="data != null">
-        data = #{data,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="comment != null">
-        comment = #{comment,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    where ml_id = #{mlId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mymovie.pojo.movieWithBLOBs">
-    update movie
-    set m_id = #{mId,jdbcType=INTEGER},
-      like = #{like,jdbcType=VARCHAR},
-      have_seen = #{haveSeen,jdbcType=VARCHAR},
-      data = #{data,jdbcType=LONGVARCHAR},
-      comment = #{comment,jdbcType=LONGVARCHAR}
-    where ml_id = #{mlId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.mymovie.pojo.movie">
-    update movie
-    set m_id = #{mId,jdbcType=INTEGER},
-      like = #{like,jdbcType=VARCHAR},
-      have_seen = #{haveSeen,jdbcType=VARCHAR}
-    where ml_id = #{mlId,jdbcType=INTEGER}
-  </update>
-  <select id="selectByExampleWithBLOBsWithRowbounds" parameterType="com.mymovie.pojo.movieExample" resultMap="ResultMapWithBLOBs">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from movie
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByExampleWithRowbounds" parameterType="com.mymovie.pojo.movieExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from movie
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
+    <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
   </select>

@@ -1,9 +1,5 @@
 package com.mymovie.service;
 
-import java.util.List;
-
-import com.mymovie.pojo.Movie;
-import com.mymovie.pojo.User;
 
 public interface MovieService {
 	public int isExisted(int m_id);
