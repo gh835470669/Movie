@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mymovie.mapper.SeatMapper" >
+  <resultMap id="BaseResultMap" type="com.mymovie.pojo.Seat" >
+    <id column="s_id" property="sId" jdbcType="INTEGER" />
+    <result column="cinema_id" property="cinemaId" jdbcType="INTEGER" />
+    <result column="hall_id" property="hallId" jdbcType="INTEGER" />
+    <result column="non_empty" property="nonEmpty" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    s_id, cinema_id, hall_id, non_empty
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mymovie.pojo.SeatExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from seat
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from seat
+    where s_id = #{sId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from seat
+    where s_id = #{sId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.mymovie.pojo.SeatExample" >
+    delete from seat
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mymovie.pojo.Seat" >
+    <selectKey resultType="java.lang.Integer" keyProperty="sId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into seat (cinema_id, hall_id, non_empty
+      )
+    values (#{cinemaId,jdbcType=INTEGER}, #{hallId,jdbcType=INTEGER}, #{nonEmpty,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mymovie.pojo.Seat" >
+    <selectKey resultType="java.lang.Integer" keyProperty="sId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into seat
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cinemaId != null" >
+        cinema_id,
+      </if>
+      <if test="hallId != null" >
+        hall_id,
+      </if>
+      <if test="nonEmpty != null" >
+        non_empty,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cinemaId != null" >
+        #{cinemaId,jdbcType=INTEGER},
+      </if>
+      <if test="hallId != null" >
+        #{hallId,jdbcType=INTEGER},
+      </if>
+      <if test="nonEmpty != null" >
+        #{nonEmpty,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mymovie.pojo.SeatExample" resultType="java.lang.Integer" >
+    select count(*) from seat
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update seat
+    <set >
+      <if test="record.sId != null" >
+        s_id = #{record.sId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cinemaId != null" >
+        cinema_id = #{record.cinemaId,jdbcType=INTEGER},
+      </if>
+      <if test="record.hallId != null" >
+        hall_id = #{record.hallId,jdbcType=INTEGER},
+      </if>
+      <if test="record.nonEmpty != null" >
+        non_empty = #{record.nonEmpty,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update seat
+    set s_id = #{record.sId,jdbcType=INTEGER},
+      cinema_id = #{record.cinemaId,jdbcType=INTEGER},
+      hall_id = #{record.hallId,jdbcType=INTEGER},
+      non_empty = #{record.nonEmpty,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mymovie.pojo.Seat" >
+    update seat
+    <set >
+      <if test="cinemaId != null" >
+        cinema_id = #{cinemaId,jdbcType=INTEGER},
+      </if>
+      <if test="hallId != null" >
+        hall_id = #{hallId,jdbcType=INTEGER},
+      </if>
+      <if test="nonEmpty != null" >
+        non_empty = #{nonEmpty,jdbcType=INTEGER},
+      </if>
+    </set>
+    where s_id = #{sId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mymovie.pojo.Seat" >
+    update seat
+    set cinema_id = #{cinemaId,jdbcType=INTEGER},
+      hall_id = #{hallId,jdbcType=INTEGER},
+      non_empty = #{nonEmpty,jdbcType=INTEGER}
+    where s_id = #{sId,jdbcType=INTEGER}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="com.mymovie.pojo.SeatExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from seat
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

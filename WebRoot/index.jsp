@@ -149,5 +149,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<input type="text" name="u_id" width="10"/> <br/>
     	<input type="submit"  value="提交" />
     </form>
+    <h4>获取座位情况：</h4>
+    <form action="http://172.18.68.4:8080/seat/getNonEmptySeat" method="post">
+    	影院id：
+    	<input type="text" name="cinema_id" width="200"/> <br/>
+    	放映厅id:
+    	<input type="text" name="hall_id" width="10"/> <br/>
+    	<input type="submit"  value="提交" />
+    </form>
+    <h4>提交已选座位：</h4>
+    <form action="http://172.18.68.4:8080/seat/new" method="post">
+    	影院id：
+    	<input type="text" name="cinema_id" width="200"/> <br/>
+    	放映厅id:
+    	<input type="text" name="hall_id" width="10"/> <br/>
+    	已选座位编号:
+    	<input type="text" name="position" width="10"/> <br/>
+    	<input type="submit"  value="提交" />
+    </form>
+    
   </body>
 </html>

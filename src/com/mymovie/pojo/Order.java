@@ -21,9 +21,9 @@ public class Order implements Serializable {
 
     private String telphone;
 
-    private Integer flag;
-
     private Integer status;
+
+    private Integer flag;
 
     private static final long serialVersionUID = 1L;
 
@@ -99,19 +99,19 @@ public class Order implements Serializable {
         this.telphone = telphone;
     }
 
-    public Integer getFlag() {
-        return flag;
-    }
-
-    public void setFlag(Integer flag) {
-        this.flag = flag;
-    }
-
     public Integer getStatus() {
         return status;
     }
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Integer flag) {
+        this.flag = flag;
     }
 }

@@ -17,37 +17,40 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.mymovie.pojo.Comment;
 import com.mymovie.pojo.Movie;
 import com.mymovie.pojo.Order;
+import com.mymovie.pojo.Seat;
 import com.mymovie.service.CommentService;
 import com.mymovie.service.MovieService;
 import com.mymovie.service.OrderService;
+import com.mymovie.service.SeatService;
 
 
 
 
 
 @Controller
-@RequestMapping("/order")
-public class OrderController {
+@RequestMapping("/seat")
+public class SeatController {
     
     @Autowired
-    private OrderService orderService;
+    private SeatService seatService;
     
     
     
     @ResponseBody
-    @RequestMapping("/getOrders")
+    @RequestMapping("/getNonEmptySeat")
     public Map<String, Object> uploadComment(
-            @RequestParam(value="u_id") String u_id,
+            @RequestParam(value="cinema_id") String cinema_id,
+            @RequestParam(value="hall_id") String hall_id,
             HttpServletRequest request,
             HttpServletResponse response) {
     	
     	Map<String, Object> map = new HashMap<String, Object>();
-    	List<Order> orders = orderService.getUserOrder(u_id);
-    	if (orders == null) {
+    	List<Seat> seats = seatService.getNonEmptySeat(cinema_id, hall_id);
+    	if (seats == null) {
     		map.put("state", "fail");
     	} else {
     		map.put("state", "success");
-    		map.put("data", orders);
+    		map.put("data", seats);
     	}
     	
 		return map;
@@ -56,13 +59,13 @@ public class OrderController {
     @ResponseBody
     @RequestMapping("/delete")
     public Map<String, Object> deleteOrder(
-            @RequestParam(value="o_id") String o_id,
-            @RequestParam(value="u_id") String u_id,
+    		@RequestParam(value="cinema_id") String cinema_id,
+            @RequestParam(value="hall_id") String hall_id,
             HttpServletRequest request,
             HttpServletResponse response) {
     	
     	Map<String, Object> map = new HashMap<String, Object>();
-    	int n = orderService.delete(o_id, u_id);
+    	int n = seatService.delete(cinema_id, hall_id);
     	if (n > 0) {
     		map.put("state", "success");
     	} else {
@@ -76,18 +79,14 @@ public class OrderController {
     @ResponseBody
     @RequestMapping("/new")
     public Map<String, Object> uploadComment(
-            @RequestParam(value="u_id") String u_id,
-            @RequestParam(value="m_name") String m_name,
-            @RequestParam(value="showtime") String showtime,
-            @RequestParam(value="cinema") String cinema,
-            @RequestParam(value="seat") String seat,
-            @RequestParam(value="price") String price,
-            @RequestParam(value="telphone") String telphone,
+    		@RequestParam(value="cinema_id") String cinema_id,
+            @RequestParam(value="hall_id") String hall_id,
+            @RequestParam(value="position") Integer position,
             HttpServletRequest request,
             HttpServletResponse response) {
     	
     	Map<String, Object> map = new HashMap<String, Object>();
-    	int n = orderService.insert(u_id, m_name, showtime, cinema, seat, price, telphone);
+    	int n = seatService.insert(cinema_id, hall_id, position);
     	if (n > 0) {
     		map.put("state", "success");
     	} else {
