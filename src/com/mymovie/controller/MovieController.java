@@ -2,6 +2,7 @@ package com.mymovie.controller;
 
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mymovie.pojo.Movie;
 import com.mymovie.service.MovieService;
 
 
@@ -38,7 +40,7 @@ public class MovieController {
     }
     
     @ResponseBody
-    @RequestMapping("like")
+    @RequestMapping("/like")
     public Map<String, Object> updateLike(
     		@RequestParam(value="m_name") String m_name,
             @RequestParam(value="m_id") String m_id,
@@ -55,13 +57,34 @@ public class MovieController {
     	} else {
     		map.put("state", "fail");
     	}
-    	System.out.println(m_data+"\n");
+    	//System.out.println(m_data+"\n");
     	
 		return map;
     }
     
     @ResponseBody
-    @RequestMapping("haveSeen")
+    @RequestMapping("/getUserLike")
+    public Map<String, Object> getUserLike(
+            @RequestParam(value="u_id") String u_id,
+            HttpServletRequest request,
+            HttpServletResponse response) {
+    	
+    	Map<String, Object> map = new HashMap<String, Object>();
+    	List<Movie> movies = movieService.getUserLike(u_id);
+    	
+    	if (movies == null) {
+    		map.put("state", "fail");
+    	} else {
+    		map.put("state", "success");
+    		map.put("data", movies);
+    	}
+    	//System.out.println(m_data+"\n");
+    	
+		return map;
+    }
+    
+    @ResponseBody
+    @RequestMapping("/haveSeen")
     public Map<String, Object> updateHaveSeen(
     		@RequestParam(value="m_name") String m_name,
             @RequestParam(value="m_id") String m_id,
@@ -81,5 +104,22 @@ public class MovieController {
 		return map;
     }
     
+    @ResponseBody
+    @RequestMapping("/getUserHaveSeen")
+    public Map<String, Object> getUserHaveSeen(
+            @RequestParam(value="u_id") String u_id,
+            HttpServletRequest request,
+            HttpServletResponse response) {
+    	Map<String, Object> map = new HashMap<String, Object>();
+    	List<Movie> movies = movieService.getUserHaveSeen(u_id);
+    	if (movies == null) {
+    		map.put("state", "fail");
+    	} else {
+    		map.put("state", "success");
+    		map.put("data", movies);
+    	}
+    	
+		return map;
+    }
     
 }

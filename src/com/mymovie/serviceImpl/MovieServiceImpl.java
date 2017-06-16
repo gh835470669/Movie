@@ -1,6 +1,8 @@
 package com.mymovie.serviceImpl;
 
 
+import java.util.List;
+
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +20,27 @@ public class MovieServiceImpl implements MovieService{
     @Autowired
     private MovieMapper movieMapper;
     
+    @Override
+    public List<Movie> getUserLike(String u_id) {
+    	if (u_id == null || u_id.length() == 0) return null;
+    	int uId = Integer.parseInt(u_id);
+    	MovieExample example = new MovieExample();
+    	example.createCriteria().andUIdEqualTo(uId).andUserLikeEqualTo(1);
+    	List<Movie> movies = movieMapper.selectByExample(example);
+    	
+    	return movies;
+    }
     
+    @Override
+    public List<Movie> getUserHaveSeen(String u_id) {
+    	if (u_id == null || u_id.length() == 0) return null;
+    	int uId = Integer.parseInt(u_id);
+    	MovieExample example = new MovieExample();
+    	example.createCriteria().andUIdEqualTo(uId).andHaveSeenEqualTo(1);
+    	List<Movie> movies = movieMapper.selectByExample(example);
+    	
+    	return movies;
+    }
     
     @Override
     public int updateLike(String m_id, String m_name, String m_data, String u_id, String like) {

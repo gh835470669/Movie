@@ -33,6 +33,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<input type="password" name="password" width="200"/>
     	<input type="submit" name="Submit2" value="注册" />
     </form>
+    
+    <h4>更新用户信息：</h4>
     <form action="http://172.18.68.4:8080/user/update" method="post">
     	用户名：
     	<input type="text" name="username" width="200"/> <br/>
@@ -45,6 +47,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	
     	<input type="submit"  value="提交" />
     </form>
+    
+    <h4>添加到想看的：</h4>
     <form action="http://172.18.68.4:8080/movie/like" method="post">
     	电影id：
     	<input type="text" name="m_id" width="200"/> <br/>
@@ -56,6 +60,61 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<input type="text" name="u_id" width="10"/> <br/>
     	like:
     	<input type="text" name="like" width="10"/> <br/>
+    	<input type="submit"  value="提交" />
+    </form>
+    
+    <h4>添加到看过：</h4>
+    <form action="http://172.18.68.4:8080/movie/haveSeen" method="post">
+    	电影id：
+    	<input type="text" name="m_id" width="200"/> <br/>
+    	电影名：
+    	<input type="text" name="m_name" width="200"/> <br/>
+    	电影数据：
+    	<input type="text" name="m_data" width="200"/> <br/>
+    	用户id:
+    	<input type="text" name="u_id" width="10"/> <br/>
+    	haveSeen:
+    	<input type="text" name="haveSeen" width="10"/> <br/>
+    	<input type="submit"  value="提交" />
+    </form>
+    
+    <h4>获取想看的：</h4>
+    <form action="http://172.18.68.4:8080/movie/getUserLike" method="post">
+    	用户id:
+    	<input type="text" name="u_id" width="10"/> <br/>
+    	<input type="submit"  value="提交" />
+    </form>
+    
+    <h4>获取看过的：</h4>
+    <form action="http://172.18.68.4:8080/movie/getUserHaveSeen" method="post">
+    	用户id:
+    	<input type="text" name="u_id" width="10"/> <br/>
+    	<input type="submit"  value="提交" />
+    </form>
+    
+    <h4>获取评论：</h4>
+    <form action="http://172.18.68.4:8080/comment/getAll" method="post">
+    	用户id:
+    	<input type="text" name="u_id" width="10"/> <br/>
+    	<input type="submit"  value="提交" />
+    </form>
+    
+    <h4>添加评论：</h4>
+    <form action="http://172.18.68.4:8080/comment/new" method="post">
+    	电影id：
+    	<input type="text" name="m_id" width="200"/> <br/>
+    	评论内容：
+    	<input type="text" name="comment" width="200"/> <br/>
+    	用户id:
+    	<input type="text" name="u_id" width="10"/> <br/>
+    	<input type="submit"  value="提交" />
+    </form>
+    <h4>删除评论：</h4>
+    <form action="http://172.18.68.4:8080/comment/delete" method="post">
+    	电影id：
+    	<input type="text" name="m_id" width="200"/> <br/>
+    	用户id:
+    	<input type="text" name="u_id" width="10"/> <br/>
     	<input type="submit"  value="提交" />
     </form>
   </body>
