@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mymovie.mapper.OrderMapper" >
+  <resultMap id="BaseResultMap" type="com.mymovie.pojo.Order" >
+    <id column="o_id" property="oId" jdbcType="INTEGER" />
+    <result column="u_id" property="uId" jdbcType="INTEGER" />
+    <result column="m_name" property="mName" jdbcType="VARCHAR" />
+    <result column="showtime" property="showtime" jdbcType="VARCHAR" />
+    <result column="cinema" property="cinema" jdbcType="VARCHAR" />
+    <result column="seat" property="seat" jdbcType="VARCHAR" />
+    <result column="order_time" property="orderTime" jdbcType="VARCHAR" />
+    <result column="order_price" property="orderPrice" jdbcType="REAL" />
+    <result column="telphone" property="telphone" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    o_id, u_id, m_name, showtime, cinema, seat, order_time, order_price, telphone, flag, 
+    status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mymovie.pojo.OrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from order
+    where o_id = #{oId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from order
+    where o_id = #{oId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.mymovie.pojo.OrderExample" >
+    delete from order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mymovie.pojo.Order" >
+    <selectKey resultType="java.lang.Integer" keyProperty="oId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into order (u_id, m_name, showtime, 
+      cinema, seat, order_time, 
+      order_price, telphone, flag, 
+      status)
+    values (#{uId,jdbcType=INTEGER}, #{mName,jdbcType=VARCHAR}, #{showtime,jdbcType=VARCHAR}, 
+      #{cinema,jdbcType=VARCHAR}, #{seat,jdbcType=VARCHAR}, #{orderTime,jdbcType=VARCHAR}, 
+      #{orderPrice,jdbcType=REAL}, #{telphone,jdbcType=VARCHAR}, #{flag,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mymovie.pojo.Order" >
+    <selectKey resultType="java.lang.Integer" keyProperty="oId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="mName != null" >
+        m_name,
+      </if>
+      <if test="showtime != null" >
+        showtime,
+      </if>
+      <if test="cinema != null" >
+        cinema,
+      </if>
+      <if test="seat != null" >
+        seat,
+      </if>
+      <if test="orderTime != null" >
+        order_time,
+      </if>
+      <if test="orderPrice != null" >
+        order_price,
+      </if>
+      <if test="telphone != null" >
+        telphone,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uId != null" >
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="mName != null" >
+        #{mName,jdbcType=VARCHAR},
+      </if>
+      <if test="showtime != null" >
+        #{showtime,jdbcType=VARCHAR},
+      </if>
+      <if test="cinema != null" >
+        #{cinema,jdbcType=VARCHAR},
+      </if>
+      <if test="seat != null" >
+        #{seat,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null" >
+        #{orderTime,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPrice != null" >
+        #{orderPrice,jdbcType=REAL},
+      </if>
+      <if test="telphone != null" >
+        #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mymovie.pojo.OrderExample" resultType="java.lang.Integer" >
+    select count(*) from order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update order
+    <set >
+      <if test="record.oId != null" >
+        o_id = #{record.oId,jdbcType=INTEGER},
+      </if>
+      <if test="record.uId != null" >
+        u_id = #{record.uId,jdbcType=INTEGER},
+      </if>
+      <if test="record.mName != null" >
+        m_name = #{record.mName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.showtime != null" >
+        showtime = #{record.showtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cinema != null" >
+        cinema = #{record.cinema,jdbcType=VARCHAR},
+      </if>
+      <if test="record.seat != null" >
+        seat = #{record.seat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderTime != null" >
+        order_time = #{record.orderTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderPrice != null" >
+        order_price = #{record.orderPrice,jdbcType=REAL},
+      </if>
+      <if test="record.telphone != null" >
+        telphone = #{record.telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.flag != null" >
+        flag = #{record.flag,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update order
+    set o_id = #{record.oId,jdbcType=INTEGER},
+      u_id = #{record.uId,jdbcType=INTEGER},
+      m_name = #{record.mName,jdbcType=VARCHAR},
+      showtime = #{record.showtime,jdbcType=VARCHAR},
+      cinema = #{record.cinema,jdbcType=VARCHAR},
+      seat = #{record.seat,jdbcType=VARCHAR},
+      order_time = #{record.orderTime,jdbcType=VARCHAR},
+      order_price = #{record.orderPrice,jdbcType=REAL},
+      telphone = #{record.telphone,jdbcType=VARCHAR},
+      flag = #{record.flag,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mymovie.pojo.Order" >
+    update order
+    <set >
+      <if test="uId != null" >
+        u_id = #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="mName != null" >
+        m_name = #{mName,jdbcType=VARCHAR},
+      </if>
+      <if test="showtime != null" >
+        showtime = #{showtime,jdbcType=VARCHAR},
+      </if>
+      <if test="cinema != null" >
+        cinema = #{cinema,jdbcType=VARCHAR},
+      </if>
+      <if test="seat != null" >
+        seat = #{seat,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null" >
+        order_time = #{orderTime,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPrice != null" >
+        order_price = #{orderPrice,jdbcType=REAL},
+      </if>
+      <if test="telphone != null" >
+        telphone = #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where o_id = #{oId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mymovie.pojo.Order" >
+    update order
+    set u_id = #{uId,jdbcType=INTEGER},
+      m_name = #{mName,jdbcType=VARCHAR},
+      showtime = #{showtime,jdbcType=VARCHAR},
+      cinema = #{cinema,jdbcType=VARCHAR},
+      seat = #{seat,jdbcType=VARCHAR},
+      order_time = #{orderTime,jdbcType=VARCHAR},
+      order_price = #{orderPrice,jdbcType=REAL},
+      telphone = #{telphone,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER}
+    where o_id = #{oId,jdbcType=INTEGER}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="com.mymovie.pojo.OrderExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

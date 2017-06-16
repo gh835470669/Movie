@@ -117,5 +117,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<input type="text" name="u_id" width="10"/> <br/>
     	<input type="submit"  value="提交" />
     </form>
+    <h4 >提交订单：</h4>
+    <form action="http://172.18.68.4:8080/order/new" method="post">
+    	用户id：
+    	<input type="text" name="u_id" width="200"/> <br/>
+    	电影名称:
+    	<input type="text" name="m_name" width="10"/> <br/>
+    	放映时间：
+    	<input type="text" name="showtime" width="200"/> <br/>
+    	影院信息:
+    	<input type="text" name="cinema" width="10"/> <br/>
+    	座位：
+    	<input type="text" name="seat" width="200"/> <br/>
+    	价格:
+    	<input type="text" name="price" width="10"/> <br/>
+    	联系方式：
+    	<input type="text" name="telphone" width="200"/> <br/>
+    	<input type="submit"  value="提交" />
+    </form>
+    <h4>获取订单：</h4>
+    <form action="http://172.18.68.4:8080/order/getOrders" method="post">
+    	用户id:
+    	<input type="text" name="u_id" width="10"/> <br/>
+    	<input type="submit"  value="提交" />
+    </form>
+    <h4>删除订单：</h4>
+    <form action="http://172.18.68.4:8080/order/delete" method="post">
+    	订单id：
+    	<input type="text" name="o_id" width="200"/> <br/>
+    	用户id:
+    	<input type="text" name="u_id" width="10"/> <br/>
+    	<input type="submit"  value="提交" />
+    </form>
   </body>
 </html>
