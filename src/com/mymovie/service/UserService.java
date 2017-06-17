@@ -1,6 +1,8 @@
 package com.mymovie.service;
 
 
+import java.util.Map;
+
 import com.mymovie.pojo.User;
 
 public interface UserService {
@@ -8,6 +10,8 @@ public interface UserService {
     public int insertUser(User user);
     
     public int isExisted(String userName);
+    
+    public Map<String, Object> getUserInfo(String uid);
     
     public int signin(String username, String password);
     

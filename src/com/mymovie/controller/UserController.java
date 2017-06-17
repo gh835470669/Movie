@@ -79,6 +79,7 @@ public class UserController {
         
     	Map<String, Object> map = new HashMap<String, Object>();
     	if (userService.signin(username, password) == 1) {
+    		map = userService.getUserInfo(username);
     		map.put("state", "success");
     	} else {
     		map.put("state", "fail");
