@@ -28,7 +28,7 @@ public class OrderServiceImpl implements OrderService{
     	int uId = Integer.parseInt(u_id);
     	OrderExample example = new OrderExample();
     	example.createCriteria().andUIdEqualTo(uId).andFlagEqualTo(1);
-    	return orderMapper.selectByExample(example);
+    	return orderMapper.selectByExample(example);//.
     }
     
     
