@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="color_theme">#E54847</color>
+    <color name="gray">#DCDCDC</color>
+    <color name="gray2">#E5E5E5</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="_3d">#8BB7CE</color>
+    <color name="yellow">#EEC900</color>
+
+    <color name="seat">#579DAF</color>
+    <color name="eat">#FF9D00</color>
+    <color name="discount">#E066FF</color>
+
+    <color name="want_to_see">#90414242</color>
+</resources>

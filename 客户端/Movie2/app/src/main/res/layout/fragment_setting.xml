@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/color_theme"
+        android:layout_height="80dp"
+        android:id="@+id/user_userInfo"
+        android:clickable="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
+            android:id="@+id/user_icon"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="Username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginStart="25dp"
+            android:id="@+id/user_username"
+            android:textColor="@android:color/white"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/user_icon"
+            android:layout_toEndOf="@+id/user_icon"
+            android:clickable="true"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/default_img"
+            android:layout_marginRight="15dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/user_userInfo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:id="@+id/user_wantToWatch">
+
+
+            <TextView
+                android:text="想看"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView7"
+                android:gravity="center"
+                android:clickable="true"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/default_img"
+                android:id="@+id/imageView3"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/textView7"
+                android:layout_toStartOf="@+id/textView7" />
+
+        </RelativeLayout>
+
+
+
+        <View
+            android:id="@+id/line0"
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:background="#1E000000"
+            android:layout_gravity="center_vertical"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/user_haveWatched"
+            android:clickable="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/default_img"
+                android:id="@+id/imageView4"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/textView8"
+                android:layout_toStartOf="@+id/textView8"/>
+
+            <TextView
+                android:text="看过"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView8"
+                android:gravity="center"
+                android:clickable="true"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#1E000000"
+        android:layout_weight="0"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line"
+        android:id="@+id/relativeLayout2"
+        android:clickable="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            app:srcCompat="@mipmap/default_img" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的订单"
+            android:textSize="20sp"
+            android:layout_margin="10dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/line2"
+        android:layout_below="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#1E000000" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line2"
+        android:id="@+id/relativeLayout3"
+        android:clickable="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/default_img"
+            android:layout_margin="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的消息"
+            android:textSize="20sp"
+            android:layout_margin="10dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/line3"
+        android:layout_below="@+id/relativeLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#1E000000" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line3"
+        android:id="@+id/relativeLayout4"
+        android:clickable="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/default_img"
+            android:layout_margin="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的收藏"
+            android:textSize="20sp"
+            android:layout_margin="10dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/line4"
+        android:layout_below="@+id/relativeLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#1E000000" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line4"
+        android:id="@+id/relativeLayout5"
+        android:clickable="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/default_img"
+            android:layout_margin="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的钱包"
+            android:textSize="20sp"
+            android:layout_margin="10dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/line5"
+        android:layout_below="@+id/relativeLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#1E000000" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line5"
+        android:id="@+id/relativeLayout6"
+        android:clickable="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/default_img"
+            android:layout_margin="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="余额"
+            android:textSize="20sp"
+            android:layout_margin="10dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/line6"
+        android:layout_below="@+id/relativeLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#1E000000" />
+
+    <Button
+        android:text="退出登陆"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line6"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/user_logoff"
+        android:minWidth="300dip"
+        android:background="@color/color_theme"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="20dp"/>
+
+</RelativeLayout>
